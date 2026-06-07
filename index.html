@@ -335,94 +335,6 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
 .cin-chip-icon svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .cin-chip-text{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);letter-spacing:.3px;}
 
-/* =========================================
-   PREMIUM GALLERY SHOWCASE
-   ========================================= */
-#gallery-showcase{background:var(--navy);padding:0;overflow:hidden;border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);}
-
-/* Main hero slideshow */
-.gallery-hero{position:relative;width:100%;height:clamp(420px,60vw,720px);overflow:hidden;background:var(--surface-1);}
-.gallery-hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s cubic-bezier(0.4,0,0.2,1);z-index:1;}
-.gallery-hero-slide.active{opacity:1;z-index:2;}
-.gallery-hero-slide img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  object-position:center;
-  display:block;
-  will-change:transform;
-}
-/* Ken Burns per-slide animations */
-.gallery-hero-slide.active img{animation:kenBurns 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(2).active img{animation:kenBurnsDrift 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(3).active img{animation:kenBurns2 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(4).active img{animation:kenBurns3 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(5).active img{animation:kenBurnsDrift 9s ease-in-out both;}
-.gallery-hero-slide:nth-child(6).active img{animation:kenBurns 9s ease-in-out both;}
-.gallery-hero-slide:nth-child(7).active img{animation:kenBurns2 8.5s ease-in-out both;}
-.gallery-hero-slide:nth-child(8).active img{animation:kenBurnsDrift 8.5s ease-in-out both;}
-.gallery-hero-slide:nth-child(9).active img{animation:kenBurns3 9s ease-in-out both;}
-
-/* Gradient overlays on slideshow */
-.gallery-hero-overlay{position:absolute;inset:0;z-index:3;pointer-events:none;
-  background:linear-gradient(to top,rgba(5,15,31,.85) 0%,rgba(5,15,31,.30) 40%,rgba(5,15,31,.10) 70%,transparent 100%),
-             linear-gradient(to right,rgba(5,15,31,.50) 0%,transparent 40%,transparent 60%,rgba(5,15,31,.50) 100%);}
-
-/* Bottom content overlay */
-.gallery-hero-content{position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(24px,3vw,48px) clamp(24px,4vw,64px);}
-.gallery-hero-meta{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.gallery-hero-label{display:flex;flex-direction:column;gap:8px;}
-.gallery-slide-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
-.gallery-slide-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
-.gallery-slide-title{font-family:var(--font-display);font-size:clamp(22px,3.5vw,52px);font-weight:700;color:var(--white);line-height:1.05;letter-spacing:-.5px;}
-.gallery-slide-title em{font-style:italic;color:var(--gold);}
-.gallery-slide-counter{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-3);}
-.gallery-slide-counter strong{color:var(--gold);}
-
-/* Navigation arrows */
-.gallery-nav{display:flex;gap:8px;}
-.gallery-btn{width:44px;height:44px;background:rgba(5,15,31,.75);backdrop-filter:blur(12px);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s var(--ease-out);}
-.gallery-btn:hover{background:rgba(212,168,68,.15);border-color:var(--border-hi);}
-.gallery-btn svg{width:16px;height:16px;stroke:var(--text-2);fill:none;stroke-width:2;transition:stroke .3s;}
-.gallery-btn:hover svg{stroke:var(--gold);}
-
-/* Progress bar */
-.gallery-progress{position:absolute;bottom:0;left:0;right:0;z-index:5;height:2px;background:rgba(255,255,255,.08);}
-.gallery-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-hi));width:0%;transition:none;}
-.gallery-progress-bar.animating{transition:width 5s linear;}
-
-/* Dot indicators */
-.gallery-dots{position:absolute;bottom:clamp(80px,12vw,100px);left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:8px;}
-.gallery-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .3s var(--ease-out);}
-.gallery-dot.active{background:var(--gold);border-color:var(--gold);transform:scale(1.4);}
-
-/* Thumbnail strip */
-.gallery-thumbs{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;background:var(--navy-2);}
-.gallery-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface-1);}
-.gallery-thumb img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  transition:transform .5s var(--ease-out),filter .4s;
-  filter:brightness(.55) saturate(.7);
-}
-.gallery-thumb:hover img{transform:scale(1.08);filter:brightness(.75) saturate(1);}
-.gallery-thumb.active img{filter:brightness(.9) saturate(1.1);}
-.gallery-thumb::after{content:'';position:absolute;inset:0;background:rgba(5,15,31,.3);transition:background .3s;}
-.gallery-thumb.active::after{background:transparent;box-shadow:inset 0 0 0 2px var(--gold);}
-.gallery-thumb:hover::after{background:rgba(5,15,31,.10);}
-.gallery-thumb-num{position:absolute;bottom:4px;right:6px;font-family:var(--font-head);font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.5);z-index:2;transition:color .3s;}
-.gallery-thumb.active .gallery-thumb-num{color:var(--gold);}
-
-@media(max-width:768px){
-  .gallery-thumbs{grid-template-columns:repeat(5,1fr);}
-  .gallery-thumb:nth-child(n+6){display:none;}
-}
-@media(max-width:480px){
-  .gallery-thumbs{grid-template-columns:repeat(3,1fr);}
-  .gallery-thumb:nth-child(n+4){display:none;}
-}
 
 /* =========================================
    SERVICES
@@ -608,14 +520,13 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </head>
 <body>
 
-<!-- NAV -->
 <nav id="mainNav">
   <div class="container">
     <div class="nav-inner">
       <a href="#hero" class="logo">
         <div class="logo-mark">
           <img src="nova.jpeg" alt="Sapphire Gadgets" width="34" height="34"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472355-536de3962603?w=80&q=80&auto=format&fit=crop';this.style.borderRadius='4px';">
+               onerror="this.onerror=null;this.style.display='none'">
         </div>
         <div class="logo-text">
           <span class="ln">Sapphire Gadgets</span>
@@ -639,7 +550,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </nav>
 
 <!-- ============================================================
-     HERO
+     HERO — pic1 (bg) + pic6 (right card)
      ============================================================ -->
 <section id="hero">
   <div class="hero-bg">
@@ -700,9 +611,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </div>
 
-<!-- ============================================================
-     BRAND PROMISE
-     ============================================================ -->
+<!-- BRAND PROMISE -->
 <section id="brand-promise">
   <div class="container">
     <div class="bp-inner reveal">
@@ -712,41 +621,28 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <span class="bp-eyebrow-text">Now Accepting Brand Applications</span>
         </div>
         <h2 class="bp-h">A Partner Built to<br><em>Protect Your Brand</em></h2>
-        <p class="bp-p">Sapphire Gadgets LLC is a serious wholesale distribution company — not a drop-shipper, not a liquidator, and not an arbitrage operation. We purchase inventory at scale, invest in long-term relationships, and operate with the discipline that premier brands demand. Our commitment to MAP compliance and brand equity protection is central to everything we do.</p>
+        <p class="bp-p">Sapphire Gadgets LLC is a serious wholesale distribution company — not a drop-shipper, not a liquidator, and not an arbitrage operation. We purchase inventory at scale, invest in long-term relationships, and operate with the discipline that premier brands demand.</p>
       </div>
       <div class="bp-right reveal rd1">
-        <div class="bp-commitment">
-          <span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <span class="bp-commitment-text">Full MAP Price Compliance</span>
-        </div>
-        <div class="bp-commitment">
-          <span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <span class="bp-commitment-text">Inventory-Investing Buyer</span>
-        </div>
-        <div class="bp-commitment">
-          <span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <span class="bp-commitment-text">Authorized Channel Representation</span>
-        </div>
-        <div class="bp-commitment">
-          <span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <span class="bp-commitment-text">Catalog &amp; Listing Compliance</span>
-        </div>
-        <div class="bp-commitment">
-          <span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <span class="bp-commitment-text">Long-Term Growth Mindset</span>
-        </div>
+        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Full MAP Price Compliance</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Inventory-Investing Buyer</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Authorized Channel Representation</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Catalog &amp; Listing Compliance</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Long-Term Growth Mindset</span></div>
         <a href="#contact" class="btn btn-gold" style="justify-content:center;width:100%;margin-top:12px;">Apply for Distribution <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FULL BLEED BANNER 1 -->
-<section aria-label="Distribution operations showcase" style="background:var(--navy);border-bottom:1px solid var(--border-lo);">
+<!-- ============================================================
+     CINEMATIC BANNER 1 — pic3
+     ============================================================ -->
+<section aria-label="Distribution operations showcase" style="background:var(--navy);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);">
   <div class="cin-stage reveal">
     <div class="img-clip">
-      <img src="pic6" alt="Sapphire Gadgets retail distribution operations" width="1600" height="610" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1600&q=85&auto=format&fit=crop'">
+      <img src="pic3" alt="Sapphire Gadgets retail distribution operations" width="1600" height="610" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=85&auto=format&fit=crop'">
     </div>
     <div class="cin-overlay"></div>
     <div class="cin-content">
@@ -755,25 +651,16 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <h2 class="cin-h">Inventory Investment.<br><em>Brand-First Operations.</em></h2>
       </div>
       <div class="cin-right">
-        <div class="cin-chip">
-          <div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <span class="cin-chip-text">No Grey Market Activity</span>
-        </div>
-        <div class="cin-chip">
-          <div class="cin-chip-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
-          <span class="cin-chip-text">Full Purchase Order Accountability</span>
-        </div>
-        <div class="cin-chip">
-          <div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-          <span class="cin-chip-text">Inventory Traceability Assured</span>
-        </div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="cin-chip-text">No Grey Market Activity</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div><span class="cin-chip-text">Full Purchase Order Accountability</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><span class="cin-chip-text">Inventory Traceability Assured</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     ABOUT / MISSION
+     ABOUT / MISSION — pic2 (frame)
      ============================================================ -->
 <section id="about-mission">
   <div class="container">
@@ -796,21 +683,12 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <span class="eyebrow">Our Mission</span>
         <h2 class="sec-h">Bridging Manufacturers<br>to <em>Modern Retail</em></h2>
         <span class="gold-line"></span>
-        <p class="sec-p" style="margin-bottom:8px;">Sapphire Gadgets LLC serves as a strategic bridge between manufacturers and the retail channels where today's consumers shop. Our mission is to help brands reach new customers — across Amazon, Walmart, regional chains, and digital storefronts — while preserving the pricing discipline, catalog accuracy, and marketplace compliance that brand managers depend on.</p>
+        <p class="sec-p" style="margin-bottom:8px;">Sapphire Gadgets LLC serves as a strategic bridge between manufacturers and the retail channels where today's consumers shop. Our mission is to help brands reach new customers — across Amazon, Walmart, regional chains, and digital storefronts — while preserving pricing discipline, catalog accuracy, and marketplace compliance.</p>
         <p class="sec-p" style="max-width:100%;">We are not a clearance house, a liquidator, or an opportunistic reseller. We are a long-term commercial partner that purchases inventory responsibly, invests in your brand's growth, and represents your products with the professionalism your reputation demands.</p>
         <div class="mission-pillars">
-          <div class="mpillar">
-            <div class="mpillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <div class="mpillar-body"><h4>Pricing Integrity First</h4><p>Every channel we sell through is MAP-compliant by policy. We never engage in destructive discounting that damages manufacturer relationships or brand equity.</p></div>
-          </div>
-          <div class="mpillar">
-            <div class="mpillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-            <div class="mpillar-body"><h4>Long-Term Partnership Orientation</h4><p>We build relationships intended to last years — not transactions designed to maximize a single purchase. Our business grows when yours does.</p></div>
-          </div>
-          <div class="mpillar">
-            <div class="mpillar-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-            <div class="mpillar-body"><h4>Omnichannel Commerce Expertise</h4><p>From Amazon FBA and Walmart Marketplace to specialty retail buyers, we understand the operational demands of each channel and manage them with precision.</p></div>
-          </div>
+          <div class="mpillar"><div class="mpillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="mpillar-body"><h4>Pricing Integrity First</h4><p>Every channel we sell through is MAP-compliant by policy. We never engage in destructive discounting.</p></div></div>
+          <div class="mpillar"><div class="mpillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="mpillar-body"><h4>Long-Term Partnership Orientation</h4><p>We build relationships intended to last years — not transactions designed to maximize a single purchase.</p></div></div>
+          <div class="mpillar"><div class="mpillar-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="mpillar-body"><h4>Omnichannel Commerce Expertise</h4><p>From Amazon FBA and Walmart Marketplace to specialty retail buyers, we understand each channel's demands.</p></div></div>
         </div>
         <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
@@ -818,39 +696,20 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </section>
 
-<!-- ============================================================
-     STATS BAND
-     ============================================================ -->
+<!-- STATS BAND -->
 <div class="stats-band">
   <div class="container">
     <div class="stats-grid">
-      <div class="stat-item reveal">
-        <div class="stat-n"><span class="counter" data-target="100">0</span><span>%</span></div>
-        <div class="stat-l">MAP Compliance Rate</div>
-      </div>
-      <div class="stat-item reveal rd1">
-        <div class="stat-n"><span class="counter" data-target="50">0</span><span>+</span></div>
-        <div class="stat-l">States Reached</div>
-      </div>
-      <div class="stat-item reveal rd2">
-        <div class="stat-n"><span class="counter" data-target="4">0</span><span>+</span></div>
-        <div class="stat-l">Years Operating</div>
-      </div>
-      <div class="stat-item reveal rd3">
-        <div class="stat-n"><span class="counter" data-target="6">0</span><span>+</span></div>
-        <div class="stat-l">Active Retail Channels</div>
-      </div>
-      <div class="stat-item reveal rd4">
-        <div class="stat-n"><span class="counter" data-target="99">0</span><span>%</span></div>
-        <div class="stat-l">Order Accuracy Rate</div>
-      </div>
+      <div class="stat-item reveal"><div class="stat-n"><span class="counter" data-target="100">0</span><span>%</span></div><div class="stat-l">MAP Compliance Rate</div></div>
+      <div class="stat-item reveal rd1"><div class="stat-n"><span class="counter" data-target="50">0</span><span>+</span></div><div class="stat-l">States Reached</div></div>
+      <div class="stat-item reveal rd2"><div class="stat-n"><span class="counter" data-target="4">0</span><span>+</span></div><div class="stat-l">Years Operating</div></div>
+      <div class="stat-item reveal rd3"><div class="stat-n"><span class="counter" data-target="6">0</span><span>+</span></div><div class="stat-l">Active Retail Channels</div></div>
+      <div class="stat-item reveal rd4"><div class="stat-n"><span class="counter" data-target="99">0</span><span>%</span></div><div class="stat-l">Order Accuracy Rate</div></div>
     </div>
   </div>
 </div>
 
-<!-- ============================================================
-     MAP COMPLIANCE & BRAND PROTECTION
-     ============================================================ -->
+<!-- MAP COMPLIANCE -->
 <section id="map-compliance">
   <div class="container">
     <div class="map-header reveal">
@@ -858,45 +717,21 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <span class="eyebrow">Brand Protection</span>
         <h2 class="sec-h">MAP Compliance &amp;<br><em>Pricing Integrity</em></h2>
         <span class="gold-line"></span>
-        <p class="sec-p">Brand managers and supplier approval teams tell us that pricing integrity is their #1 concern when evaluating a new distribution partner. We take that responsibility seriously — and have built our entire operation around it.</p>
+        <p class="sec-p">Brand managers and supplier approval teams tell us that pricing integrity is their #1 concern when evaluating a new distribution partner. We take that responsibility seriously.</p>
       </div>
       <div class="map-header-right reveal rd1">
-        <p>Our MAP compliance policy is non-negotiable: every listing we manage, every channel we sell through, and every marketplace we participate in adheres to the manufacturer's minimum advertised price — without exception, without negotiation, and without workarounds.</p>
-        <p>We do not engage in grey-market purchasing, unauthorized repricing, or channel tactics that would compromise your brand's value perception. When Sapphire Gadgets sells your product, your customer sees the brand experience you've worked to build.</p>
+        <p>Our MAP compliance policy is non-negotiable: every listing we manage, every channel we sell through, and every marketplace we participate in adheres to the manufacturer's minimum advertised price — without exception.</p>
+        <p>We do not engage in grey-market purchasing, unauthorized repricing, or channel tactics that would compromise your brand's value perception.</p>
         <a href="#contact" class="btn btn-ghost" style="margin-top:8px;">Discuss Brand Protection <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
     <div class="map-pillars">
-      <div class="map-pillar reveal">
-        <div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>MAP Policy Enforcement</h4>
-        <p>We monitor all our listings in real time across every marketplace to ensure full compliance with your MAP policy. If a discrepancy is ever identified, it is corrected immediately — not negotiated around.</p>
-      </div>
-      <div class="map-pillar reveal rd1">
-        <div class="map-pillar-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
-        <h4>Catalog &amp; Listing Accuracy</h4>
-        <p>Product titles, images, descriptions, and attributes are maintained exactly as specified by the brand. We do not modify brand content, create unauthorized variations, or publish listings that deviate from your catalog standards.</p>
-      </div>
-      <div class="map-pillar reveal rd2">
-        <div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h4>Inventory Traceability</h4>
-        <p>Every unit of product we carry is purchased through authorized channels with full documentation. We maintain complete chain-of-custody records and can demonstrate purchase provenance to any brand manager or compliance team upon request.</p>
-      </div>
-      <div class="map-pillar reveal rd1">
-        <div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h4>Customer Experience Standards</h4>
-        <p>Our fulfillment, packaging, and customer service standards reflect the quality your brand represents. Customer feedback and ratings are actively monitored to ensure your brand's marketplace reputation is consistently protected.</p>
-      </div>
-      <div class="map-pillar reveal rd2">
-        <div class="map-pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-        <h4>No Unauthorized Channels</h4>
-        <p>We sell exclusively through channels authorized by each brand we partner with. We do not sell through unauthorized resellers, grey importers, or discount platforms that would undermine your pricing structure or brand positioning.</p>
-      </div>
-      <div class="map-pillar reveal rd3">
-        <div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <h4>Transparent Reporting</h4>
-        <p>Brand partners have access to regular performance reporting covering sales velocity, channel distribution, pricing adherence, and inventory levels — giving you full visibility into how your products are moving through our network.</p>
-      </div>
+      <div class="map-pillar reveal"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>MAP Policy Enforcement</h4><p>We monitor all listings in real time across every marketplace to ensure full compliance with your MAP policy. Discrepancies are corrected immediately.</p></div>
+      <div class="map-pillar reveal rd1"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div><h4>Catalog &amp; Listing Accuracy</h4><p>Product titles, images, descriptions, and attributes are maintained exactly as specified by the brand. We do not modify brand content or create unauthorized variations.</p></div>
+      <div class="map-pillar reveal rd2"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h4>Inventory Traceability</h4><p>Every unit is purchased through authorized channels with full documentation. We maintain complete chain-of-custody records available to any brand manager upon request.</p></div>
+      <div class="map-pillar reveal rd1"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Customer Experience Standards</h4><p>Our fulfillment, packaging, and customer service standards reflect the quality your brand represents. Marketplace reputation is actively monitored.</p></div>
+      <div class="map-pillar reveal rd2"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4>No Unauthorized Channels</h4><p>We sell exclusively through channels authorized by each brand we partner with — never through grey importers or discount platforms.</p></div>
+      <div class="map-pillar reveal rd3"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h4>Transparent Reporting</h4><p>Brand partners receive regular performance reporting covering sales velocity, channel distribution, pricing adherence, and inventory levels.</p></div>
     </div>
     <div class="map-badge-row reveal" style="margin-top:1px;">
       <div class="map-badge"><div class="map-badge-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Unauthorized Discounting</span></div>
@@ -905,159 +740,6 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       <div class="map-badge"><div class="map-badge-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">Authorized Purchase Only</span></div>
     </div>
   </div>
-</section>
-
-<!-- ============================================================
-     PREMIUM GALLERY SHOWCASE — ALL 9 IMAGES
-     ============================================================ -->
-<section id="gallery-showcase" aria-label="Sapphire Gadgets Operations Gallery">
-
-  <!-- Header above gallery -->
-  <div style="background:var(--navy-4);border-bottom:1px solid var(--border-lo);padding:clamp(40px,5vw,64px) 0 0;">
-    <div class="container">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;padding-bottom:clamp(32px,4vw,48px);">
-        <div class="reveal">
-          <span class="eyebrow">Operations Gallery</span>
-          <h2 class="sec-h">Premium Distribution<br><em>In Action</em></h2>
-          <span class="gold-line"></span>
-        </div>
-        <div class="reveal rd1">
-          <p style="font-size:15px;color:var(--text-3);line-height:1.85;">A look inside the operations, partnerships, and infrastructure that power Sapphire Gadgets' commitment to premium wholesale distribution and authorized brand representation across every channel we serve.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Hero Slideshow -->
-  <div class="gallery-hero" id="galleryHero">
-    <!-- Slide 1 -->
-    <div class="gallery-hero-slide active">
-      <img src="pic1" alt="Distribution operations - facility overview" width="1920" height="720"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 2 -->
-    <div class="gallery-hero-slide">
-      <img src="pic2" alt="Partnership and commerce operations" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 3 -->
-    <div class="gallery-hero-slide">
-      <img src="pic3" alt="Retail channel distribution" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 4 -->
-    <div class="gallery-hero-slide">
-      <img src="pic4" alt="Brand partnership management" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 5 -->
-    <div class="gallery-hero-slide">
-      <img src="pic5" alt="Warehouse and logistics operations" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 6 -->
-    <div class="gallery-hero-slide">
-      <img src="pic6" alt="Wholesale distribution network" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 7 -->
-    <div class="gallery-hero-slide">
-      <img src="pic7" alt="Amazon FBA operations" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 8 -->
-    <div class="gallery-hero-slide">
-      <img src="pic8" alt="Inventory management and compliance" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-    <!-- Slide 9 -->
-    <div class="gallery-hero-slide">
-      <img src="pic9" alt="Brand growth and retail expansion" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=85&auto=format&fit=crop'">
-    </div>
-
-    <!-- Overlays & UI -->
-    <div class="gallery-hero-overlay"></div>
-
-    <!-- Dot indicators -->
-    <div class="gallery-dots" id="galleryDots"></div>
-
-    <!-- Bottom content -->
-    <div class="gallery-hero-content">
-      <div class="gallery-hero-meta">
-        <div class="gallery-hero-label">
-          <div class="gallery-slide-eyebrow">Operations Showcase</div>
-          <div class="gallery-slide-title" id="galleryTitle">Distribution <em>Excellence</em></div>
-        </div>
-        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px;">
-          <div class="gallery-slide-counter">Image <strong id="galleryCurrentNum">01</strong> / <span id="galleryTotalNum">09</span></div>
-          <div class="gallery-nav">
-            <button class="gallery-btn" id="galleryPrev" aria-label="Previous image">
-              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-            </button>
-            <button class="gallery-btn" id="galleryNext" aria-label="Next image">
-              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Progress bar -->
-    <div class="gallery-progress">
-      <div class="gallery-progress-bar" id="galleryProgressBar"></div>
-    </div>
-  </div>
-
-  <!-- Thumbnail strip -->
-  <div class="gallery-thumbs" id="galleryThumbs">
-    <div class="gallery-thumb active" data-index="0">
-      <img src="pic1" alt="Gallery image 1" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">01</span>
-    </div>
-    <div class="gallery-thumb" data-index="1">
-      <img src="pic2" alt="Gallery image 2" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">02</span>
-    </div>
-    <div class="gallery-thumb" data-index="2">
-      <img src="pic3" alt="Gallery image 3" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">03</span>
-    </div>
-    <div class="gallery-thumb" data-index="3">
-      <img src="pic4" alt="Gallery image 4" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">04</span>
-    </div>
-    <div class="gallery-thumb" data-index="4">
-      <img src="pic5" alt="Gallery image 5" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">05</span>
-    </div>
-    <div class="gallery-thumb" data-index="5">
-      <img src="pic6" alt="Gallery image 6" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">06</span>
-    </div>
-    <div class="gallery-thumb" data-index="6">
-      <img src="pic7" alt="Gallery image 7" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">07</span>
-    </div>
-    <div class="gallery-thumb" data-index="7">
-      <img src="pic8" alt="Gallery image 8" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">08</span>
-    </div>
-    <div class="gallery-thumb" data-index="8">
-      <img src="pic9" alt="Gallery image 9" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=70&auto=format&fit=crop'">
-      <span class="gallery-thumb-num">09</span>
-    </div>
-  </div>
-
 </section>
 
 <!-- ============================================================
@@ -1072,58 +754,28 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <span class="gold-line"></span>
       </div>
       <div class="svc-header-right reveal rd1">
-        <p>Our services are built around one objective: helping your brand grow through premium retail and ecommerce channels while protecting the pricing structures, brand image, and customer experience you've invested in building. Every service we offer is designed for serious commercial partnerships — not transactional reseller arrangements.</p>
+        <p>Our services are built around one objective: helping your brand grow through premium retail and ecommerce channels while protecting the pricing structures, brand image, and customer experience you've invested in building.</p>
       </div>
     </div>
     <div class="svc-grid">
-      <div class="svc-card reveal">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
-        <h3>Enterprise Wholesale Procurement</h3>
-        <p>We purchase your products at scale, directly and through authorized channels, providing immediate inventory investment and eliminating the uncertainty of consignment arrangements. We are buyers — not brokers.</p>
-        <span class="svc-tag">Inventory Investment</span>
-      </div>
-      <div class="svc-card reveal rd1">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
-        <h3>Amazon FBA Management</h3>
-        <p>Full lifecycle management of your brand's Amazon presence — from inbound compliance and FBA prep to listing optimization, Buy Box strategy, and ongoing account health monitoring. Fully MAP-compliant operations.</p>
-        <span class="svc-tag">Amazon Channel</span>
-      </div>
-      <div class="svc-card reveal rd2">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-        <h3>Walmart Marketplace Operations</h3>
-        <p>We manage your brand's Walmart.com listings, fulfillment, and performance metrics with the same discipline we apply to Amazon. Approved seller status, compliant product content, and consistent pricing protection.</p>
-        <span class="svc-tag">Walmart Channel</span>
-      </div>
-      <div class="svc-card reveal">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <h3>Catalog Optimization &amp; Listing Enhancement</h3>
-        <p>We maintain your brand's catalog to exact manufacturer specifications — accurate titles, approved imagery, compliant descriptions, and proper attribute mapping — across all channels where we represent your products.</p>
-        <span class="svc-tag">Brand Compliance</span>
-      </div>
-      <div class="svc-card reveal rd1">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-        <h3>Inbound Compliance Management</h3>
-        <p>From purchase order submission through receiving, labeling, and prep compliance, we manage the operational details of inbound distribution to ensure every unit meets platform standards and arrives in sellable condition.</p>
-        <span class="svc-tag">Operations</span>
-      </div>
-      <div class="svc-card reveal rd2">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h3>Strategic Brand Growth Support</h3>
-        <p>As your authorized distribution partner, we participate actively in your brand's growth strategy — providing market intelligence, channel performance data, and collaborative planning to help expand reach responsibly.</p>
-        <span class="svc-tag">Long-Term Growth</span>
-      </div>
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Enterprise Wholesale Procurement</h3><p>We purchase your products at scale, directly and through authorized channels, providing immediate inventory investment. We are buyers — not brokers.</p><span class="svc-tag">Inventory Investment</span></div>
+      <div class="svc-card reveal rd1"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h3>Amazon FBA Management</h3><p>Full lifecycle management of your Amazon presence — from inbound compliance and FBA prep to listing optimization, Buy Box strategy, and account health monitoring.</p><span class="svc-tag">Amazon Channel</span></div>
+      <div class="svc-card reveal rd2"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Walmart Marketplace Operations</h3><p>We manage your Walmart.com listings, fulfillment, and performance metrics with the same discipline we apply to Amazon. Approved seller status, compliant product content, consistent pricing.</p><span class="svc-tag">Walmart Channel</span></div>
+      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Catalog Optimization &amp; Listing Enhancement</h3><p>We maintain your catalog to exact manufacturer specifications — accurate titles, approved imagery, compliant descriptions, and proper attribute mapping across all channels.</p><span class="svc-tag">Brand Compliance</span></div>
+      <div class="svc-card reveal rd1"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Inbound Compliance Management</h3><p>From purchase order submission through receiving, labeling, and prep compliance, we manage the operational details of inbound distribution to ensure every unit meets platform standards.</p><span class="svc-tag">Operations</span></div>
+      <div class="svc-card reveal rd2"><div class="svc-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Strategic Brand Growth Support</h3><p>As your authorized distribution partner, we participate actively in your brand's growth strategy — providing market intelligence, channel performance data, and collaborative planning.</p><span class="svc-tag">Long-Term Growth</span></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     CHANNEL REACH — CINEMATIC BANNER
+     CINEMATIC BANNER 2 — pic5
      ============================================================ -->
-<section id="channel-section">
-  <div class="cin-stage reveal" style="border-top:1px solid var(--border-lo);">
+<section aria-label="Channel reach operations" style="background:var(--navy);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);">
+  <div class="cin-stage reveal">
     <div class="img-clip">
-      <img src="pic3" alt="Omnichannel retail operations" width="1600" height="610" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=85&auto=format&fit=crop'">
+      <img src="pic5" alt="Sapphire Gadgets omnichannel retail operations" width="1600" height="610" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'">
     </div>
     <div class="cin-overlay"></div>
     <div class="cin-content">
@@ -1132,60 +784,23 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <h2 class="cin-h">Where Your Brand<br><em>Reaches Customers</em></h2>
       </div>
       <div class="cin-right">
-        <div class="cin-chip">
-          <div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/></svg></div>
-          <span class="cin-chip-text">Amazon FBA &amp; FBM</span>
-        </div>
-        <div class="cin-chip">
-          <div class="cin-chip-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div>
-          <span class="cin-chip-text">Walmart Marketplace</span>
-        </div>
-        <div class="cin-chip">
-          <div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg></div>
-          <span class="cin-chip-text">Specialty Retail &amp; Regional Chains</span>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="channel-below">
-    <div class="container">
-      <div class="channel-cards">
-        <div class="ch-card reveal">
-          <div class="ch-num">01</div>
-          <h4>Amazon FBA &amp; FBM</h4>
-          <p>Fully compliant Amazon operations — inbound prep, listing management, Buy Box strategy, account health, and MAP enforcement — all managed in-house with dedicated expertise.</p>
-        </div>
-        <div class="ch-card reveal rd1">
-          <div class="ch-num">02</div>
-          <h4>Walmart Marketplace</h4>
-          <p>Approved Walmart Marketplace seller with established seller performance metrics, compliant product content standards, and pricing disciplines aligned to your brand policy.</p>
-        </div>
-        <div class="ch-card reveal rd2">
-          <div class="ch-num">03</div>
-          <h4>Regional &amp; Specialty Retail</h4>
-          <p>Beyond major marketplace platforms, we cultivate relationships with regional chains, specialty retailers, and independent buyers who serve the consumer segments your brand targets.</p>
-        </div>
-        <div class="ch-card reveal rd3">
-          <div class="ch-num">04</div>
-          <h4>Direct-to-Consumer Channels</h4>
-          <p>Where appropriate and authorized, we support DTC distribution strategies that complement your brand's existing channels without creating competitive pricing tension or unauthorized resale conflicts.</p>
-        </div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/></svg></div><span class="cin-chip-text">Amazon FBA &amp; FBM</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div><span class="cin-chip-text">Walmart Marketplace</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg></div><span class="cin-chip-text">Specialty Retail &amp; Regional Chains</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================================
-     TRUST BAR — RETAIL CHANNELS WE SERVE
-     ============================================================ -->
+<!-- TRUST BAR -->
 <section id="trust-bar">
   <div class="container">
-    <div class="trust-bar-label reveal">Retail Channels &amp; Marketplaces — <span>Where We Operate</span></div>
-    <div class="trust-logos-row reveal rd1">
-      <div class="tl-box"><div class="tl-inner">Amazon<span>FBA Seller</span></div></div>
+    <div class="trust-bar-label">Channels We Operate <span>&amp; Manage</span></div>
+    <div class="trust-logos-row">
+      <div class="tl-box"><div class="tl-inner">Amazon<span>FBA &amp; FBM</span></div></div>
       <div class="tl-box"><div class="tl-inner">Walmart<span>Marketplace</span></div></div>
-      <div class="tl-box"><div class="tl-inner">eBay<span>Top Rated</span></div></div>
-      <div class="tl-box"><div class="tl-inner">Shopify<span>DTC Channel</span></div></div>
+      <div class="tl-box"><div class="tl-inner">eBay<span>Managed Listings</span></div></div>
+      <div class="tl-box"><div class="tl-inner">Target<span>Plus Partner</span></div></div>
       <div class="tl-box"><div class="tl-inner">Regional<span>Retail Buyers</span></div></div>
       <div class="tl-box"><div class="tl-inner">Specialty<span>Retail Chains</span></div></div>
     </div>
@@ -1193,7 +808,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     HOW IT WORKS — BRAND PROCESS
+     HOW IT WORKS
      ============================================================ -->
 <section id="brand-process">
   <div class="container">
@@ -1208,36 +823,16 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       </div>
     </div>
     <div class="process-steps">
-      <div class="pstep reveal">
-        <div class="pstep-num">01</div>
-        <div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <h4>Brand Application &amp; Review</h4>
-        <p>You submit a brand application outlining your products, pricing policies, and distribution requirements. We review your brand's existing marketplace presence and MAP compliance framework before proceeding.</p>
-      </div>
-      <div class="pstep reveal rd1">
-        <div class="pstep-num">02</div>
-        <div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h4>Introductory Meeting &amp; Operations Audit</h4>
-        <p>We schedule a partnership meeting to understand your brand's goals, review your current distribution structure, and demonstrate how Sapphire Gadgets' operations align with your standards. Full operational transparency from day one.</p>
-      </div>
-      <div class="pstep reveal rd2">
-        <div class="pstep-num">03</div>
-        <div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h4>Distribution Agreement Signed</h4>
-        <p>We formalize the partnership through a clear distribution agreement that outlines pricing policies, authorized channels, catalog standards, reporting cadence, and mutual obligations — protecting both parties' interests.</p>
-      </div>
-      <div class="pstep reveal rd3">
-        <div class="pstep-num">04</div>
-        <div class="pstep-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h4>Launch &amp; Ongoing Growth</h4>
-        <p>We place our first purchase orders, prepare inventory for channel distribution, activate listings, and begin the ongoing partnership management process — with regular performance reporting and proactive communication throughout.</p>
-      </div>
+      <div class="pstep reveal"><div class="pstep-num">01</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h4>Brand Application &amp; Review</h4><p>You submit a brand application outlining your products, pricing policies, and distribution requirements. We review your brand's existing marketplace presence and MAP compliance framework before proceeding.</p></div>
+      <div class="pstep reveal rd1"><div class="pstep-num">02</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Introductory Meeting &amp; Audit</h4><p>We schedule a partnership meeting to understand your brand's goals, review your current distribution structure, and demonstrate how Sapphire Gadgets' operations align with your standards.</p></div>
+      <div class="pstep reveal rd2"><div class="pstep-num">03</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div><h4>Distribution Agreement Signed</h4><p>We formalize the partnership through a clear distribution agreement covering pricing policies, authorized channels, catalog standards, reporting cadence, and mutual obligations.</p></div>
+      <div class="pstep reveal rd3"><div class="pstep-num">04</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h4>Launch &amp; Ongoing Growth</h4><p>We place our first purchase orders, activate listings, and begin ongoing partnership management — with regular performance reporting and proactive communication throughout.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     WHY SAPPHIRE GADGETS
+     WHY SAPPHIRE GADGETS — pic4 (frame)
      ============================================================ -->
 <section id="why-us">
   <div class="container">
@@ -1246,24 +841,12 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <span class="eyebrow">Why Choose Us</span>
         <h2 class="sec-h">The Distributor<br><em>Brands Trust</em></h2>
         <span class="gold-line"></span>
-        <p class="sec-p" style="margin-bottom:4px;">Selecting a wholesale distribution partner is a significant business decision. Brand managers are not just choosing a buyer — they are choosing a representative of their product and brand in the marketplace. That is a responsibility Sapphire Gadgets takes seriously.</p>
+        <p class="sec-p" style="margin-bottom:4px;">Selecting a wholesale distribution partner is a significant business decision. Brand managers are not just choosing a buyer — they are choosing a representative of their product and brand in the marketplace.</p>
         <div class="why-features">
-          <div class="wf-item">
-            <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <div class="wf-body"><h4>We Are Not a Drop-Shipper</h4><p>Sapphire Gadgets purchases and holds inventory. We invest our own capital in your products — creating real commercial alignment and genuine long-term accountability.</p></div>
-          </div>
-          <div class="wf-item">
-            <div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-            <div class="wf-body"><h4>MAP Compliance is Non-Negotiable</h4><p>Every price point on every platform is maintained per your brand's MAP policy — without exceptions, workarounds, or price manipulation tactics that circumvent your pricing structure.</p></div>
-          </div>
-          <div class="wf-item">
-            <div class="wf-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-            <div class="wf-body"><h4>Operational Transparency</h4><p>We provide regular reporting on sales performance, channel distribution, pricing compliance, and inventory health — giving you visibility into how we represent your brand.</p></div>
-          </div>
-          <div class="wf-item">
-            <div class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-            <div class="wf-body"><h4>Committed to Long-Term Value</h4><p>Our business model depends on sustainable brand partnerships — not short-term arbitrage or opportunistic purchasing. We succeed when your brand grows, and we build our operations accordingly.</p></div>
-          </div>
+          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="wf-body"><h4>We Are Not a Drop-Shipper</h4><p>Sapphire Gadgets purchases and holds inventory. We invest our own capital in your products — creating real commercial alignment and genuine accountability.</p></div></div>
+          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="wf-body"><h4>MAP Compliance is Non-Negotiable</h4><p>Every price point on every platform is maintained per your brand's MAP policy — without exceptions, workarounds, or price manipulation tactics.</p></div></div>
+          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="wf-body"><h4>Operational Transparency</h4><p>Regular reporting on sales performance, channel distribution, pricing compliance, and inventory health — delivered proactively, every month.</p></div></div>
+          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="wf-body"><h4>Committed to Long-Term Value</h4><p>Our business model depends on sustainable brand partnerships — not short-term arbitrage. We succeed when your brand grows.</p></div></div>
         </div>
         <a href="#contact" class="btn btn-gold">Begin Partnership Conversation <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
@@ -1282,8 +865,30 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     TESTIMONIALS
+     CINEMATIC BANNER 3 — pic7
      ============================================================ -->
+<section aria-label="Wholesale network operations" style="background:var(--navy);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);">
+  <div class="cin-stage reveal">
+    <div class="img-clip">
+      <img src="pic7" alt="Sapphire Gadgets wholesale network operations" width="1600" height="610" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=1600&q=85&auto=format&fit=crop'">
+    </div>
+    <div class="cin-overlay"></div>
+    <div class="cin-content">
+      <div>
+        <div class="cin-badge"><span class="cin-badge-dot"></span><span class="cin-badge-text">Nationwide Distribution</span></div>
+        <h2 class="cin-h">Built for Scale.<br><em>Managed with Precision.</em></h2>
+      </div>
+      <div class="cin-right">
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><span class="cin-chip-text">Nationwide Fulfillment Network</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><span class="cin-chip-text">Real-Time Inventory Tracking</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><span class="cin-chip-text">100% Authorized Sourcing</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
     <div class="test-header reveal">
@@ -1292,45 +897,43 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       <p class="sec-p" style="text-align:center;margin:0 auto;">Feedback from the brand managers, supplier approval teams, and distribution executives who have worked with Sapphire Gadgets LLC.</p>
     </div>
     <div class="test-grid">
-      <div class="test-card reveal">
-        <div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
-        <blockquote>"Sapphire Gadgets consistently maintains our MAP pricing across every channel without being asked. In four years of working with distribution partners, that level of pricing discipline has been rare and genuinely valuable to our brand."</blockquote>
-        <div class="test-sep"></div>
-        <div class="test-name">Regional Brand Director</div>
-        <div class="test-role">Consumer Goods Manufacturer · U.S. Based</div>
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      </div>
-      <div class="test-card reveal rd1">
-        <div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
-        <blockquote>"What differentiated Sapphire Gadgets in our supplier review process was the clarity of their operational documentation and their willingness to discuss MAP enforcement protocols in detail. They understood exactly what we needed to hear as a brand."</blockquote>
-        <div class="test-sep"></div>
-        <div class="test-name">VP of National Accounts</div>
-        <div class="test-role">Health &amp; Wellness Brand · E-commerce Focus</div>
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      </div>
-      <div class="test-card reveal rd2">
-        <div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
-        <blockquote>"We had concerns about marketplace saturation before approving Sapphire Gadgets. Those concerns were addressed directly and transparently. Their approach to channel management has been exactly what we discussed — responsible, compliant, and brand-first."</blockquote>
-        <div class="test-sep"></div>
-        <div class="test-name">National Sales Manager</div>
-        <div class="test-role">Home &amp; Lifestyle Brand · Multi-Channel Retailer</div>
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-      </div>
+      <div class="test-card reveal"><div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div><blockquote>"Sapphire Gadgets consistently maintains our MAP pricing across every channel without being asked. In four years of working with distribution partners, that level of pricing discipline has been rare and genuinely valuable."</blockquote><div class="test-sep"></div><div class="test-name">Regional Brand Director</div><div class="test-role">Consumer Goods Manufacturer · U.S. Based</div><div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div>
+      <div class="test-card reveal rd1"><div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div><blockquote>"What differentiated Sapphire Gadgets in our supplier review was the clarity of their operational documentation and their willingness to discuss MAP enforcement protocols in detail. They understood exactly what we needed."</blockquote><div class="test-sep"></div><div class="test-name">VP of National Accounts</div><div class="test-role">Health &amp; Wellness Brand · E-commerce Focus</div><div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div>
+      <div class="test-card reveal rd2"><div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div><blockquote>"Their approach to channel management has been exactly what we discussed — responsible, compliant, and brand-first. Concerns about marketplace saturation were addressed directly and transparently from day one."</blockquote><div class="test-sep"></div><div class="test-name">National Sales Manager</div><div class="test-role">Home &amp; Lifestyle Brand · Multi-Channel Retailer</div><div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- ============================================================
-     CTA BAND
+     CINEMATIC BANNER 4 — pic8
      ============================================================ -->
+<section aria-label="Brand partnership CTA" style="background:var(--navy);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);">
+  <div class="cin-stage reveal">
+    <div class="img-clip">
+      <img src="pic8" alt="Sapphire Gadgets brand growth partnership" width="1600" height="610" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1600&q=85&auto=format&fit=crop'">
+    </div>
+    <div class="cin-overlay"></div>
+    <div class="cin-content">
+      <div>
+        <div class="cin-badge"><span class="cin-badge-dot"></span><span class="cin-badge-text">Limited Partnerships Available</span></div>
+        <h2 class="cin-h">Ready to Grow<br><em>the Right Way?</em></h2>
+      </div>
+      <div class="cin-right">
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="cin-chip-text">Selective Brand Onboarding</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><span class="cin-chip-text">Dedicated Account Management</span></div>
+        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><span class="cin-chip-text">Monthly Performance Reporting</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
 <section id="cta-apply">
   <div class="container">
     <div class="cta-inner reveal">
       <div>
-        <div class="bp-eyebrow" style="margin-bottom:20px;">
-          <span class="bp-eyebrow-dot"></span>
-          <span class="bp-eyebrow-text">Limited Brand Partnerships Available</span>
-        </div>
+        <div class="bp-eyebrow" style="margin-bottom:20px;"><span class="bp-eyebrow-dot"></span><span class="bp-eyebrow-text">Limited Brand Partnerships Available</span></div>
         <h2 class="cta-h">Ready to Grow Your Brand<br><em>the Right Way?</em></h2>
         <p class="cta-p">Sapphire Gadgets LLC selectively partners with brands that align with our commitment to pricing integrity, long-term growth, and responsible marketplace representation. If your brand demands the same standards we hold ourselves to, we'd like to talk.</p>
       </div>
@@ -1357,18 +960,9 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <p>Our partnership team reviews all applications and responds within one business day. We take every inquiry seriously because every brand deserves a distribution partner that takes them seriously.</p>
         </div>
         <div class="con-contacts">
-          <div class="cc-row">
-            <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="cc-label">Partnership Inquiries</div><div class="cc-val">partnerships@sapphiregadgets.com</div></div>
-          </div>
-          <div class="cc-row">
-            <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="cc-label">General &amp; Operations</div><div class="cc-val">info@sapphiregadgets.com</div></div>
-          </div>
-          <div class="cc-row">
-            <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="cc-label">Incorporated</div><div class="cc-val">United States of America</div></div>
-          </div>
+          <div class="cc-row"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cc-label">Partnership Inquiries</div><div class="cc-val">partnerships@sapphiregadgets.com</div></div></div>
+          <div class="cc-row"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><div class="cc-label">General &amp; Operations</div><div class="cc-val">info@sapphiregadgets.com</div></div></div>
+          <div class="cc-row"><div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="cc-label">Incorporated</div><div class="cc-val">United States of America</div></div></div>
         </div>
       </div>
       <div class="reveal rd1">
@@ -1379,30 +973,16 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           </div>
           <div class="fg" style="margin-bottom:1px;"><label>Company / Brand Name</label><input type="text" placeholder="Your Brand LLC"></div>
           <div class="fg" style="margin-bottom:1px;"><label>Business Email</label><input type="email" placeholder="john@yourbrand.com"></div>
-          <div class="fg" style="margin-bottom:1px;">
-            <label>Product Category</label>
+          <div class="fg" style="margin-bottom:1px;"><label>Product Category</label>
             <select>
               <option value="">Select your category</option>
-              <option>Health &amp; Wellness</option>
-              <option>Consumer Electronics</option>
-              <option>Home &amp; Kitchen</option>
-              <option>Beauty &amp; Personal Care</option>
-              <option>Sports &amp; Outdoors</option>
-              <option>Grocery &amp; Gourmet Food</option>
-              <option>Pet Supplies</option>
-              <option>Baby &amp; Kids</option>
-              <option>Industrial &amp; Commercial</option>
-              <option>Other</option>
+              <option>Health &amp; Wellness</option><option>Consumer Electronics</option><option>Home &amp; Kitchen</option><option>Beauty &amp; Personal Care</option><option>Sports &amp; Outdoors</option><option>Grocery &amp; Gourmet Food</option><option>Pet Supplies</option><option>Baby &amp; Kids</option><option>Industrial &amp; Commercial</option><option>Other</option>
             </select>
           </div>
-          <div class="fg" style="margin-bottom:1px;">
-            <label>Do you have an active MAP Policy?</label>
+          <div class="fg" style="margin-bottom:1px;"><label>Do you have an active MAP Policy?</label>
             <select>
               <option value="">Select an option</option>
-              <option>Yes — fully enforced MAP policy</option>
-              <option>Yes — developing MAP enforcement</option>
-              <option>No MAP policy yet</option>
-              <option>Other pricing structure</option>
+              <option>Yes — fully enforced MAP policy</option><option>Yes — developing MAP enforcement</option><option>No MAP policy yet</option><option>Other pricing structure</option>
             </select>
           </div>
           <div class="fg" style="margin-bottom:1px;"><label>Tell Us About Your Brand &amp; Goals</label><textarea placeholder="Brief overview of your brand, product lines, current distribution, and what you're looking for in a wholesale partner…" style="min-height:110px;"></textarea></div>
@@ -1414,8 +994,22 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     FOOTER
+     FOOTER — nova.jpeg logo + pic9 accent banner above footer
      ============================================================ -->
+<section aria-label="Footer accent" style="background:var(--navy);border-top:1px solid var(--border-lo);">
+  <div class="cin-stage" style="aspect-ratio:21/5;max-height:220px;">
+    <div class="img-clip">
+      <img src="pic9" alt="Sapphire Gadgets authorized wholesale distribution" width="1600" height="380" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1600&q=85&auto=format&fit=crop'">
+    </div>
+    <div class="cin-overlay" style="background:linear-gradient(to top,rgba(5,15,31,.95) 0%,rgba(5,15,31,.50) 60%,rgba(5,15,31,.20) 100%);"></div>
+    <div style="position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;">
+      <p style="font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);">Sapphire Gadgets LLC · Authorized Wholesale Distributor</p>
+      <p style="font-family:var(--font-display);font-size:clamp(20px,3vw,42px);font-weight:700;color:var(--white);letter-spacing:-.5px;">Partners in <em style="font-style:italic;color:var(--gold);">Brand Growth</em></p>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="container">
     <div class="foot-top">
@@ -1423,7 +1017,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <div class="foot-logo-row">
           <div class="foot-logo-box">
             <img src="nova.jpeg" alt="Sapphire Gadgets LLC" width="32" height="32"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472355-536de3962603?w=80&q=80&auto=format&fit=crop';this.style.borderRadius='4px';">
+                 onerror="this.onerror=null;this.style.display='none'">
           </div>
           <div><span class="foot-nm">Sapphire Gadgets</span><span class="foot-sl">LLC · Wholesale Distribution</span></div>
         </div>
@@ -1464,54 +1058,8 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </footer>
 
+
 <script>
-/* =========================================
-   IMAGE FALLBACK PRELOADER
-   Mirrors Nova Orvian's onerror approach but
-   fires immediately so images never show broken.
-   ========================================= */
-(function() {
-  var fallbacks = {
-    'pic1': 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=85&auto=format&fit=crop',
-    'pic2': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=85&auto=format&fit=crop',
-    'pic3': 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=85&auto=format&fit=crop',
-    'pic4': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=85&auto=format&fit=crop',
-    'pic5': 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=85&auto=format&fit=crop',
-    'pic6': 'https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1920&q=85&auto=format&fit=crop',
-    'pic7': 'https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=1920&q=85&auto=format&fit=crop',
-    'pic8': 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=85&auto=format&fit=crop',
-    'pic9': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=85&auto=format&fit=crop',
-    'nova.jpeg': 'https://images.unsplash.com/photo-1560472355-536de3962603?w=80&q=80&auto=format&fit=crop'
-  };
-
-  function applyFallbacks() {
-    document.querySelectorAll('img').forEach(function(img) {
-      var src = img.getAttribute('src');
-      if (src && fallbacks[src]) {
-        var fallbackUrl = fallbacks[src];
-        // Set onerror to catch future failures
-        img.onerror = function() {
-          this.onerror = null;
-          this.src = fallbackUrl;
-        };
-        // Probe if the local file exists
-        var probe = new Image();
-        probe.onload = function() { /* local file found, keep it */ };
-        probe.onerror = function() {
-          img.src = fallbackUrl;
-        };
-        probe.src = src;
-      }
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyFallbacks);
-  } else {
-    applyFallbacks();
-  }
-})();
-
 /* =========================================
    NAV SCROLL BEHAVIOR
    ========================================= */
@@ -1639,205 +1187,6 @@ function handleSubmit(btn) {
 }
 
 /* =========================================
-   PREMIUM GALLERY SLIDESHOW
-   ========================================= */
-(function() {
-  var slides = document.querySelectorAll('.gallery-hero-slide');
-  var thumbs = document.querySelectorAll('.gallery-thumb');
-  var dotsContainer = document.getElementById('galleryDots');
-  var prevBtn = document.getElementById('galleryPrev');
-  var nextBtn = document.getElementById('galleryNext');
-  var titleEl = document.getElementById('galleryTitle');
-  var currentNumEl = document.getElementById('galleryCurrentNum');
-  var totalNumEl = document.getElementById('galleryTotalNum');
-  var progressBar = document.getElementById('galleryProgressBar');
-
-  if (!slides.length) return;
-
-  var total = slides.length;
-  var current = 0;
-  var autoplayTimer = null;
-  var AUTOPLAY_DURATION = 5000;
-  var isAnimating = false;
-
-  // Slide titles
-  var titles = [
-    'Distribution <em>Excellence</em>',
-    'Commerce <em>Partnership</em>',
-    'Retail <em>Channels</em>',
-    'Brand <em>Management</em>',
-    'Logistics <em>Operations</em>',
-    'Wholesale <em>Network</em>',
-    'Amazon <em>FBA</em>',
-    'Inventory <em>Compliance</em>',
-    'Growth <em>Strategy</em>'
-  ];
-
-  // Update total
-  totalNumEl.textContent = String(total).padStart(2, '0');
-
-  // Build dots
-  for (var i = 0; i < total; i++) {
-    var dot = document.createElement('button');
-    dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
-    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
-    dot.setAttribute('data-index', i);
-    dotsContainer.appendChild(dot);
-    dot.addEventListener('click', (function(idx) {
-      return function() { goTo(idx, true); };
-    })(i));
-  }
-
-  function getDots() {
-    return dotsContainer.querySelectorAll('.gallery-dot');
-  }
-
-  function startProgress() {
-    progressBar.style.transition = 'none';
-    progressBar.style.width = '0%';
-    // Force reflow
-    progressBar.getBoundingClientRect();
-    progressBar.style.transition = 'width ' + AUTOPLAY_DURATION + 'ms linear';
-    progressBar.style.width = '100%';
-  }
-
-  function stopProgress() {
-    progressBar.style.transition = 'none';
-    progressBar.style.width = '0%';
-  }
-
-  function goTo(index, resetAutoplay) {
-    if (isAnimating || index === current) return;
-    isAnimating = true;
-
-    // Remove active from old
-    slides[current].classList.remove('active');
-    thumbs[current] && thumbs[current].classList.remove('active');
-    getDots()[current] && getDots()[current].classList.remove('active');
-
-    current = ((index % total) + total) % total;
-
-    // Add active to new
-    slides[current].classList.add('active');
-    thumbs[current] && thumbs[current].classList.add('active');
-    getDots()[current] && getDots()[current].classList.add('active');
-
-    // Update title
-    if (titleEl && titles[current]) {
-      titleEl.innerHTML = titles[current];
-    }
-
-    // Update counter
-    if (currentNumEl) {
-      currentNumEl.textContent = String(current + 1).padStart(2, '0');
-    }
-
-    // Unlock after transition
-    setTimeout(function() { isAnimating = false; }, 1300);
-
-    // Scroll active thumb into view on mobile
-    if (thumbs[current]) {
-      thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-    }
-
-    if (resetAutoplay) {
-      stopAutoplay();
-      startAutoplay();
-    }
-  }
-
-  function next() {
-    goTo(current + 1, true);
-  }
-
-  function prev() {
-    goTo(current - 1, true);
-  }
-
-  function startAutoplay() {
-    stopProgress();
-    startProgress();
-    autoplayTimer = setTimeout(function() {
-      next();
-    }, AUTOPLAY_DURATION);
-  }
-
-  function stopAutoplay() {
-    if (autoplayTimer) {
-      clearTimeout(autoplayTimer);
-      autoplayTimer = null;
-    }
-    stopProgress();
-  }
-
-  // Thumbnail click handlers
-  thumbs.forEach(function(thumb) {
-    thumb.addEventListener('click', function() {
-      var idx = parseInt(thumb.getAttribute('data-index'), 10);
-      goTo(idx, true);
-    });
-  });
-
-  // Arrow buttons
-  if (prevBtn) prevBtn.addEventListener('click', prev);
-  if (nextBtn) nextBtn.addEventListener('click', next);
-
-  // Keyboard navigation
-  document.addEventListener('keydown', function(e) {
-    var gallery = document.getElementById('gallery-showcase');
-    if (!gallery) return;
-    var rect = gallery.getBoundingClientRect();
-    var inView = rect.top < window.innerHeight && rect.bottom > 0;
-    if (!inView) return;
-    if (e.key === 'ArrowLeft') prev();
-    if (e.key === 'ArrowRight') next();
-  });
-
-  // Touch/swipe support
-  var touchStartX = 0;
-  var touchStartY = 0;
-  var galleryHero = document.getElementById('galleryHero');
-  if (galleryHero) {
-    galleryHero.addEventListener('touchstart', function(e) {
-      touchStartX = e.touches[0].clientX;
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-    galleryHero.addEventListener('touchend', function(e) {
-      var dx = e.changedTouches[0].clientX - touchStartX;
-      var dy = e.changedTouches[0].clientY - touchStartY;
-      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
-        if (dx < 0) { next(); } else { prev(); }
-      }
-    }, { passive: true });
-
-    // Pause on hover
-    galleryHero.addEventListener('mouseenter', function() { stopAutoplay(); });
-    galleryHero.addEventListener('mouseleave', function() { startAutoplay(); });
-  }
-
-  // Pause when tab not visible
-  document.addEventListener('visibilitychange', function() {
-    if (document.hidden) { stopAutoplay(); }
-    else { startAutoplay(); }
-  });
-
-  // Intersection observer — only autoplay when gallery is visible
-  var gallerySection = document.getElementById('gallery-showcase');
-  if (gallerySection) {
-    var galleryObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) { startAutoplay(); }
-        else { stopAutoplay(); }
-      });
-    }, { threshold: 0.1 });
-    galleryObserver.observe(gallerySection);
-  } else {
-    startAutoplay();
-  }
-
-})();
-
-/* =========================================
    MOBILE NAV STYLES (injected)
    ========================================= */
 var mobileStyle = document.createElement('style');
@@ -1862,7 +1211,6 @@ mobileStyle.textContent = [
   '  .cta-right{flex-direction:row!important;flex-wrap:wrap;}',
   '  .foot-top{grid-template-columns:1fr 1fr;gap:32px;}',
   '  .test-grid{grid-template-columns:1fr;}',
-  '  #gallery-showcase .container > div{grid-template-columns:1fr!important;}',
   '}',
   '@media(max-width:640px){',
   '  .hero-btns .btn{width:100%;justify-content:center;}',
@@ -1872,9 +1220,6 @@ mobileStyle.textContent = [
   '  .foot-bot{flex-direction:column;align-items:flex-start;gap:12px;}',
   '  .map-badge-row{flex-wrap:wrap;}',
   '  .map-badge{min-width:calc(50% - 1px);}',
-  '  .gallery-hero-content{padding:16px 20px;}',
-  '  .gallery-slide-title{font-size:22px;}',
-  '  .gallery-hero{height:320px;}',
   '}'
 ].join('\n');
 document.head.appendChild(mobileStyle);
