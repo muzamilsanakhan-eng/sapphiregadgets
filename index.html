@@ -95,24 +95,35 @@ body{font-family:var(--font-body);background:var(--navy);color:var(--text-1);ove
 a{text-decoration:none;color:inherit;}
 img{display:block;max-width:100%;}
 
-/* ANIMATIONS */
+/* =========================================
+   ANIMATIONS
+   ========================================= */
 @keyframes fadeUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:none;}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
 @keyframes kenBurns{0%{transform:scale(1.00) translate(0%,0%);}25%{transform:scale(1.06) translate(-0.8%,-0.5%);}50%{transform:scale(1.10) translate(-1.2%,0.6%);}75%{transform:scale(1.05) translate(0.5%,-0.4%);}100%{transform:scale(1.00) translate(0%,0%);}}
 @keyframes kenBurnsDrift{0%{transform:scale(1.00) translate(0%,0%);}33%{transform:scale(1.08) translate(-1.5%,0.8%);}66%{transform:scale(1.04) translate(1.0%,-0.7%);}100%{transform:scale(1.00) translate(0%,0%);}}
+@keyframes kenBurns2{0%{transform:scale(1.05) translate(1%,0.5%);}50%{transform:scale(1.12) translate(-1%,-0.8%);}100%{transform:scale(1.05) translate(1%,0.5%);}}
+@keyframes kenBurns3{0%{transform:scale(1.08) translate(-0.5%,1%);}50%{transform:scale(1.02) translate(1.2%,-0.5%);}100%{transform:scale(1.08) translate(-0.5%,1%);}}
 @keyframes goldShimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--gold-glow);}50%{opacity:.7;box-shadow:0 0 0 8px rgba(212,168,68,0);}}
 @keyframes pulseLive{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.5);}50%{opacity:.7;box-shadow:0 0 0 8px rgba(74,222,128,0);}}
 @keyframes shimmer{0%{transform:translateX(-100%);}100%{transform:translateX(200%);}}
 @keyframes glowPulse{0%,100%{box-shadow:0 0 20px rgba(212,168,68,.15);}50%{box-shadow:0 0 40px rgba(212,168,68,.35);}}
+@keyframes slideGalleryFadeIn{from{opacity:0;transform:scale(1.04);}to{opacity:1;transform:scale(1);}}
+@keyframes progressBar{from{width:0;}to{width:100%;}}
+@keyframes floatUp{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
 
-/* REVEAL */
+/* =========================================
+   REVEAL
+   ========================================= */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out);}
 .reveal.vis{opacity:1;transform:none;}
 .rd1{transition-delay:.12s;}.rd2{transition-delay:.24s;}.rd3{transition-delay:.36s;}.rd4{transition-delay:.48s;}
 
-/* BASE */
+/* =========================================
+   BASE UTILITIES
+   ========================================= */
 .container{max-width:1380px;margin:0 auto;padding:0 clamp(20px,4vw,64px);}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
 .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
@@ -122,7 +133,9 @@ img{display:block;max-width:100%;}
 .gold-line{display:block;width:40px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:18px 0;}
 .gold-shimmer{background:linear-gradient(90deg,var(--gold-lo) 0%,var(--gold) 25%,var(--gold-hi) 50%,var(--gold) 75%,var(--gold-lo) 100%);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:goldShimmer 5s linear infinite;}
 
-/* BUTTONS */
+/* =========================================
+   BUTTONS
+   ========================================= */
 .btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;border:none;cursor:pointer;transition:all .35s var(--ease-out);position:relative;overflow:hidden;}
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-hi));color:var(--navy);box-shadow:0 4px 24px var(--gold-glow);}
 .btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,168,68,.45);}
@@ -138,9 +151,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:900;height:76px;display:flex;ali
 nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--border-lo);height:64px;box-shadow:0 4px 40px rgba(0,0,0,.70);}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
 .logo{display:flex;align-items:center;gap:14px;}
-.logo-mark{width:44px;height:44px;border:1px solid var(--border-md);background:var(--surface-2);display:flex;align-items:center;justify-content:center;transition:border-color .3s;}
+.logo-mark{width:44px;height:44px;border:1px solid var(--border-md);background:var(--surface-2);display:flex;align-items:center;justify-content:center;transition:border-color .3s;flex-shrink:0;overflow:hidden;}
 .logo:hover .logo-mark{border-color:var(--gold);}
-.logo-mark img{max-width:34px;max-height:34px;object-fit:contain;}
+.logo-mark img{width:34px;height:34px;object-fit:contain;display:block;}
 .logo-text .ln{display:block;font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--white);letter-spacing:1px;text-transform:uppercase;line-height:1.1;}
 .logo-text .ls{display:block;font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
 .nav-links{list-style:none;display:flex;align-items:center;gap:4px;}
@@ -193,7 +206,7 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
 .hero-img-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3),transparent);z-index:3;}
 
 .hero-badge{position:absolute;bottom:20px;left:20px;z-index:4;background:rgba(5,15,31,.90);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:12px 18px;display:flex;align-items:center;gap:12px;}
-.hb-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
+.hb-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
 .hb-label{font-family:var(--font-head);font-size:7px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);}
 .hb-value{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--white);}
 .hero-badge2{position:absolute;top:20px;right:20px;z-index:4;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:12px 18px;}
@@ -321,6 +334,95 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
 .cin-chip-icon{width:28px;height:28px;background:var(--gold-mist);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .cin-chip-icon svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .cin-chip-text{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);letter-spacing:.3px;}
+
+/* =========================================
+   PREMIUM GALLERY SHOWCASE
+   ========================================= */
+#gallery-showcase{background:var(--navy);padding:0;overflow:hidden;border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);}
+
+/* Main hero slideshow */
+.gallery-hero{position:relative;width:100%;height:clamp(420px,60vw,720px);overflow:hidden;background:var(--surface-1);}
+.gallery-hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s cubic-bezier(0.4,0,0.2,1);z-index:1;}
+.gallery-hero-slide.active{opacity:1;z-index:2;}
+.gallery-hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  will-change:transform;
+}
+/* Ken Burns per-slide animations */
+.gallery-hero-slide.active img{animation:kenBurns 8s ease-in-out both;}
+.gallery-hero-slide:nth-child(2).active img{animation:kenBurnsDrift 8s ease-in-out both;}
+.gallery-hero-slide:nth-child(3).active img{animation:kenBurns2 8s ease-in-out both;}
+.gallery-hero-slide:nth-child(4).active img{animation:kenBurns3 8s ease-in-out both;}
+.gallery-hero-slide:nth-child(5).active img{animation:kenBurnsDrift 9s ease-in-out both;}
+.gallery-hero-slide:nth-child(6).active img{animation:kenBurns 9s ease-in-out both;}
+.gallery-hero-slide:nth-child(7).active img{animation:kenBurns2 8.5s ease-in-out both;}
+.gallery-hero-slide:nth-child(8).active img{animation:kenBurnsDrift 8.5s ease-in-out both;}
+.gallery-hero-slide:nth-child(9).active img{animation:kenBurns3 9s ease-in-out both;}
+
+/* Gradient overlays on slideshow */
+.gallery-hero-overlay{position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(to top,rgba(5,15,31,.85) 0%,rgba(5,15,31,.30) 40%,rgba(5,15,31,.10) 70%,transparent 100%),
+             linear-gradient(to right,rgba(5,15,31,.50) 0%,transparent 40%,transparent 60%,rgba(5,15,31,.50) 100%);}
+
+/* Bottom content overlay */
+.gallery-hero-content{position:absolute;bottom:0;left:0;right:0;z-index:4;padding:clamp(24px,3vw,48px) clamp(24px,4vw,64px);}
+.gallery-hero-meta{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.gallery-hero-label{display:flex;flex-direction:column;gap:8px;}
+.gallery-slide-eyebrow{display:flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
+.gallery-slide-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+.gallery-slide-title{font-family:var(--font-display);font-size:clamp(22px,3.5vw,52px);font-weight:700;color:var(--white);line-height:1.05;letter-spacing:-.5px;}
+.gallery-slide-title em{font-style:italic;color:var(--gold);}
+.gallery-slide-counter{font-family:var(--font-head);font-size:11px;font-weight:700;letter-spacing:2px;color:var(--text-3);}
+.gallery-slide-counter strong{color:var(--gold);}
+
+/* Navigation arrows */
+.gallery-nav{display:flex;gap:8px;}
+.gallery-btn{width:44px;height:44px;background:rgba(5,15,31,.75);backdrop-filter:blur(12px);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s var(--ease-out);}
+.gallery-btn:hover{background:rgba(212,168,68,.15);border-color:var(--border-hi);}
+.gallery-btn svg{width:16px;height:16px;stroke:var(--text-2);fill:none;stroke-width:2;transition:stroke .3s;}
+.gallery-btn:hover svg{stroke:var(--gold);}
+
+/* Progress bar */
+.gallery-progress{position:absolute;bottom:0;left:0;right:0;z-index:5;height:2px;background:rgba(255,255,255,.08);}
+.gallery-progress-bar{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-hi));width:0%;transition:none;}
+.gallery-progress-bar.animating{transition:width 5s linear;}
+
+/* Dot indicators */
+.gallery-dots{position:absolute;bottom:clamp(80px,12vw,100px);left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:8px;}
+.gallery-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.15);cursor:pointer;transition:all .3s var(--ease-out);}
+.gallery-dot.active{background:var(--gold);border-color:var(--gold);transform:scale(1.4);}
+
+/* Thumbnail strip */
+.gallery-thumbs{display:grid;grid-template-columns:repeat(9,1fr);gap:2px;background:var(--navy-2);}
+.gallery-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;cursor:pointer;background:var(--surface-1);}
+.gallery-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition:transform .5s var(--ease-out),filter .4s;
+  filter:brightness(.55) saturate(.7);
+}
+.gallery-thumb:hover img{transform:scale(1.08);filter:brightness(.75) saturate(1);}
+.gallery-thumb.active img{filter:brightness(.9) saturate(1.1);}
+.gallery-thumb::after{content:'';position:absolute;inset:0;background:rgba(5,15,31,.3);transition:background .3s;}
+.gallery-thumb.active::after{background:transparent;box-shadow:inset 0 0 0 2px var(--gold);}
+.gallery-thumb:hover::after{background:rgba(5,15,31,.10);}
+.gallery-thumb-num{position:absolute;bottom:4px;right:6px;font-family:var(--font-head);font-size:7px;font-weight:700;letter-spacing:1px;color:rgba(255,255,255,.5);z-index:2;transition:color .3s;}
+.gallery-thumb.active .gallery-thumb-num{color:var(--gold);}
+
+@media(max-width:768px){
+  .gallery-thumbs{grid-template-columns:repeat(5,1fr);}
+  .gallery-thumb:nth-child(n+6){display:none;}
+}
+@media(max-width:480px){
+  .gallery-thumbs{grid-template-columns:repeat(3,1fr);}
+  .gallery-thumb:nth-child(n+4){display:none;}
+}
 
 /* =========================================
    SERVICES
@@ -487,8 +589,8 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
 footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:clamp(48px,5vw,72px) 0 32px;}
 .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,56px);margin-bottom:clamp(32px,4vw,52px);}
 .foot-logo-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
-.foot-logo-box{width:42px;height:42px;border:1px solid var(--border-md);background:var(--surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.foot-logo-box img{max-width:32px;max-height:32px;object-fit:contain;}
+.foot-logo-box{width:42px;height:42px;border:1px solid var(--border-md);background:var(--surface-2);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;}
+.foot-logo-box img{width:32px;height:32px;object-fit:contain;display:block;}
 .foot-nm{display:block;font-family:var(--font-head);font-size:14px;font-weight:800;color:var(--white);letter-spacing:1px;text-transform:uppercase;line-height:1.1;}
 .foot-sl{display:block;font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
 .foot-desc{font-size:13px;color:var(--text-4);line-height:1.80;max-width:300px;}
@@ -512,8 +614,8 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
     <div class="nav-inner">
       <a href="#hero" class="logo">
         <div class="logo-mark">
-          <img src="nova.jpeg" alt="Sapphire Gadgets"
-               onerror="this.style.display='none';this.parentNode.style.background='var(--gold-mist)';">
+          <img src="nova.jpeg" alt="Sapphire Gadgets" width="34" height="34"
+               onerror="this.style.display='none';">
         </div>
         <div class="logo-text">
           <span class="ln">Sapphire Gadgets</span>
@@ -543,6 +645,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   <div class="hero-bg">
     <img src="pic1"
          alt="Professional warehouse and distribution facility"
+         width="1600" height="900"
          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&q=85&auto=format&fit=crop'">
   </div>
   <div class="hero-topline"></div>
@@ -572,11 +675,12 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <div class="hero-img-card">
             <img src="pic6"
                  alt="Sapphire Gadgets wholesale distribution operations"
+                 width="900" height="675"
                  style="object-position:center 35%;"
                  onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85&auto=format&fit=crop'">
             <div class="hero-badge">
               <span class="hb-dot"></span>
-              <div><span class="hb-label">Partnership Status</span><span class="hb-value">Accepting Applications</span></div>
+              <div><span class="hb-label">Partnership Status</span><div class="hb-value">Accepting Applications</div></div>
             </div>
             <div class="hero-badge2"><div class="hb2-n">4+</div><div class="hb2-l">Years Operating</div></div>
           </div>
@@ -641,7 +745,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 <section aria-label="Distribution operations showcase" style="background:var(--navy);border-bottom:1px solid var(--border-lo);">
   <div class="cin-stage reveal">
     <div class="img-clip">
-      <img src="pic6" alt="Sapphire Gadgets retail distribution operations" loading="lazy"
+      <img src="pic6" alt="Sapphire Gadgets retail distribution operations" width="1600" height="610" loading="lazy"
            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1600&q=85&auto=format&fit=crop'">
     </div>
     <div class="cin-overlay"></div>
@@ -677,6 +781,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       <div class="about-img-col reveal">
         <div class="about-frame">
           <img src="pic2" alt="Sapphire Gadgets commerce partnership"
+               width="900" height="675"
                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=85&auto=format&fit=crop'">
           <div class="about-badge-live"><span class="abl-dot"></span><span class="abl-text">Active Partner Network</span></div>
         </div>
@@ -714,7 +819,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     STATS BAND — Distribution-Focused Metrics
+     STATS BAND
      ============================================================ -->
 <div class="stats-band">
   <div class="container">
@@ -803,6 +908,159 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
+     PREMIUM GALLERY SHOWCASE — ALL 9 IMAGES
+     ============================================================ -->
+<section id="gallery-showcase" aria-label="Sapphire Gadgets Operations Gallery">
+
+  <!-- Header above gallery -->
+  <div style="background:var(--navy-4);border-bottom:1px solid var(--border-lo);padding:clamp(40px,5vw,64px) 0 0;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;padding-bottom:clamp(32px,4vw,48px);">
+        <div class="reveal">
+          <span class="eyebrow">Operations Gallery</span>
+          <h2 class="sec-h">Premium Distribution<br><em>In Action</em></h2>
+          <span class="gold-line"></span>
+        </div>
+        <div class="reveal rd1">
+          <p style="font-size:15px;color:var(--text-3);line-height:1.85;">A look inside the operations, partnerships, and infrastructure that power Sapphire Gadgets' commitment to premium wholesale distribution and authorized brand representation across every channel we serve.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Slideshow -->
+  <div class="gallery-hero" id="galleryHero">
+    <!-- Slide 1 -->
+    <div class="gallery-hero-slide active">
+      <img src="pic1" alt="Distribution operations - facility overview" width="1920" height="720"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 2 -->
+    <div class="gallery-hero-slide">
+      <img src="pic2" alt="Partnership and commerce operations" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 3 -->
+    <div class="gallery-hero-slide">
+      <img src="pic3" alt="Retail channel distribution" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 4 -->
+    <div class="gallery-hero-slide">
+      <img src="pic4" alt="Brand partnership management" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 5 -->
+    <div class="gallery-hero-slide">
+      <img src="pic5" alt="Warehouse and logistics operations" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 6 -->
+    <div class="gallery-hero-slide">
+      <img src="pic6" alt="Wholesale distribution network" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 7 -->
+    <div class="gallery-hero-slide">
+      <img src="pic7" alt="Amazon FBA operations" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 8 -->
+    <div class="gallery-hero-slide">
+      <img src="pic8" alt="Inventory management and compliance" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+    <!-- Slide 9 -->
+    <div class="gallery-hero-slide">
+      <img src="pic9" alt="Brand growth and retail expansion" width="1920" height="720" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=85&auto=format&fit=crop'">
+    </div>
+
+    <!-- Overlays & UI -->
+    <div class="gallery-hero-overlay"></div>
+
+    <!-- Dot indicators -->
+    <div class="gallery-dots" id="galleryDots"></div>
+
+    <!-- Bottom content -->
+    <div class="gallery-hero-content">
+      <div class="gallery-hero-meta">
+        <div class="gallery-hero-label">
+          <div class="gallery-slide-eyebrow">Operations Showcase</div>
+          <div class="gallery-slide-title" id="galleryTitle">Distribution <em>Excellence</em></div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:16px;">
+          <div class="gallery-slide-counter">Image <strong id="galleryCurrentNum">01</strong> / <span id="galleryTotalNum">09</span></div>
+          <div class="gallery-nav">
+            <button class="gallery-btn" id="galleryPrev" aria-label="Previous image">
+              <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button class="gallery-btn" id="galleryNext" aria-label="Next image">
+              <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="gallery-progress">
+      <div class="gallery-progress-bar" id="galleryProgressBar"></div>
+    </div>
+  </div>
+
+  <!-- Thumbnail strip -->
+  <div class="gallery-thumbs" id="galleryThumbs">
+    <div class="gallery-thumb active" data-index="0">
+      <img src="pic1" alt="Gallery image 1" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">01</span>
+    </div>
+    <div class="gallery-thumb" data-index="1">
+      <img src="pic2" alt="Gallery image 2" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">02</span>
+    </div>
+    <div class="gallery-thumb" data-index="2">
+      <img src="pic3" alt="Gallery image 3" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">03</span>
+    </div>
+    <div class="gallery-thumb" data-index="3">
+      <img src="pic4" alt="Gallery image 4" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">04</span>
+    </div>
+    <div class="gallery-thumb" data-index="4">
+      <img src="pic5" alt="Gallery image 5" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">05</span>
+    </div>
+    <div class="gallery-thumb" data-index="5">
+      <img src="pic6" alt="Gallery image 6" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">06</span>
+    </div>
+    <div class="gallery-thumb" data-index="6">
+      <img src="pic7" alt="Gallery image 7" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">07</span>
+    </div>
+    <div class="gallery-thumb" data-index="7">
+      <img src="pic8" alt="Gallery image 8" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">08</span>
+    </div>
+    <div class="gallery-thumb" data-index="8">
+      <img src="pic9" alt="Gallery image 9" loading="lazy"
+           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=70&auto=format&fit=crop'">
+      <span class="gallery-thumb-num">09</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================
      SERVICES
      ============================================================ -->
 <section id="services">
@@ -864,7 +1122,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 <section id="channel-section">
   <div class="cin-stage reveal" style="border-top:1px solid var(--border-lo);">
     <div class="img-clip">
-      <img src="pic3" alt="Omnichannel retail operations" loading="lazy"
+      <img src="pic3" alt="Omnichannel retail operations" width="1600" height="610" loading="lazy"
            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=85&auto=format&fit=crop'">
     </div>
     <div class="cin-overlay"></div>
@@ -1012,6 +1270,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       <div class="why-img-col reveal rd1">
         <div class="why-frame">
           <img src="pic4" alt="Sapphire Gadgets partnership operations"
+               width="900" height="675"
                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=85&auto=format&fit=crop'">
         </div>
         <div class="why-float"><div class="wf-n">0%</div><div class="wf-l">Drop-Ship Activity</div></div>
@@ -1088,7 +1347,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
      ============================================================ -->
 <section id="contact">
   <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,88px);" class="con-layout">
+    <div class="con-layout">
       <div class="reveal">
         <span class="eyebrow">Apply for Partnership</span>
         <h2 class="sec-h">Let's Build<br><em>Something Together</em></h2>
@@ -1163,7 +1422,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       <div>
         <div class="foot-logo-row">
           <div class="foot-logo-box">
-            <img src="nova.jpeg" alt="Sapphire Gadgets LLC"
+            <img src="nova.jpeg" alt="Sapphire Gadgets LLC" width="32" height="32"
                  onerror="this.onerror=null;this.style.display='none'">
           </div>
           <div><span class="foot-nm">Sapphire Gadgets</span><span class="foot-sl">LLC · Wholesale Distribution</span></div>
@@ -1206,17 +1465,22 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </footer>
 
 <script>
-/* NAV */
+/* =========================================
+   NAV SCROLL BEHAVIOR
+   ========================================= */
 const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', scrollY > 40);
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
 }, { passive: true });
 
-const hbg = document.getElementById('navHbg');
-hbg.addEventListener('click', () => {
-  const wasOpen = nav.classList.contains('mob-open');
+/* =========================================
+   HAMBURGER MENU
+   ========================================= */
+var hbg = document.getElementById('navHbg');
+hbg.addEventListener('click', function() {
+  var wasOpen = nav.classList.contains('mob-open');
   nav.classList.toggle('mob-open');
-  const spans = hbg.querySelectorAll('span');
+  var spans = hbg.querySelectorAll('span');
   if (!wasOpen) {
     spans[0].style.transform = 'rotate(45deg) translate(4px,4px)';
     spans[1].style.opacity = '0';
@@ -1227,70 +1491,78 @@ hbg.addEventListener('click', () => {
     spans[2].style.transform = '';
   }
 });
-document.querySelectorAll('#navLinks a').forEach(a => {
-  a.addEventListener('click', () => {
+document.querySelectorAll('#navLinks a').forEach(function(a) {
+  a.addEventListener('click', function() {
     nav.classList.remove('mob-open');
-    const spans = hbg.querySelectorAll('span');
+    var spans = hbg.querySelectorAll('span');
     spans[0].style.transform = '';
     spans[1].style.opacity = '';
     spans[2].style.transform = '';
   });
 });
 
-/* SCROLL REVEAL */
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
+/* =========================================
+   SCROLL REVEAL
+   ========================================= */
+var revealObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
     if (e.isIntersecting) {
       e.target.classList.add('vis');
       revealObserver.unobserve(e.target);
     }
   });
 }, { threshold: 0.06, rootMargin: '0px 0px -16px 0px' });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
-/* COUNTER ANIMATION */
+/* =========================================
+   COUNTER ANIMATION
+   ========================================= */
 function animateCounter(el) {
   if (el._done) return;
   el._done = true;
-  const target = parseInt(el.getAttribute('data-target'), 10);
+  var target = parseInt(el.getAttribute('data-target'), 10);
   if (isNaN(target) || target === 0) return;
-  const duration = 1800;
-  const totalFrames = Math.round(duration / (1000 / 60));
-  let frame = 0;
-  const easeOut = t => 1 - (1 - t) * (1 - t);
-  const tick = () => {
+  var duration = 1800;
+  var totalFrames = Math.round(duration / (1000 / 60));
+  var frame = 0;
+  var easeOut = function(t) { return 1 - (1 - t) * (1 - t); };
+  var tick = function() {
     frame++;
-    const progress = easeOut(Math.min(frame / totalFrames, 1));
+    var progress = easeOut(Math.min(frame / totalFrames, 1));
     el.textContent = Math.round(target * progress).toLocaleString();
-    if (frame < totalFrames) requestAnimationFrame(tick);
-    else el.textContent = target.toLocaleString();
+    if (frame < totalFrames) { requestAnimationFrame(tick); }
+    else { el.textContent = target.toLocaleString(); }
   };
   requestAnimationFrame(tick);
 }
 
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
+var counterObserver = new IntersectionObserver(function(entries) {
+  entries.forEach(function(entry) {
     if (!entry.isIntersecting) return;
     entry.target.querySelectorAll('.counter[data-target]').forEach(animateCounter);
     counterObserver.unobserve(entry.target);
   });
 }, { threshold: 0.15 });
-document.querySelectorAll('.stats-band, .hero-stats').forEach(el => counterObserver.observe(el));
+document.querySelectorAll('.stats-band, .hero-stats').forEach(function(el) { counterObserver.observe(el); });
 
-window.addEventListener('load', () => {
-  const heroStats = document.querySelector('.hero-stats');
+window.addEventListener('load', function() {
+  var heroStats = document.querySelector('.hero-stats');
   if (heroStats) {
-    const rect = heroStats.getBoundingClientRect();
-    if (rect.top < window.innerHeight) heroStats.querySelectorAll('.counter[data-target]').forEach(animateCounter);
+    var rect = heroStats.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      heroStats.querySelectorAll('.counter[data-target]').forEach(animateCounter);
+    }
   }
 });
 
-/* SMOOTH SCROLL */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const id = a.getAttribute('href');
+/* =========================================
+   SMOOTH SCROLL
+   ========================================= */
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var id = a.getAttribute('href');
     if (!id || id === '#') return;
-    const t = document.querySelector(id);
+    var t = document.querySelector(id);
     if (t) {
       e.preventDefault();
       window.scrollTo({ top: t.offsetTop - 72, behavior: 'smooth' });
@@ -1298,10 +1570,12 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-/* FORM SUBMIT */
+/* =========================================
+   FORM SUBMIT
+   ========================================= */
 function handleSubmit(btn) {
-  const form = btn.closest('.con-form');
-  const email = form.querySelector('input[type="email"]');
+  var form = btn.closest('.con-form');
+  var email = form.querySelector('input[type="email"]');
   if (email && !email.value.includes('@')) {
     email.style.borderColor = 'var(--gold)';
     email.focus();
@@ -1309,7 +1583,7 @@ function handleSubmit(btn) {
   }
   btn.textContent = 'Submitting Application\u2026';
   btn.disabled = true;
-  setTimeout(() => {
+  setTimeout(function() {
     btn.innerHTML = '\u2713 Application Received \u2014 We\'ll respond within 1 business day.';
     btn.style.background = 'linear-gradient(135deg,#16a34a,#15803d)';
     btn.style.color = '#fff';
@@ -1317,40 +1591,245 @@ function handleSubmit(btn) {
   }, 1000);
 }
 
-/* MOBILE NAV STYLE */
-const mobileStyle = document.createElement('style');
-mobileStyle.textContent = `
-@media(max-width:960px){
-  .nav-links{display:none;}
-  .nav-hbg{display:flex;}
-  nav.mob-open .nav-links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(5,15,31,.98);backdrop-filter:blur(24px);padding:14px 24px 24px;gap:0;border-bottom:1px solid rgba(212,168,68,.10);}
-  nav.mob-open .nav-links a{padding:14px 8px;border-bottom:1px solid rgba(212,168,68,.10);font-size:12px;}
-  .hero-inner{grid-template-columns:1fr;gap:32px;padding:36px 0 56px;}
-  .hero-right{order:-1;}
-  .hero-img-card{aspect-ratio:16/9;}
-  .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%;}
-  .about-grid{grid-template-columns:1fr;gap:48px;}
-  .about-img-col{padding-right:16px;}
-  .why-inner{grid-template-columns:1fr;gap:44px;}
-  .why-img-col{order:-1;padding-left:0;padding-right:16px;}
-  .svc-header{grid-template-columns:1fr;}
-  .process-header{grid-template-columns:1fr;}
-  .con-layout{grid-template-columns:1fr!important;}
-  .cta-inner{grid-template-columns:1fr;}
-  .cta-right{flex-direction:row!important;flex-wrap:wrap;}
-  .foot-top{grid-template-columns:1fr 1fr;gap:32px;}
-  .test-grid{grid-template-columns:1fr;}
-}
-@media(max-width:640px){
-  .hero-btns .btn{width:100%;justify-content:center;}
-  .stats-grid{grid-template-columns:repeat(2,1fr);}
-  .stat-item:nth-child(2){border-right:none;}
-  .foot-top{grid-template-columns:1fr;}
-  .foot-bot{flex-direction:column;align-items:flex-start;gap:12px;}
-  .map-badge-row{flex-wrap:wrap;}
-  .map-badge{min-width:calc(50% - 1px);}
-}
-`;
+/* =========================================
+   PREMIUM GALLERY SLIDESHOW
+   ========================================= */
+(function() {
+  var slides = document.querySelectorAll('.gallery-hero-slide');
+  var thumbs = document.querySelectorAll('.gallery-thumb');
+  var dotsContainer = document.getElementById('galleryDots');
+  var prevBtn = document.getElementById('galleryPrev');
+  var nextBtn = document.getElementById('galleryNext');
+  var titleEl = document.getElementById('galleryTitle');
+  var currentNumEl = document.getElementById('galleryCurrentNum');
+  var totalNumEl = document.getElementById('galleryTotalNum');
+  var progressBar = document.getElementById('galleryProgressBar');
+
+  if (!slides.length) return;
+
+  var total = slides.length;
+  var current = 0;
+  var autoplayTimer = null;
+  var AUTOPLAY_DURATION = 5000;
+  var isAnimating = false;
+
+  // Slide titles
+  var titles = [
+    'Distribution <em>Excellence</em>',
+    'Commerce <em>Partnership</em>',
+    'Retail <em>Channels</em>',
+    'Brand <em>Management</em>',
+    'Logistics <em>Operations</em>',
+    'Wholesale <em>Network</em>',
+    'Amazon <em>FBA</em>',
+    'Inventory <em>Compliance</em>',
+    'Growth <em>Strategy</em>'
+  ];
+
+  // Update total
+  totalNumEl.textContent = String(total).padStart(2, '0');
+
+  // Build dots
+  for (var i = 0; i < total; i++) {
+    var dot = document.createElement('button');
+    dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.setAttribute('data-index', i);
+    dotsContainer.appendChild(dot);
+    dot.addEventListener('click', (function(idx) {
+      return function() { goTo(idx, true); };
+    })(i));
+  }
+
+  function getDots() {
+    return dotsContainer.querySelectorAll('.gallery-dot');
+  }
+
+  function startProgress() {
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+    // Force reflow
+    progressBar.getBoundingClientRect();
+    progressBar.style.transition = 'width ' + AUTOPLAY_DURATION + 'ms linear';
+    progressBar.style.width = '100%';
+  }
+
+  function stopProgress() {
+    progressBar.style.transition = 'none';
+    progressBar.style.width = '0%';
+  }
+
+  function goTo(index, resetAutoplay) {
+    if (isAnimating || index === current) return;
+    isAnimating = true;
+
+    // Remove active from old
+    slides[current].classList.remove('active');
+    thumbs[current] && thumbs[current].classList.remove('active');
+    getDots()[current] && getDots()[current].classList.remove('active');
+
+    current = ((index % total) + total) % total;
+
+    // Add active to new
+    slides[current].classList.add('active');
+    thumbs[current] && thumbs[current].classList.add('active');
+    getDots()[current] && getDots()[current].classList.add('active');
+
+    // Update title
+    if (titleEl && titles[current]) {
+      titleEl.innerHTML = titles[current];
+    }
+
+    // Update counter
+    if (currentNumEl) {
+      currentNumEl.textContent = String(current + 1).padStart(2, '0');
+    }
+
+    // Unlock after transition
+    setTimeout(function() { isAnimating = false; }, 1300);
+
+    // Scroll active thumb into view on mobile
+    if (thumbs[current]) {
+      thumbs[current].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+
+    if (resetAutoplay) {
+      stopAutoplay();
+      startAutoplay();
+    }
+  }
+
+  function next() {
+    goTo(current + 1, true);
+  }
+
+  function prev() {
+    goTo(current - 1, true);
+  }
+
+  function startAutoplay() {
+    stopProgress();
+    startProgress();
+    autoplayTimer = setTimeout(function() {
+      next();
+    }, AUTOPLAY_DURATION);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearTimeout(autoplayTimer);
+      autoplayTimer = null;
+    }
+    stopProgress();
+  }
+
+  // Thumbnail click handlers
+  thumbs.forEach(function(thumb) {
+    thumb.addEventListener('click', function() {
+      var idx = parseInt(thumb.getAttribute('data-index'), 10);
+      goTo(idx, true);
+    });
+  });
+
+  // Arrow buttons
+  if (prevBtn) prevBtn.addEventListener('click', prev);
+  if (nextBtn) nextBtn.addEventListener('click', next);
+
+  // Keyboard navigation
+  document.addEventListener('keydown', function(e) {
+    var gallery = document.getElementById('gallery-showcase');
+    if (!gallery) return;
+    var rect = gallery.getBoundingClientRect();
+    var inView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!inView) return;
+    if (e.key === 'ArrowLeft') prev();
+    if (e.key === 'ArrowRight') next();
+  });
+
+  // Touch/swipe support
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var galleryHero = document.getElementById('galleryHero');
+  if (galleryHero) {
+    galleryHero.addEventListener('touchstart', function(e) {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    galleryHero.addEventListener('touchend', function(e) {
+      var dx = e.changedTouches[0].clientX - touchStartX;
+      var dy = e.changedTouches[0].clientY - touchStartY;
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx < 0) { next(); } else { prev(); }
+      }
+    }, { passive: true });
+
+    // Pause on hover
+    galleryHero.addEventListener('mouseenter', function() { stopAutoplay(); });
+    galleryHero.addEventListener('mouseleave', function() { startAutoplay(); });
+  }
+
+  // Pause when tab not visible
+  document.addEventListener('visibilitychange', function() {
+    if (document.hidden) { stopAutoplay(); }
+    else { startAutoplay(); }
+  });
+
+  // Intersection observer — only autoplay when gallery is visible
+  var gallerySection = document.getElementById('gallery-showcase');
+  if (gallerySection) {
+    var galleryObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { startAutoplay(); }
+        else { stopAutoplay(); }
+      });
+    }, { threshold: 0.1 });
+    galleryObserver.observe(gallerySection);
+  } else {
+    startAutoplay();
+  }
+
+})();
+
+/* =========================================
+   MOBILE NAV STYLES (injected)
+   ========================================= */
+var mobileStyle = document.createElement('style');
+mobileStyle.textContent = [
+  '@media(max-width:960px){',
+  '  .nav-links{display:none;}',
+  '  .nav-hbg{display:flex;}',
+  '  nav.mob-open .nav-links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(5,15,31,.98);backdrop-filter:blur(24px);padding:14px 24px 24px;gap:0;border-bottom:1px solid rgba(212,168,68,.10);}',
+  '  nav.mob-open .nav-links a{padding:14px 8px;border-bottom:1px solid rgba(212,168,68,.10);font-size:12px;}',
+  '  .hero-inner{grid-template-columns:1fr;gap:32px;padding:36px 0 56px;}',
+  '  .hero-right{order:-1;}',
+  '  .hero-img-card{aspect-ratio:16/9;}',
+  '  .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%;}',
+  '  .about-grid{grid-template-columns:1fr;gap:48px;}',
+  '  .about-img-col{padding-right:16px;}',
+  '  .why-inner{grid-template-columns:1fr;gap:44px;}',
+  '  .why-img-col{order:-1;padding-left:0;padding-right:16px;}',
+  '  .svc-header{grid-template-columns:1fr;}',
+  '  .process-header{grid-template-columns:1fr;}',
+  '  .con-layout{grid-template-columns:1fr!important;}',
+  '  .cta-inner{grid-template-columns:1fr;}',
+  '  .cta-right{flex-direction:row!important;flex-wrap:wrap;}',
+  '  .foot-top{grid-template-columns:1fr 1fr;gap:32px;}',
+  '  .test-grid{grid-template-columns:1fr;}',
+  '  #gallery-showcase .container > div{grid-template-columns:1fr!important;}',
+  '}',
+  '@media(max-width:640px){',
+  '  .hero-btns .btn{width:100%;justify-content:center;}',
+  '  .stats-grid{grid-template-columns:repeat(2,1fr);}',
+  '  .stat-item:nth-child(2){border-right:none;}',
+  '  .foot-top{grid-template-columns:1fr;}',
+  '  .foot-bot{flex-direction:column;align-items:flex-start;gap:12px;}',
+  '  .map-badge-row{flex-wrap:wrap;}',
+  '  .map-badge{min-width:calc(50% - 1px);}',
+  '  .gallery-hero-content{padding:16px 20px;}',
+  '  .gallery-slide-title{font-size:22px;}',
+  '  .gallery-hero{height:320px;}',
+  '}'
+].join('\n');
 document.head.appendChild(mobileStyle);
 </script>
 </body>
