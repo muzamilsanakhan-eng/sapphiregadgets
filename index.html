@@ -48,6 +48,46 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<script>
+/* ─── Robust image loader for GitHub Pages extension-less files ──────────────
+   GitHub Pages correctly serves pic1…pic9 and nova.jpeg from repo root.
+   This map provides high-quality Unsplash fallbacks in case the repo images
+   haven't been uploaded yet or the browser encounters a MIME/network error.
+   The onerror on each <img> calls this centralised handler.                  */
+window.IMG_FALLBACKS = {
+  'pic1': 'https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=85&auto=format&fit=crop',
+  'pic2': 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85&auto=format&fit=crop',
+  'pic3': 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85&auto=format&fit=crop',
+  'pic4': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=85&auto=format&fit=crop',
+  'pic5': 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=85&auto=format&fit=crop',
+  'pic6': 'https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1920&q=85&auto=format&fit=crop',
+  'pic7': 'https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=1920&q=85&auto=format&fit=crop',
+  'pic8': 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=85&auto=format&fit=crop',
+  'pic9': 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=85&auto=format&fit=crop'
+};
+window.handleImgError = function(img) {
+  img.onerror = null;
+  var key = img.getAttribute('src') || '';
+  var fallback = window.IMG_FALLBACKS[key];
+  if (fallback) { img.src = fallback; }
+};
+/* Test if extension-less files load correctly on this host.
+   If pic1 fails immediately (wrong MIME / file missing), pre-swap all images. */
+document.addEventListener('DOMContentLoaded', function() {
+  var tester = new Image();
+  tester.onload = null; /* file loads — do nothing, native src is fine */
+  tester.onerror = function() {
+    /* Extension-less files not accessible — replace all affected images */
+    document.querySelectorAll('img[src^="pic"], img[src="nova.jpeg"]').forEach(function(img) {
+      var key = img.getAttribute('src');
+      if (window.IMG_FALLBACKS[key]) {
+        img.src = window.IMG_FALLBACKS[key];
+      }
+    });
+  };
+  tester.src = 'pic1';
+});
+</script>
 
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
@@ -94,6 +134,15 @@ html{scroll-behavior:smooth;}
 body{font-family:var(--font-body);background:var(--navy);color:var(--text-1);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
 a{text-decoration:none;color:inherit;}
 img{display:block;max-width:100%;}
+
+/* ── Image reliability: ensure images always render at correct dimensions ── */
+.hero-bg img,.hero-img-card img,.about-frame img,.why-frame img,
+.cin-stage .img-clip img,.gallery-hero-slide img,.gallery-thumb img{
+  min-width:100%;min-height:100%;background:var(--surface-2);
+}
+/* Prevent layout collapse if an image takes time to load */
+.gallery-hero-slide{background:var(--surface-1);}
+.gallery-thumb{background:var(--surface-2);}
 
 /* =========================================
    ANIMATIONS
@@ -352,16 +401,16 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
   display:block;
   will-change:transform;
 }
-/* Ken Burns per-slide animations */
-.gallery-hero-slide.active img{animation:kenBurns 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(2).active img{animation:kenBurnsDrift 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(3).active img{animation:kenBurns2 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(4).active img{animation:kenBurns3 8s ease-in-out both;}
-.gallery-hero-slide:nth-child(5).active img{animation:kenBurnsDrift 9s ease-in-out both;}
-.gallery-hero-slide:nth-child(6).active img{animation:kenBurns 9s ease-in-out both;}
-.gallery-hero-slide:nth-child(7).active img{animation:kenBurns2 8.5s ease-in-out both;}
-.gallery-hero-slide:nth-child(8).active img{animation:kenBurnsDrift 8.5s ease-in-out both;}
-.gallery-hero-slide:nth-child(9).active img{animation:kenBurns3 9s ease-in-out both;}
+/* Ken Burns per-slide animations — infinite so they loop while slide is active */
+.gallery-hero-slide.active img{animation:kenBurns 8s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(2).active img{animation:kenBurnsDrift 8s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(3).active img{animation:kenBurns2 8s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(4).active img{animation:kenBurns3 8s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(5).active img{animation:kenBurnsDrift 9s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(6).active img{animation:kenBurns 9s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(7).active img{animation:kenBurns2 8.5s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(8).active img{animation:kenBurnsDrift 8.5s ease-in-out infinite;}
+.gallery-hero-slide:nth-child(9).active img{animation:kenBurns3 9s ease-in-out infinite;}
 
 /* Gradient overlays on slideshow */
 .gallery-hero-overlay{position:absolute;inset:0;z-index:3;pointer-events:none;
@@ -646,7 +695,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
     <img src="pic1"
          alt="Professional warehouse and distribution facility"
          width="1600" height="900"
-         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&q=85&auto=format&fit=crop'">
+         onerror="handleImgError(this)">
   </div>
   <div class="hero-topline"></div>
   <div class="hero-grid"></div>
@@ -677,7 +726,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
                  alt="Sapphire Gadgets wholesale distribution operations"
                  width="900" height="675"
                  style="object-position:center 35%;"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85&auto=format&fit=crop'">
+                 onerror="handleImgError(this)">
             <div class="hero-badge">
               <span class="hb-dot"></span>
               <div><span class="hb-label">Partnership Status</span><div class="hb-value">Accepting Applications</div></div>
@@ -746,7 +795,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   <div class="cin-stage reveal">
     <div class="img-clip">
       <img src="pic6" alt="Sapphire Gadgets retail distribution operations" width="1600" height="610" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1600&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <div class="cin-overlay"></div>
     <div class="cin-content">
@@ -782,7 +831,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <div class="about-frame">
           <img src="pic2" alt="Sapphire Gadgets commerce partnership"
                width="900" height="675"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=900&q=85&auto=format&fit=crop'">
+               onerror="handleImgError(this)">
           <div class="about-badge-live"><span class="abl-dot"></span><span class="abl-text">Active Partner Network</span></div>
         </div>
         <div class="about-float-stat">
@@ -933,47 +982,47 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
     <!-- Slide 1 -->
     <div class="gallery-hero-slide active">
       <img src="pic1" alt="Distribution operations - facility overview" width="1920" height="720"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 2 -->
     <div class="gallery-hero-slide">
       <img src="pic2" alt="Partnership and commerce operations" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 3 -->
     <div class="gallery-hero-slide">
       <img src="pic3" alt="Retail channel distribution" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 4 -->
     <div class="gallery-hero-slide">
       <img src="pic4" alt="Brand partnership management" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 5 -->
     <div class="gallery-hero-slide">
       <img src="pic5" alt="Warehouse and logistics operations" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 6 -->
     <div class="gallery-hero-slide">
       <img src="pic6" alt="Wholesale distribution network" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 7 -->
     <div class="gallery-hero-slide">
       <img src="pic7" alt="Amazon FBA operations" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 8 -->
     <div class="gallery-hero-slide">
       <img src="pic8" alt="Inventory management and compliance" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <!-- Slide 9 -->
     <div class="gallery-hero-slide">
       <img src="pic9" alt="Brand growth and retail expansion" width="1920" height="720" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=1920&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
 
     <!-- Overlays & UI -->
@@ -1013,47 +1062,47 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   <div class="gallery-thumbs" id="galleryThumbs">
     <div class="gallery-thumb active" data-index="0">
       <img src="pic1" alt="Gallery image 1" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">01</span>
     </div>
     <div class="gallery-thumb" data-index="1">
       <img src="pic2" alt="Gallery image 2" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">02</span>
     </div>
     <div class="gallery-thumb" data-index="2">
       <img src="pic3" alt="Gallery image 3" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">03</span>
     </div>
     <div class="gallery-thumb" data-index="3">
       <img src="pic4" alt="Gallery image 4" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">04</span>
     </div>
     <div class="gallery-thumb" data-index="4">
       <img src="pic5" alt="Gallery image 5" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">05</span>
     </div>
     <div class="gallery-thumb" data-index="5">
       <img src="pic6" alt="Gallery image 6" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">06</span>
     </div>
     <div class="gallery-thumb" data-index="6">
       <img src="pic7" alt="Gallery image 7" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">07</span>
     </div>
     <div class="gallery-thumb" data-index="7">
       <img src="pic8" alt="Gallery image 8" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">08</span>
     </div>
     <div class="gallery-thumb" data-index="8">
       <img src="pic9" alt="Gallery image 9" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1563986768609-322da13575f3?w=400&q=70&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
       <span class="gallery-thumb-num">09</span>
     </div>
   </div>
@@ -1123,7 +1172,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   <div class="cin-stage reveal" style="border-top:1px solid var(--border-lo);">
     <div class="img-clip">
       <img src="pic3" alt="Omnichannel retail operations" width="1600" height="610" loading="lazy"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1600&q=85&auto=format&fit=crop'">
+           onerror="handleImgError(this)">
     </div>
     <div class="cin-overlay"></div>
     <div class="cin-content">
@@ -1271,7 +1320,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <div class="why-frame">
           <img src="pic4" alt="Sapphire Gadgets partnership operations"
                width="900" height="675"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=85&auto=format&fit=crop'">
+               onerror="handleImgError(this)">
         </div>
         <div class="why-float"><div class="wf-n">0%</div><div class="wf-l">Drop-Ship Activity</div></div>
         <div class="why-corner tl"></div>
