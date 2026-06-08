@@ -4,12 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sapphire Gadgets LLC — MAP-Compliant Wholesale Distributor & Authorized Brand Partner</title>
-<meta name="description" content="Sapphire Gadgets LLC is a U.S. authorized wholesale distributor — 100% MAP compliant, inventory-investing, and brand-first.">
+<meta name="description" content="Sapphire Gadgets LLC is a U.S. authorized wholesale distributor — 100% MAP compliant, inventory-investing, and brand-first. Amazon FBA, Walmart Marketplace, and major retail channels.">
+<meta property="og:title" content="Sapphire Gadgets LLC — Authorized Wholesale Distributor">
+<meta property="og:description" content="Premium U.S. wholesale distribution and authorized retail partner. 100% MAP compliant. Inventory-investing. Brand-first.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sapphiregadgets.com">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://sapphiregadgets.com">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Sapphire Gadgets LLC","url":"https://sapphiregadgets.com","description":"Premium U.S. wholesale distribution and authorized retail partner.","areaServed":"US","serviceType":["Wholesale Distribution","Amazon FBA Management","Walmart Marketplace","MAP Compliance","Brand Protection"]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   RESET & ROOT VARIABLES
+   ============================================================ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
   --navy:#050F1F;--navy-2:#091628;--navy-3:#0D1E35;--navy-4:#122240;
@@ -24,188 +33,224 @@
   --font-display:'Cormorant Garamond',Georgia,serif;
   --font-head:'Outfit',sans-serif;--font-body:'DM Sans',sans-serif;
   --ease-out:cubic-bezier(0.22,1,0.36,1);
+  --section-pad:clamp(72px,8vw,112px);
 }
 html{scroll-behavior:smooth;}
 body{font-family:var(--font-body);background:var(--navy);color:var(--text-1);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
 a{text-decoration:none;color:inherit;}
 img{display:block;max-width:100%;}
 
-@keyframes fadeUp{from{opacity:0;transform:translateY(32px);}to{opacity:1;transform:none;}}
-@keyframes kenBurns{0%{transform:scale(1.00) translate(0%,0%);}25%{transform:scale(1.06) translate(-0.8%,-0.5%);}50%{transform:scale(1.10) translate(-1.2%,0.6%);}75%{transform:scale(1.05) translate(0.5%,-0.4%);}100%{transform:scale(1.00) translate(0%,0%);}}
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes kenBurns{0%{transform:scale(1.00);}50%{transform:scale(1.05) translate(-0.5%,-0.5%);}100%{transform:scale(1.00);}}
 @keyframes goldShimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 var(--gold-glow);}50%{opacity:.7;box-shadow:0 0 0 8px rgba(212,168,68,0);}}
-@keyframes pulseLive{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(74,222,128,.5);}50%{opacity:.7;box-shadow:0 0 0 8px rgba(74,222,128,0);}}
-@keyframes slideInGallery{from{opacity:0;transform:translateX(40px);}to{opacity:1;transform:none;}}
-@keyframes counterUp{from{opacity:0;}to{opacity:1;}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--gold-glow);}50%{box-shadow:0 0 0 8px rgba(212,168,68,0);}}
+@keyframes pulseLive{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5);}50%{box-shadow:0 0 0 8px rgba(74,222,128,0);}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-12px);}to{opacity:1;transform:none;}}
 
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .85s var(--ease-out),transform .85s var(--ease-out);}
+/* ============================================================
+   SCROLL REVEAL
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .80s var(--ease-out),transform .80s var(--ease-out);}
 .reveal.vis{opacity:1;transform:none;}
 .rd1{transition-delay:.12s;}.rd2{transition-delay:.24s;}.rd3{transition-delay:.36s;}.rd4{transition-delay:.48s;}
 
+/* ============================================================
+   UTILITY / GLOBAL
+   ============================================================ */
 .container{max-width:1380px;margin:0 auto;padding:0 clamp(20px,4vw,64px);}
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
 .eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
-.sec-h{font-family:var(--font-display);font-size:clamp(32px,4vw,66px);font-weight:700;line-height:1.02;color:var(--text-1);letter-spacing:-.3px;}
+.sec-h{font-family:var(--font-display);font-size:clamp(32px,4vw,62px);font-weight:700;line-height:1.05;color:var(--text-1);letter-spacing:-.3px;}
 .sec-h em{font-style:italic;color:var(--gold);}
-.sec-p{font-size:15px;color:var(--text-3);line-height:1.90;max-width:460px;}
+.sec-p{font-size:15px;color:var(--text-3);line-height:1.90;max-width:480px;}
 .gold-line{display:block;width:40px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:18px 0;}
 
-.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;border:none;cursor:pointer;transition:all .35s var(--ease-out);position:relative;overflow:hidden;}
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--font-head);font-size:11.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:15px 32px;border:none;cursor:pointer;transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
 .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-hi));color:var(--navy);box-shadow:0 4px 24px var(--gold-glow);}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,168,68,.45);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(212,168,68,.48);}
 .btn-ghost{background:transparent;color:var(--text-1);border:1px solid var(--border-md);}
 .btn-ghost:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px);}
-.btn svg{flex-shrink:0;transition:transform .3s var(--ease-out);}
+.btn svg{flex-shrink:0;transition:transform .28s var(--ease-out);}
 .btn:hover svg{transform:translateX(4px);}
 
-/* NAV */
+/* ============================================================
+   ACCESSIBILITY
+   ============================================================ */
+.skip-link{position:absolute;top:-100px;left:16px;background:var(--gold);color:var(--navy);padding:8px 16px;font-family:var(--font-head);font-size:12px;font-weight:700;z-index:9999;transition:top .2s;}
+.skip-link:focus{top:8px;}
+
+/* ============================================================
+   NAV
+   ============================================================ */
 nav{position:fixed;top:0;left:0;right:0;z-index:900;height:76px;display:flex;align-items:center;transition:all .4s var(--ease-out);}
-nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bottom:1px solid var(--border-lo);height:64px;box-shadow:0 4px 40px rgba(0,0,0,.70);}
+nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border-lo);height:64px;box-shadow:0 4px 40px rgba(0,0,0,.70);}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
 .logo{display:flex;align-items:center;gap:14px;}
-.logo-mark{width:44px;height:44px;border:1px solid var(--border-md);background:var(--surface-2);display:flex;align-items:center;justify-content:center;transition:border-color .3s;}
+.logo-mark{width:44px;height:44px;border:1px solid var(--border-md);background:var(--surface-2);display:flex;align-items:center;justify-content:center;transition:border-color .3s;flex-shrink:0;}
 .logo:hover .logo-mark{border-color:var(--gold);}
 .logo-mark img{max-width:34px;max-height:34px;object-fit:contain;}
 .logo-text .ln{display:block;font-family:var(--font-head);font-size:15px;font-weight:800;color:var(--white);letter-spacing:1px;text-transform:uppercase;line-height:1.1;}
 .logo-text .ls{display:block;font-size:8px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
 .nav-links{list-style:none;display:flex;align-items:center;gap:4px;}
-.nav-links a{font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-3);padding:8px 14px;transition:color .25s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:4px;left:14px;right:14px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease-out);}
+.nav-links a{font-family:var(--font-head);font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:var(--text-3);padding:8px 12px;transition:color .25s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:4px;left:12px;right:12px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .28s var(--ease-out);}
 .nav-links a:hover{color:var(--white);}
 .nav-links a:hover::after{transform:scaleX(1);}
-.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-hi))!important;color:var(--navy)!important;padding:10px 22px!important;font-size:10px!important;font-weight:800!important;}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold-hi))!important;color:var(--navy)!important;padding:10px 22px!important;font-size:10px!important;font-weight:800!important;border-radius:0!important;}
 .nav-cta::after{display:none!important;}
-.nav-hbg{display:none;background:none;border:1px solid var(--border-md);cursor:pointer;padding:10px;flex-direction:column;gap:5px;}
+.nav-hbg{display:none;background:none;border:1px solid var(--border-md);cursor:pointer;padding:10px;flex-direction:column;gap:5px;transition:border-color .25s;}
+.nav-hbg:hover{border-color:var(--gold);}
 .nav-hbg span{display:block;width:20px;height:1.5px;background:var(--text-2);border-radius:2px;transition:all .3s;}
-@media(max-width:960px){.nav-links{display:none;}.nav-hbg{display:flex;}}
+@media(max-width:980px){
+  .nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(5,15,31,.99);border-bottom:1px solid var(--border-md);flex-direction:column;padding:16px 0;gap:0;z-index:899;}
+  .nav-links.open{display:flex;animation:slideDown .25s var(--ease-out);}
+  .nav-links li{width:100%;}
+  .nav-links a{display:block;padding:13px 24px;font-size:12px;border-bottom:1px solid var(--border-lo);}
+  .nav-links a::after{display:none;}
+  .nav-cta{margin:16px 24px 8px;display:block;text-align:center;}
+  .nav-hbg{display:flex;}
+}
 
-/* HERO — uses pic1.png at full opacity as background */
+/* ============================================================
+   HERO — pic6.png as primary full-bleed image, clearly visible
+   Below header, prominent, minimal overlay
+   ============================================================ */
 #hero{min-height:100svh;padding-top:76px;display:flex;align-items:center;position:relative;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden;}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;animation:kenBurns 9s ease-in-out infinite;opacity:.70;}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(5,15,31,.96) 0%,rgba(5,15,31,.75) 50%,rgba(5,15,31,.30) 100%),linear-gradient(to top,rgba(5,15,31,.90) 0%,transparent 45%);}
-.hero-topline{position:absolute;top:76px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(212,168,68,.3) 60%,transparent 100%);z-index:2;}
-.hero-grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(59,108,199,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(59,108,199,.04) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;}
-.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center;padding:clamp(48px,8vw,96px) 0 clamp(60px,8vw,96px);position:relative;z-index:3;width:100%;}
+
+/* pic6.png: the hero image — high visibility, Ken Burns only, NO opacity reduction */
+.hero-img-stage{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.hero-img-stage img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 40%;
+  display:block;
+  animation:kenBurns 12s ease-in-out infinite;
+  /* VISIBLE: full opacity, no dimming on the img itself */
+}
+/* Directional overlay — only left 55% darkened so right side shows image clearly */
+.hero-img-stage::after{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(to right, rgba(5,15,31,.90) 0%, rgba(5,15,31,.72) 45%, rgba(5,15,31,.20) 75%, rgba(5,15,31,.05) 100%),
+    linear-gradient(to top, rgba(5,15,31,.65) 0%, transparent 35%);
+}
+
+.hero-topline{position:absolute;top:76px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(212,168,68,.4) 50%,transparent 100%);z-index:2;}
+.hero-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(32px,5vw,80px);
+  align-items:center;
+  padding:clamp(56px,8vw,100px) 0 clamp(64px,8vw,100px);
+  position:relative;z-index:3;width:100%;
+}
 .hero-left{animation:fadeUp .9s .05s both;}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 12px;border:1px solid var(--border-md);background:rgba(212,168,68,.08);margin-bottom:28px;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 12px;border:1px solid var(--border-hi);background:rgba(212,168,68,.10);margin-bottom:28px;}
 .hero-tag-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2.5s ease infinite;flex-shrink:0;}
 .hero-tag-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-.hero-h1{font-family:var(--font-display);font-size:clamp(44px,6vw,92px);font-weight:700;line-height:.92;letter-spacing:-2px;color:var(--white);margin-bottom:24px;}
+.hero-h1{font-family:var(--font-display);font-size:clamp(42px,6vw,88px);font-weight:700;line-height:.93;letter-spacing:-2px;color:var(--white);margin-bottom:24px;}
 .hero-h1 em{font-style:italic;color:var(--gold);}
-.hero-desc{font-size:clamp(14px,1.4vw,16px);color:var(--text-3);line-height:1.90;max-width:480px;margin-bottom:36px;}
+.hero-desc{font-size:clamp(14px,1.4vw,16px);color:var(--text-2);line-height:1.85;max-width:500px;margin-bottom:36px;}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);max-width:480px;}
-.hstat{background:rgba(9,22,40,.80);padding:14px 10px;text-align:center;transition:background .25s;}
-.hstat:hover{background:rgba(212,168,68,.08);}
+
+/* 4 trust stats below CTA */
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);max-width:500px;}
+.hstat{background:rgba(5,15,31,.82);padding:14px 10px;text-align:center;transition:background .25s;backdrop-filter:blur(8px);}
+.hstat:hover{background:rgba(212,168,68,.10);}
 .hstat-n{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
 .hstat-l{font-family:var(--font-head);font-size:7.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);margin-top:4px;}
-/* Hero right: pic2.png — full visibility portrait/team card */
-.hero-right{animation:fadeUp .9s .2s both;}
-.hero-img-wrap{position:relative;}
-.hero-img-card{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);isolation:isolate;}
-.hero-img-card img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;}
-.hero-img-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,31,.65) 0%,transparent 55%);pointer-events:none;z-index:1;}
-.hero-img-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3),transparent);z-index:3;}
-.hero-badge{position:absolute;bottom:20px;left:20px;z-index:4;background:rgba(5,15,31,.90);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:12px 18px;display:flex;align-items:center;gap:12px;}
-.hb-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
-.hb-label{font-family:var(--font-head);font-size:7px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);}
-.hb-value{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--white);}
-.hero-badge2{position:absolute;top:20px;right:20px;z-index:4;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:12px 18px;}
-.hb2-n{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-1px;}
-.hb2-l{font-family:var(--font-head);font-size:7.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(5,15,31,.70);margin-top:3px;}
-.hero-corner{position:absolute;width:24px;height:24px;z-index:5;}
-.hero-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
-.hero-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
-@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}}
 
-/* MARQUEE */
+/* Hero right: floating trust card — transparent, image visible through it */
+.hero-right{animation:fadeUp .9s .18s both;}
+.hero-trust-card{
+  background:rgba(5,15,31,.75);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border-md);
+  padding:28px 28px 24px;
+  position:relative;
+}
+.hero-trust-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:1;}
+.htc-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border-lo);}
+.htc-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
+.htc-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-3);}
+.htc-status{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--white);margin-left:auto;}
+.htc-items{display:flex;flex-direction:column;gap:10px;}
+.htc-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(212,168,68,.07);border:1px solid var(--border-lo);}
+.htc-item-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-hi));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.htc-item-icon svg{width:13px;height:13px;stroke:var(--navy);fill:none;stroke-width:2.5;}
+.htc-item-text strong{display:block;font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);}
+.htc-item-text span{font-size:11px;color:var(--text-4);}
+.htc-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--border-lo);display:flex;justify-content:space-between;align-items:center;}
+.htc-stat{text-align:center;}
+.htc-stat-n{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
+.htc-stat-l{font-family:var(--font-head);font-size:7.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);margin-top:2px;}
+.htc-divider{width:1px;height:40px;background:var(--border-lo);}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}}
+@media(max-width:600px){.hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%;}}
+
+/* ============================================================
+   MARQUEE
+   ============================================================ */
 .marquee-wrap{background:linear-gradient(90deg,var(--navy-3),var(--navy-4),var(--navy-3));border-top:1px solid var(--border-md);border-bottom:1px solid var(--border-lo);padding:14px 0;overflow:hidden;position:relative;}
-.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
+.marquee-wrap::before,.marquee-wrap::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;}
 .marquee-wrap::before{left:0;background:linear-gradient(90deg,var(--navy-3),transparent);}
 .marquee-wrap::after{right:0;background:linear-gradient(-90deg,var(--navy-3),transparent);}
 .marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 55s linear infinite;}
 .mi{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--gold);white-space:nowrap;display:flex;align-items:center;gap:12px;}
 .mi::after{content:'◆';font-size:4px;color:var(--sky-light);opacity:.6;}
 
-/* BRAND PROMISE */
-#brand-promise{background:linear-gradient(135deg,var(--navy-4) 0%,var(--royal) 40%,var(--navy-4) 100%);border-top:1px solid var(--border-blue);border-bottom:1px solid var(--border-blue);padding:clamp(52px,6vw,80px) 0;position:relative;overflow:hidden;}
+/* ============================================================
+   BRAND PROMISE (section 1)
+   ============================================================ */
+#brand-promise{
+  background:linear-gradient(135deg,var(--navy-4) 0%,var(--royal) 40%,var(--navy-4) 100%);
+  border-top:1px solid var(--border-blue);border-bottom:1px solid var(--border-blue);
+  padding:var(--section-pad) 0;position:relative;overflow:hidden;
+}
 #brand-promise::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(212,168,68,.07),transparent);pointer-events:none;}
 .bp-inner{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;position:relative;z-index:1;}
 .bp-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border:1px solid var(--border-hi);background:rgba(212,168,68,.10);margin-bottom:20px;}
 .bp-eyebrow-dot{width:8px;height:8px;background:var(--gold);border-radius:50%;animation:pulse 2s ease infinite;}
 .bp-eyebrow-text{font-family:var(--font-head);font-size:9px;font-weight:800;letter-spacing:4px;text-transform:uppercase;color:var(--gold);}
-.bp-h{font-family:var(--font-display);font-size:clamp(28px,3.8vw,58px);font-weight:700;color:var(--white);line-height:1.02;letter-spacing:-.5px;margin-bottom:14px;}
+.bp-h{font-family:var(--font-display);font-size:clamp(28px,3.8vw,56px);font-weight:700;color:var(--white);line-height:1.04;letter-spacing:-.5px;margin-bottom:14px;}
 .bp-h em{font-style:italic;color:var(--gold);}
-.bp-p{font-size:14px;color:var(--text-3);max-width:520px;line-height:1.85;}
-.bp-right{display:flex;flex-direction:column;gap:1px;min-width:240px;}
-.bp-commitment{display:flex;align-items:center;gap:14px;background:rgba(9,22,40,.70);border:1px solid var(--border-lo);padding:12px 16px;backdrop-filter:blur(8px);transition:border-color .25s,background .25s;}
-.bp-commitment:hover{border-color:var(--border-md);background:rgba(212,168,68,.05);}
+.bp-p{font-size:14.5px;color:var(--text-3);max-width:520px;line-height:1.85;}
+.bp-right{display:flex;flex-direction:column;gap:1px;min-width:260px;}
+.bp-commitment{display:flex;align-items:center;gap:14px;background:rgba(9,22,40,.70);border:1px solid var(--border-lo);padding:13px 16px;backdrop-filter:blur(8px);transition:border-color .25s,background .25s;}
+.bp-commitment:hover{border-color:var(--border-md);background:rgba(212,168,68,.06);}
 .bp-commitment-icon{width:28px;height:28px;background:linear-gradient(135deg,var(--gold),var(--gold-hi));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .bp-commitment-icon svg{width:11px;height:11px;stroke:var(--navy);fill:none;stroke-width:2.5;}
 .bp-commitment-text{font-family:var(--font-head);font-size:11px;font-weight:600;color:var(--text-2);}
 @media(max-width:860px){.bp-inner{grid-template-columns:1fr;gap:32px;}.bp-right{min-width:0;}}
 
-/* =====================================================
-   IMAGE GALLERY SECTION — all 9 images, fully visible
-   ===================================================== */
-#gallery{padding:clamp(80px,9vw,120px) 0;background:var(--navy-2);border-top:1px solid var(--border-lo);}
-.gallery-header{text-align:center;max-width:680px;margin:0 auto clamp(44px,5vw,64px);}
-.gallery-header .sec-p{margin:0 auto;text-align:center;}
-
-/* Main featured slideshow */
-.gallery-slideshow{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);margin-bottom:1px;}
-.gallery-slideshow-track{display:flex;transition:transform .7s var(--ease-out);}
-.gallery-slide{min-width:100%;position:relative;aspect-ratio:16/7;overflow:hidden;isolation:isolate;flex-shrink:0;}
-@media(max-width:700px){.gallery-slide{aspect-ratio:4/3;}}
-.gallery-slide img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;transition:transform .7s var(--ease-out);}
-.gallery-slide-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,31,.80) 0%,rgba(5,15,31,.15) 50%,transparent 75%);z-index:1;pointer-events:none;}
-.gallery-slide-label{position:absolute;bottom:24px;left:28px;z-index:2;}
-.gsl-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--gold);letter-spacing:2px;display:block;margin-bottom:4px;}
-.gsl-title{font-family:var(--font-display);font-size:clamp(20px,3vw,38px);font-weight:700;color:var(--white);letter-spacing:-.5px;}
-
-/* Slideshow controls */
-.gallery-controls{display:flex;align-items:center;justify-content:space-between;background:var(--surface-1);border:1px solid var(--border-lo);border-top:none;padding:16px 24px;}
-.gc-arrows{display:flex;gap:8px;}
-.gc-btn{width:40px;height:40px;border:1px solid var(--border-md);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;flex-shrink:0;}
-.gc-btn:hover{border-color:var(--gold);background:var(--gold-mist);}
-.gc-btn svg{width:16px;height:16px;stroke:var(--text-2);fill:none;stroke-width:2;}
-.gc-btn:hover svg{stroke:var(--gold);}
-.gc-dots{display:flex;gap:6px;align-items:center;}
-.gc-dot{width:8px;height:8px;border-radius:50%;background:var(--border-md);border:none;cursor:pointer;transition:all .25s;padding:0;}
-.gc-dot.active{background:var(--gold);transform:scale(1.3);}
-.gc-counter{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:2px;color:var(--text-4);}
-.gc-counter span{color:var(--gold);}
-
-/* Thumbnail strip — 9 thumbnails */
-.gallery-thumbs{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);border-top:none;margin-top:0;}
-@media(max-width:800px){.gallery-thumbs{grid-template-columns:repeat(5,1fr);}}
-@media(max-width:500px){.gallery-thumbs{grid-template-columns:repeat(3,1fr);}}
-.gallery-thumb{position:relative;aspect-ratio:1/1;overflow:hidden;cursor:pointer;background:var(--surface-1);}
-.gallery-thumb img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;transition:transform .4s var(--ease-out),opacity .3s;}
-.gallery-thumb::after{content:'';position:absolute;inset:0;background:rgba(5,15,31,.45);transition:opacity .3s;}
-.gallery-thumb:hover::after{opacity:0;}
-.gallery-thumb:hover img{transform:scale(1.08);}
-.gallery-thumb.active::after{background:rgba(212,168,68,.18);border:2px solid var(--gold);}
-.gallery-thumb-num{position:absolute;bottom:5px;right:7px;font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:1px;color:var(--gold);z-index:2;opacity:.8;}
-
-/* ABOUT / MISSION — pic3.png */
-#about-mission{padding:clamp(80px,9vw,120px) 0;background:linear-gradient(160deg,var(--navy) 0%,var(--navy-3) 100%);}
+/* ============================================================
+   ABOUT / MISSION — pic1.png as prominent side image
+   ============================================================ */
+#about-mission{padding:var(--section-pad) 0;background:var(--navy-2);}
 .about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,88px);align-items:center;}
-.about-img-col{position:relative;padding-bottom:28px;padding-right:28px;}
-.about-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);isolation:isolate;}
+.about-img-col{position:relative;padding-bottom:32px;padding-right:32px;}
+
+/* pic1.png: full visible, no opacity reduction */
+.about-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
 .about-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
 .about-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:3;}
-.about-badge-live{position:absolute;top:20px;left:20px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.88);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;}
+/* Only a thin bottom scrim for text legibility */
+.about-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:2;pointer-events:none;}
+.about-badge-live{position:absolute;top:20px;left:20px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.85);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;}
 .abl-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
 .abl-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
 .about-float-stat{position:absolute;bottom:0;right:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:18px 24px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
-.afs-n{font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
+.afs-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .afs-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:4px;}
 .about-corner{position:absolute;width:20px;height:20px;}
 .about-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
-.about-corner.br{bottom:27px;right:27px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+.about-corner.br{bottom:31px;right:31px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
 .mission-pillars{display:flex;flex-direction:column;gap:2px;margin:28px 0 32px;}
 .mpillar{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .3s var(--ease-out);position:relative;overflow:hidden;}
 .mpillar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -213,209 +258,267 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
 .mpillar:hover::before{transform:scaleY(1);}
 .mpillar-icon{width:36px;height:36px;border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--gold-mist);}
 .mpillar-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.8;}
-.mpillar-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;letter-spacing:.5px;}
+.mpillar-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
 .mpillar-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
-@media(max-width:860px){.about-grid{grid-template-columns:1fr;}.about-img-col{padding-right:0;padding-bottom:16px;}}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;}.about-img-col{padding-right:0;padding-bottom:20px;}}
 
-/* STATS BAND */
+/* ============================================================
+   STATS BAND
+   ============================================================ */
 .stats-band{background:linear-gradient(135deg,var(--royal) 0%,var(--navy-4) 50%,var(--royal) 100%);border-top:1px solid var(--border-blue);border-bottom:1px solid var(--border-blue);padding:clamp(48px,5vw,72px) 0;position:relative;overflow:hidden;}
 .stats-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 50%,rgba(212,168,68,.08),transparent);pointer-events:none;}
 .stats-grid{display:grid;grid-template-columns:repeat(5,1fr);}
 .stat-item{padding:24px 16px;border-right:1px solid rgba(212,168,68,.14);text-align:center;transition:background .25s;}
 .stat-item:last-child{border-right:none;}
 .stat-item:hover{background:rgba(212,168,68,.08);}
-.stat-n{font-family:var(--font-display);font-size:clamp(36px,4vw,64px);font-weight:700;color:var(--white);line-height:1;letter-spacing:-2px;}
+.stat-n{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:700;color:var(--white);line-height:1;letter-spacing:-2px;}
 .stat-n span{color:var(--gold);}
 .stat-l{font-family:var(--font-head);font-size:8.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(248,244,236,.45);margin-top:10px;}
-@media(max-width:700px){.stats-grid{grid-template-columns:repeat(3,1fr);}.stat-item:nth-child(3){border-right:none;}.stat-item:nth-child(4){border-top:1px solid rgba(212,168,68,.14);}.stat-item:nth-child(5){border-top:1px solid rgba(212,168,68,.14);border-right:none;}}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(3,1fr);}.stat-item:nth-child(3){border-right:none;}.stat-item:nth-child(4),.stat-item:nth-child(5){border-top:1px solid rgba(212,168,68,.14);}  .stat-item:nth-child(5){border-right:none;}}
 
-/* MAP COMPLIANCE — pic4.png featured inline */
-#map-compliance{padding:clamp(80px,9vw,120px) 0;background:var(--navy-2);}
-.map-header{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:start;margin-bottom:clamp(48px,5vw,72px);}
-.map-header-right p{font-size:15px;color:var(--text-3);line-height:1.85;margin-bottom:16px;}
-/* pic4 inline feature card */
-.map-feature-img{position:relative;margin-top:24px;border:1px solid var(--border-md);overflow:hidden;aspect-ratio:16/9;isolation:isolate;}
-.map-feature-img img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
-.map-feature-img::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
-.map-feature-img-tag{position:absolute;bottom:14px;left:14px;z-index:3;background:rgba(5,15,31,.90);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);}
+/* ============================================================
+   SERVICES — pic2.png as side visual column
+   ============================================================ */
+#services{padding:var(--section-pad) 0;background:var(--navy-3);}
+.svc-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-bottom:clamp(44px,5vw,64px);}
+
+/* pic2.png: fully visible portrait */
+.svc-img-col{position:relative;}
+.svc-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:3/4;}
+.svc-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;}
+.svc-img-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+/* Bottom scrim only — minimal, for badge legibility */
+.svc-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,rgba(5,15,31,.55),transparent);z-index:1;pointer-events:none;}
+.svc-img-badge{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;background:rgba(5,15,31,.88);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:14px 16px;}
+.sib-label{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);margin-bottom:4px;}
+.sib-value{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--gold);letter-spacing:-.5px;}
+.svc-img-corner{position:absolute;width:20px;height:20px;}
+.svc-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.svc-img-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+
+.svc-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
+.svc-grid{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
+.svc-card{background:var(--surface-1);padding:22px 22px;border:1px solid var(--border-lo);transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),rgba(212,168,68,.3));transform:scaleY(0);transform-origin:top;transition:transform .38s var(--ease-out);}
+.svc-card:hover{background:var(--surface-2);border-color:var(--border-md);}
+.svc-card:hover::before{transform:scaleY(1);}
+.svc-card-head{display:flex;align-items:center;gap:12px;margin-bottom:8px;}
+.svc-icon{width:40px;height:40px;border:1px solid var(--border-md);background:var(--gold-mist);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.svc-icon svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.6;}
+.svc-card h3{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);letter-spacing:.3px;}
+.svc-card p{font-size:12.5px;color:var(--text-3);line-height:1.72;padding-left:52px;}
+@media(max-width:900px){.svc-layout{grid-template-columns:1fr;}.svc-img-col{display:none;}}
+
+/* ============================================================
+   MAP COMPLIANCE — pic3.png as side visual + pic4.png as feature card
+   ============================================================ */
+#map-compliance{padding:var(--section-pad) 0;background:var(--navy-2);}
+.map-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-bottom:clamp(44px,5vw,64px);}
+
+/* pic3.png: left column, clearly visible */
+.map-img-col{position:relative;}
+.map-img-stack{position:relative;}
+.map-img-primary{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:4/5;}
+.map-img-primary img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;}
+.map-img-primary::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+/* Minimal bottom fade only */
+.map-img-primary::after{content:'';position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,rgba(5,15,31,.45),transparent);z-index:1;pointer-events:none;}
+/* pic4.png: small inset card, bottom-right overlap */
+.map-img-inset{position:absolute;bottom:-24px;right:-24px;width:55%;z-index:4;border:2px solid var(--gold);overflow:hidden;background:var(--surface-1);}
+.map-img-inset img{width:100%;display:block;object-fit:cover;aspect-ratio:16/10;}
+.map-img-inset::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,31,.40),transparent);z-index:1;pointer-events:none;}
+.map-img-tag{position:absolute;top:8px;left:8px;z-index:2;background:var(--gold);padding:4px 8px;font-family:var(--font-head);font-size:7px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);}
+.map-img-corner{position:absolute;width:20px;height:20px;}
+.map-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.map-text-col{padding-top:8px;padding-right:0;}
+.map-text-col .sec-p{margin-bottom:12px;}
 .map-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
-.map-pillar{background:var(--surface-1);padding:28px 24px;transition:all .35s var(--ease-out);position:relative;overflow:hidden;}
-.map-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out);}
+.map-pillar{background:var(--surface-1);padding:24px 20px;transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
+.map-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease-out);}
 .map-pillar:hover{background:var(--surface-2);}
 .map-pillar:hover::before{transform:scaleX(1);}
-.map-pillar-icon{width:44px;height:44px;border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;background:var(--gold-mist);margin-bottom:16px;}
-.map-pillar-icon svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.6;}
-.map-pillar h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:8px;letter-spacing:.5px;}
-.map-pillar p{font-size:12.5px;color:var(--text-3);line-height:1.70;}
+.map-pillar-icon{width:40px;height:40px;border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;background:var(--gold-mist);margin-bottom:14px;}
+.map-pillar-icon svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.6;}
+.map-pillar h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:6px;}
+.map-pillar p{font-size:12px;color:var(--text-3);line-height:1.68;}
 .map-badge-row{display:flex;gap:1px;margin-top:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
-.map-badge{flex:1;background:var(--surface-1);padding:18px 20px;display:flex;align-items:center;gap:12px;transition:background .25s;}
+.map-badge{flex:1;background:var(--surface-1);padding:16px 18px;display:flex;align-items:center;gap:10px;transition:background .25s;}
 .map-badge:hover{background:var(--surface-2);}
 .map-badge-check{width:20px;height:20px;background:linear-gradient(135deg,var(--gold),var(--gold-hi));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .map-badge-check svg{width:10px;height:10px;stroke:var(--navy);fill:none;stroke-width:3;}
-.map-badge-text{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);letter-spacing:.3px;}
-@media(max-width:860px){.map-header{grid-template-columns:1fr;}.map-pillars{grid-template-columns:1fr 1fr;}.map-badge-row{flex-wrap:wrap;}.map-badge{min-width:calc(50% - 1px);}}
+.map-badge-text{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);}
+@media(max-width:900px){.map-layout{grid-template-columns:1fr;}.map-img-col{padding-bottom:32px;}.map-img-inset{right:0;bottom:-20px;width:45%;}  .map-pillars{grid-template-columns:1fr 1fr;}.map-badge-row{flex-wrap:wrap;}.map-badge{min-width:calc(50% - 1px);}}
 @media(max-width:560px){.map-pillars{grid-template-columns:1fr;}.map-badge{min-width:100%;}}
 
-/* SERVICES — pic5.png as side visual */
-#services{padding:clamp(80px,9vw,120px) 0;background:var(--navy-3);}
-.svc-header{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:end;margin-bottom:clamp(44px,5vw,64px);}
-.svc-header-right p{font-size:15px;color:var(--text-3);line-height:1.85;}
-.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
-.svc-card{background:var(--surface-1);padding:32px 28px;transition:all .35s var(--ease-out);position:relative;overflow:hidden;cursor:default;}
-.svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),rgba(212,168,68,.3));transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease-out);}
-.svc-card:hover{background:var(--surface-2);}
-.svc-card:hover::before{transform:scaleY(1);}
-.svc-icon{width:48px;height:48px;border:1px solid var(--border-md);background:var(--gold-mist);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
-.svc-icon svg{width:20px;height:20px;stroke:var(--gold);fill:none;stroke-width:1.6;}
-.svc-card h3{font-family:var(--font-head);font-size:14px;font-weight:700;color:var(--text-1);margin-bottom:10px;letter-spacing:.5px;}
-.svc-card p{font-size:13px;color:var(--text-3);line-height:1.75;}
-.svc-tag{display:inline-block;margin-top:16px;font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);border:1px solid var(--border-md);padding:4px 10px;}
-/* pic5 full-width banner below services grid */
-.svc-visual-band{position:relative;margin-top:1px;overflow:hidden;border:1px solid var(--border-lo);border-top:none;aspect-ratio:21/6;isolation:isolate;}
-@media(max-width:700px){.svc-visual-band{aspect-ratio:16/7;}}
-.svc-visual-band img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
-.svc-visual-band-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(5,15,31,.85) 0%,rgba(5,15,31,.35) 55%,rgba(5,15,31,.10) 100%);z-index:1;}
-.svc-visual-band-content{position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding:clamp(20px,3vw,48px) clamp(20px,4vw,56px);}
-.svbc-h{font-family:var(--font-display);font-size:clamp(24px,3.5vw,52px);font-weight:700;color:var(--white);letter-spacing:-.5px;line-height:1.04;}
-.svbc-h em{font-style:italic;color:var(--gold);}
-@media(max-width:900px){.svc-header{grid-template-columns:1fr;}.svc-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
-
-/* CHANNEL — pic6.png as main cinematic */
+/* ============================================================
+   CHANNEL / OMNICHANNEL — pic5.png as full-bleed cinematic
+   pic5 is clearly visible, overlay light on right side
+   ============================================================ */
 #channel-section{background:var(--navy);}
-.cin-stage{width:100%;aspect-ratio:21/8;position:relative;overflow:hidden;background:var(--surface-1);}
+.cin-stage{width:100%;aspect-ratio:21/8;position:relative;overflow:hidden;background:var(--surface-1);border-top:1px solid var(--border-lo);}
 @media(max-width:900px){.cin-stage{aspect-ratio:16/7;}}
 @media(max-width:600px){.cin-stage{aspect-ratio:4/3;}}
-.cin-stage .img-clip{position:absolute;inset:0;overflow:hidden;isolation:isolate;}
-.cin-stage .img-clip img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;animation:kenBurns 9s ease-in-out infinite;}
-.cin-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to right,rgba(5,15,31,.88) 0%,rgba(5,15,31,.42) 50%,rgba(5,15,31,.12) 100%),linear-gradient(to top,rgba(5,15,31,.75) 0%,transparent 45%);}
-.cin-content{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:clamp(20px,3vw,52px) clamp(20px,4vw,64px);gap:24px;flex-wrap:wrap;}
-.cin-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;background:rgba(212,168,68,.12);border:1px solid var(--border-md);padding:6px 14px;}
+.cin-img-wrap{position:absolute;inset:0;overflow:hidden;}
+.cin-img-wrap img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;animation:kenBurns 12s ease-in-out infinite;}
+/* Overlay: only left 40% dark, rest shows image */
+.cin-overlay{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to right, rgba(5,15,31,.88) 0%, rgba(5,15,31,.55) 38%, rgba(5,15,31,.12) 65%, transparent 85%),
+    linear-gradient(to top, rgba(5,15,31,.60) 0%, transparent 40%);
+}
+.cin-content{position:absolute;inset:0;z-index:2;display:flex;align-items:center;padding:clamp(20px,3vw,52px) clamp(20px,4vw,64px);}
+.cin-left{max-width:420px;}
+.cin-badge{display:inline-flex;align-items:center;gap:8px;margin-bottom:14px;background:rgba(212,168,68,.14);border:1px solid var(--border-md);padding:6px 14px;}
 .cin-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2.5s ease infinite;}
 .cin-badge-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-.cin-h{font-family:var(--font-display);font-size:clamp(28px,4vw,62px);font-weight:700;color:var(--white);letter-spacing:-.5px;line-height:1.04;}
+.cin-h{font-family:var(--font-display);font-size:clamp(26px,4vw,58px);font-weight:700;color:var(--white);letter-spacing:-.5px;line-height:1.06;}
 .cin-h em{font-style:italic;color:var(--gold);}
-.cin-right{display:flex;flex-direction:column;gap:1px;min-width:220px;}
-.cin-chip{background:rgba(5,15,31,.88);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:14px 20px;display:flex;align-items:center;gap:12px;}
-.cin-chip-icon{width:28px;height:28px;background:var(--gold-mist);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.cin-chip-icon svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:1.8;}
-.cin-chip-text{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);letter-spacing:.3px;}
+
 .channel-below{padding:clamp(40px,4.5vw,60px) 0;background:var(--navy-3);border-bottom:1px solid var(--border-lo);}
 .channel-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
-.ch-card{background:var(--surface-1);padding:24px 22px;transition:all .35s var(--ease-out);position:relative;overflow:hidden;}
-.ch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out);}
+.ch-card{background:var(--surface-1);padding:24px 22px;transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
+.ch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease-out);}
 .ch-card:hover{background:var(--surface-2);}
 .ch-card:hover::before{transform:scaleX(1);}
-.ch-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--gold);margin-bottom:12px;letter-spacing:1px;}
-.ch-card h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px;letter-spacing:.5px;}
+.ch-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;letter-spacing:1px;}
+.ch-card h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px;}
 .ch-card p{font-size:12.5px;color:var(--text-3);line-height:1.65;}
 @media(max-width:900px){.channel-cards{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.channel-cards{grid-template-columns:1fr;}}
 
-/* TRUST BAR */
-#trust-bar{padding:clamp(52px,5vw,72px) 0;background:var(--navy-2);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);}
-.trust-bar-label{text-align:center;font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--text-4);margin-bottom:32px;}
+/* ============================================================
+   TRUST BAR
+   ============================================================ */
+#trust-bar{padding:clamp(48px,5vw,68px) 0;background:var(--navy-2);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);}
+.trust-bar-label{text-align:center;font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--text-4);margin-bottom:28px;}
 .trust-bar-label span{color:var(--gold);}
-.trust-logos-row{display:flex;align-items:center;justify-content:center;gap:1px;flex-wrap:wrap;background:var(--border-lo);border:1px solid var(--border-lo);}
-.tl-box{background:var(--surface-1);padding:22px 32px;display:flex;align-items:center;justify-content:center;min-width:160px;transition:background .25s;position:relative;flex:1;}
+.trust-logos-row{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
+.tl-box{background:var(--surface-1);padding:22px 16px;display:flex;align-items:center;justify-content:center;transition:background .25s;position:relative;}
 .tl-box:hover{background:var(--surface-2);}
-.tl-box::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out);}
+.tl-box::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease-out);}
 .tl-box:hover::after{transform:scaleX(1);}
-.tl-inner{font-family:var(--font-head);font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--text-4);opacity:.55;transition:opacity .25s,color .25s;text-align:center;line-height:1.2;}
-.tl-inner span{display:block;font-size:7px;font-weight:600;letter-spacing:2px;color:var(--text-4);opacity:.5;margin-top:3px;}
+.tl-inner{font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);opacity:.55;transition:opacity .25s,color .25s;text-align:center;line-height:1.3;}
+.tl-inner span{display:block;font-size:7px;font-weight:600;letter-spacing:2px;margin-top:3px;}
 .tl-box:hover .tl-inner{opacity:.85;color:var(--text-2);}
-@media(max-width:640px){.trust-logos-row{flex-direction:column;}.tl-box{width:100%;}}
+@media(max-width:700px){.trust-logos-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:420px){.trust-logos-row{grid-template-columns:repeat(2,1fr);}}
 
-/* BRAND PROCESS — pic7.png side visual */
-#brand-process{padding:clamp(80px,9vw,120px) 0;background:var(--navy);}
-.process-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-bottom:clamp(44px,5vw,64px);}
+/* ============================================================
+   HOW IT WORKS — pic7.png as visible portrait column
+   ============================================================ */
+#brand-process{padding:var(--section-pad) 0;background:var(--navy);}
+.process-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;}
 .process-img-col{position:relative;}
-.process-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:3/4;isolation:isolate;}
+.process-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:3/4;}
 .process-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
 .process-img-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
-.process-img-badge{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;background:rgba(5,15,31,.92);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:16px 18px;}
+/* Bottom text area only */
+.process-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(5,15,31,.65),transparent);z-index:1;pointer-events:none;}
+.process-img-badge{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;background:rgba(5,15,31,.90);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:14px 16px;}
 .pib-label{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);margin-bottom:4px;}
-.pib-value{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);letter-spacing:-.5px;}
+.pib-value{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--gold);letter-spacing:-.5px;}
 .process-img-corner{position:absolute;width:20px;height:20px;}
 .process-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
 .process-img-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
-.process-text-col{display:flex;flex-direction:column;justify-content:center;}
-.process-steps{display:flex;flex-direction:column;gap:1px;margin-top:32px;}
-.pstep{background:var(--surface-1);padding:24px;position:relative;overflow:hidden;transition:background .35s;border:1px solid var(--border-lo);}
-.pstep::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),rgba(212,168,68,.2));transform:scaleY(0);transform-origin:top;transition:transform .4s var(--ease-out);}
+.process-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
+.process-steps{display:flex;flex-direction:column;gap:1px;margin-top:28px;}
+.pstep{background:var(--surface-1);padding:22px;position:relative;overflow:hidden;transition:background .32s;border:1px solid var(--border-lo);}
+.pstep::after{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),rgba(212,168,68,.2));transform:scaleY(0);transform-origin:top;transition:transform .38s var(--ease-out);}
 .pstep:hover{background:var(--surface-2);}
 .pstep:hover::after{transform:scaleY(1);}
-.pstep-head{display:flex;align-items:center;gap:14px;margin-bottom:10px;}
-.pstep-num{font-family:var(--font-display);font-size:28px;font-weight:700;color:rgba(212,168,68,.25);line-height:1;letter-spacing:-1px;min-width:36px;}
-.pstep-icon{width:36px;height:36px;border:1px solid var(--border-md);background:var(--gold-mist);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.pstep-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.8;}
-.pstep h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);letter-spacing:.5px;}
-.pstep p{font-size:12.5px;color:var(--text-3);line-height:1.70;padding-left:50px;}
-@media(max-width:900px){.process-layout{grid-template-columns:1fr;}.process-img-col{display:none;}}
+.pstep-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;}
+.pstep-num{font-family:var(--font-display);font-size:26px;font-weight:700;color:rgba(212,168,68,.22);line-height:1;letter-spacing:-1px;min-width:34px;}
+.pstep-icon{width:34px;height:34px;border:1px solid var(--border-md);background:var(--gold-mist);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pstep-icon svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.8;}
+.pstep h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);}
+.pstep p{font-size:12.5px;color:var(--text-3);line-height:1.70;padding-left:48px;}
+@media(max-width:900px){.process-layout{grid-template-columns:1fr;}.process-img-col{aspect-ratio:16/9;margin-bottom:8px;}.process-img-frame{aspect-ratio:16/9;}}
 
-/* WHY US — pic8.png side visual */
-#why-us{padding:clamp(80px,9vw,120px) 0;background:var(--navy-3);}
+/* ============================================================
+   WHY US — pic8.png as clearly visible side image
+   ============================================================ */
+#why-us{padding:var(--section-pad) 0;background:var(--navy-3);}
 .why-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,88px);align-items:center;}
-.why-img-col{position:relative;padding-bottom:28px;padding-left:28px;}
-.why-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);isolation:isolate;}
+.why-img-col{position:relative;padding-bottom:32px;padding-left:32px;}
+.why-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
 .why-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
-.why-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:3;}
-.why-float{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:18px 24px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
-.wf-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
-.wf-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:4px;}
+.why-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+/* Light bottom scrim only */
+.why-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,rgba(5,15,31,.40),transparent);z-index:1;pointer-events:none;}
+.why-float{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:16px 22px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
+.wf-n{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
+.wf-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:3px;}
 .why-corner{position:absolute;width:20px;height:20px;}
-.why-corner.tl{top:-1px;right:27px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
-.why-corner.br{bottom:27px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
+.why-corner.tl{top:-1px;right:31px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
+.why-corner.br{bottom:31px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
 .why-features{display:flex;flex-direction:column;gap:2px;margin:24px 0 32px;}
-.wf-item{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .3s var(--ease-out);position:relative;overflow:hidden;}
+.wf-item{display:flex;align-items:flex-start;gap:14px;padding:15px 17px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .28s var(--ease-out);position:relative;overflow:hidden;}
 .wf-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
 .wf-item:hover{border-color:var(--border-md);background:var(--surface-2);}
 .wf-item:hover::before{transform:scaleY(1);}
-.wf-icon{width:36px;height:36px;border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--gold-mist);}
-.wf-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.8;}
-.wf-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;letter-spacing:.5px;}
+.wf-icon{width:34px;height:34px;border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--gold-mist);}
+.wf-icon svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.8;}
+.wf-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
 .wf-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
 @media(max-width:960px){.why-inner{grid-template-columns:1fr;gap:48px;}.why-img-col{padding-left:0;padding-right:16px;order:2;}}
 
-/* TESTIMONIALS — pic9.png as header image */
-#testimonials{padding:clamp(80px,9vw,120px) 0;background:var(--navy-2);}
-.test-hero-img{position:relative;overflow:hidden;border:1px solid var(--border-md);aspect-ratio:21/6;margin-bottom:clamp(44px,5vw,64px);isolation:isolate;}
+/* ============================================================
+   TESTIMONIALS — pic9.png as clearly visible section header
+   ============================================================ */
+#testimonials{padding:var(--section-pad) 0;background:var(--navy-2);}
+
+/* pic9.png: prominent header image, clearly visible */
+.test-hero-img{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-md);
+  aspect-ratio:21/7;
+  margin-bottom:clamp(44px,5vw,64px);
+}
 @media(max-width:700px){.test-hero-img{aspect-ratio:16/7;}}
 .test-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;}
-.test-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,15,31,.50) 0%,rgba(5,15,31,.15) 50%,rgba(5,15,31,.65) 100%);z-index:1;}
+/* Very light overlay — mainly for text, image stays clearly visible */
+.test-hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom, rgba(5,15,31,.35) 0%, rgba(5,15,31,.08) 45%, rgba(5,15,31,.55) 100%);
+  z-index:1;
+}
 .test-hero-text{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;}
 .test-hero-text .eyebrow{justify-content:center;}
 .test-hero-text .eyebrow::before{display:none;}
-.test-header{text-align:center;max-width:600px;margin:0 auto clamp(44px,5vw,64px);}
 .test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
-.test-card{background:var(--surface-1);padding:32px 28px;position:relative;overflow:hidden;transition:background .35s;}
-.test-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.2));transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease-out);}
+.test-card{background:var(--surface-1);padding:30px 26px;position:relative;overflow:hidden;transition:background .32s;}
+.test-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.2));transform:scaleX(0);transform-origin:left;transition:transform .38s var(--ease-out);}
 .test-card:hover{background:var(--surface-2);}
 .test-card:hover::before{transform:scaleX(1);}
-.test-quote-icon{width:32px;height:32px;background:var(--gold-mist);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.test-quote-icon{width:32px;height:32px;background:var(--gold-mist);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;margin-bottom:18px;}
 .test-quote-icon svg{width:14px;height:14px;fill:var(--gold);stroke:none;}
-.test-card blockquote{font-family:var(--font-display);font-size:16px;color:var(--text-2);line-height:1.65;font-style:italic;margin-bottom:24px;}
-.test-sep{width:32px;height:1px;background:var(--gold);opacity:.4;margin-bottom:16px;}
-.test-name{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);letter-spacing:.5px;}
+.test-card blockquote{font-family:var(--font-display);font-size:15.5px;color:var(--text-2);line-height:1.65;font-style:italic;margin-bottom:22px;}
+.test-sep{width:28px;height:1px;background:var(--gold);opacity:.4;margin-bottom:14px;}
+.test-name{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);}
 .test-role{font-family:var(--font-head);font-size:10px;color:var(--text-4);letter-spacing:1px;margin-top:2px;}
-.test-stars{display:flex;gap:3px;margin-top:12px;}
+.test-stars{display:flex;gap:3px;margin-top:10px;}
 .test-stars span{color:var(--gold);font-size:11px;}
 @media(max-width:900px){.test-grid{grid-template-columns:1fr;}}
 
-/* CTA */
+/* ============================================================
+   CTA
+   ============================================================ */
 #cta-apply{padding:clamp(72px,8vw,100px) 0;background:linear-gradient(135deg,var(--navy-4) 0%,var(--royal) 50%,var(--navy-4) 100%);border-top:1px solid var(--border-blue);position:relative;overflow:hidden;}
 #cta-apply::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 50%,rgba(212,168,68,.08),transparent);}
 .cta-inner{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;position:relative;z-index:1;}
-.cta-h{font-family:var(--font-display);font-size:clamp(32px,4vw,68px);font-weight:700;color:var(--white);letter-spacing:-.5px;line-height:1.02;margin-bottom:16px;}
+.cta-h{font-family:var(--font-display);font-size:clamp(30px,4vw,64px);font-weight:700;color:var(--white);letter-spacing:-.5px;line-height:1.04;margin-bottom:14px;}
 .cta-h em{font-style:italic;color:var(--gold);}
-.cta-p{font-size:15px;color:var(--text-3);line-height:1.85;max-width:480px;}
+.cta-p{font-size:15px;color:var(--text-3);line-height:1.85;max-width:500px;}
 .cta-right{display:flex;flex-direction:column;gap:12px;min-width:220px;}
 @media(max-width:900px){.cta-inner{grid-template-columns:1fr;gap:32px;}.cta-right{flex-direction:row;flex-wrap:wrap;}}
 
-/* CONTACT */
-#contact{padding:clamp(80px,9vw,120px) 0;background:var(--navy-3);}
+/* ============================================================
+   CONTACT
+   ============================================================ */
+#contact{padding:var(--section-pad) 0;background:var(--navy-3);}
 .con-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,88px);}
-.con-info p{font-size:13px;color:var(--text-3);line-height:1.70;margin-bottom:24px;}
+.con-info p{font-size:13.5px;color:var(--text-3);line-height:1.75;margin-bottom:20px;}
 .con-contacts{display:flex;flex-direction:column;gap:1px;margin-top:28px;}
 .cc-row{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--surface-1);border:1px solid var(--border-lo);transition:border-color .25s,background .25s;}
 .cc-row:hover{border-color:var(--border-md);background:var(--surface-2);}
@@ -425,19 +528,22 @@ nav.scrolled{background:rgba(5,15,31,.96);backdrop-filter:blur(24px);border-bott
 .cc-val{font-family:var(--font-head);font-size:13px;font-weight:600;color:var(--text-1);}
 .con-form{display:flex;flex-direction:column;gap:1px;}
 .fg{display:flex;flex-direction:column;}
-.fg label{font-family:var(--font-head);font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);margin-bottom:8px;}
+.fg label{font-family:var(--font-head);font-size:8.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);margin-bottom:7px;}
 .fg input,.fg select,.fg textarea{font-family:var(--font-body);font-size:13px;color:var(--text-1);background:var(--surface-1);border:1px solid var(--border-lo);padding:13px 16px;transition:border-color .25s,background .25s;outline:none;width:100%;appearance:none;}
 .fg select{cursor:pointer;}
 .fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--border-hi);background:var(--surface-2);}
 .fg textarea{resize:vertical;min-height:100px;}
 .form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border-lo);}
-.form-row-2 .fg{background:var(--navy-3);padding:0;}
-.form-submit{background:linear-gradient(135deg,var(--gold),var(--gold-hi));color:var(--navy);font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:16px 32px;border:none;cursor:pointer;width:100%;transition:all .35s var(--ease-out);}
+.form-submit{background:linear-gradient(135deg,var(--gold),var(--gold-hi));color:var(--navy);font-family:var(--font-head);font-size:11px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;padding:16px 32px;border:none;cursor:pointer;width:100%;transition:all .32s var(--ease-out);}
 .form-submit:hover{box-shadow:0 12px 40px rgba(212,168,68,.40);transform:translateY(-1px);}
+.form-success{display:none;padding:16px;background:rgba(74,222,128,.10);border:1px solid rgba(74,222,128,.25);text-align:center;}
+.form-success p{font-family:var(--font-head);font-size:12px;font-weight:700;color:#4ADE80;letter-spacing:1px;}
 @media(max-width:900px){.con-layout{grid-template-columns:1fr;}}
 @media(max-width:480px){.form-row-2{grid-template-columns:1fr;}}
 
-/* FOOTER */
+/* ============================================================
+   FOOTER
+   ============================================================ */
 footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:clamp(48px,5vw,72px) 0 32px;}
 .foot-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:clamp(24px,4vw,56px);margin-bottom:clamp(32px,4vw,52px);}
 .foot-logo-row{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
@@ -460,68 +566,114 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </head>
 <body>
 
+<!-- ACCESSIBILITY -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- NAV -->
-<nav id="mainNav">
+<nav id="mainNav" role="navigation" aria-label="Main navigation">
   <div class="container">
     <div class="nav-inner">
-      <a href="#hero" class="logo">
-        <div class="logo-mark">
-          <img src="nova.jpeg" alt="Sapphire Gadgets LLC" onerror="this.style.display='none';this.parentNode.style.background='var(--gold-mist)';">
+      <a href="#hero" class="logo" aria-label="Sapphire Gadgets LLC — Home">
+        <div class="logo-mark" aria-hidden="true">
+          <img src="nova.jpeg" alt="" width="34" height="34" onerror="this.style.display='none';this.parentNode.style.background='var(--gold-mist)';">
         </div>
         <div class="logo-text">
           <span class="ln">Sapphire Gadgets</span>
           <span class="ls">LLC · Authorized Distribution</span>
         </div>
       </a>
-      <ul class="nav-links" id="navLinks">
+      <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#about-mission">About</a></li>
-        <li><a href="#map-compliance">Brand Protection</a></li>
         <li><a href="#services">Services</a></li>
-        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#map-compliance">Brand Protection</a></li>
+        <li><a href="#channel-section">Channels</a></li>
         <li><a href="#why-us">Why Us</a></li>
         <li><a href="#brand-process">How It Works</a></li>
         <li><a href="#contact" class="nav-cta">Apply Now</a></li>
       </ul>
-      <button class="nav-hbg" id="navHbg" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="nav-hbg" id="navHbg" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 </nav>
 
-<!-- HERO — pic1.png background (full opacity), pic2.png as visible right-panel portrait card -->
-<section id="hero">
-  <div class="hero-bg">
-    <img src="pic1.png" alt="Sapphire Gadgets wholesale distribution facility"
-         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&q=85&auto=format&fit=crop'">
+<!-- ============================================================
+     HERO — pic6.png as primary hero image, right side clearly visible
+     ============================================================ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-img-stage" aria-hidden="true">
+    <img
+      src="pic6.png"
+      alt="Sapphire Gadgets wholesale distribution facility"
+      loading="eager"
+      fetchpriority="high"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'">
   </div>
-  <div class="hero-topline"></div>
-  <div class="hero-grid"></div>
-  <div class="container">
+  <div class="hero-topline" aria-hidden="true"></div>
+  <div class="container" id="main-content">
     <div class="hero-inner">
+      <!-- LEFT: headline & CTA -->
       <div class="hero-left">
-        <div class="hero-tag"><span class="hero-tag-dot"></span><span class="hero-tag-label">Authorized Wholesale Distribution Partner</span></div>
-        <h1 class="hero-h1">Your Brand's<br><em>Retail &amp;</em><br>Commerce Partner.</h1>
-        <p class="hero-desc">Sapphire Gadgets LLC is a premium wholesale distributor and authorized retail partner dedicated to expanding your brand's presence across Amazon, Walmart, and major retail channels — with full MAP compliance, pricing integrity, and a long-term investment mindset.</p>
+        <div class="hero-tag" aria-label="Status: Accepting Applications">
+          <span class="hero-tag-dot" aria-hidden="true"></span>
+          <span class="hero-tag-label">Authorized Wholesale Distribution Partner</span>
+        </div>
+        <h1 class="hero-h1">
+          Your Brand's<br>
+          <em>Retail &amp;</em><br>
+          Commerce Partner.
+        </h1>
+        <p class="hero-desc">
+          Sapphire Gadgets LLC is a premium wholesale distributor and authorized retail partner dedicated to expanding your brand across Amazon, Walmart, and major retail channels — with full MAP compliance, pricing integrity, and a long-term investment mindset.
+        </p>
         <div class="hero-btns">
-          <a href="#contact" class="btn btn-gold">Apply for Partnership <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="#contact" class="btn btn-gold">
+            Apply for Partnership
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
           <a href="#brand-process" class="btn btn-ghost">How It Works</a>
         </div>
-        <div class="hero-stats">
-          <div class="hstat"><div class="hstat-n">100<span style="color:var(--gold);font-size:.7em;">%</span></div><div class="hstat-l">MAP Compliant</div></div>
-          <div class="hstat"><div class="hstat-n">50<span style="color:var(--gold);font-size:.7em;">+</span></div><div class="hstat-l">States Reached</div></div>
-          <div class="hstat"><div class="hstat-n">4<span style="color:var(--gold);font-size:.7em;">+</span></div><div class="hstat-l">Years Active</div></div>
-          <div class="hstat"><div class="hstat-n">0<span style="color:var(--gold);font-size:.7em;">%</span></div><div class="hstat-l">Drop-Ship</div></div>
+        <div class="hero-stats" role="list" aria-label="Key statistics">
+          <div class="hstat" role="listitem"><div class="hstat-n">100<span style="font-size:.7em">%</span></div><div class="hstat-l">MAP Compliant</div></div>
+          <div class="hstat" role="listitem"><div class="hstat-n">50<span style="font-size:.7em">+</span></div><div class="hstat-l">States Reached</div></div>
+          <div class="hstat" role="listitem"><div class="hstat-n">4<span style="font-size:.7em">+</span></div><div class="hstat-l">Years Active</div></div>
+          <div class="hstat" role="listitem"><div class="hstat-n">0<span style="font-size:.7em">%</span></div><div class="hstat-l">Drop-Ship</div></div>
         </div>
       </div>
-      <!-- pic2.png: visible right panel, full opacity, portrait card -->
-      <div class="hero-right">
-        <div class="hero-img-wrap">
-          <div class="hero-img-card">
-            <img src="pic2.png" alt="Sapphire Gadgets team and operations"
-                 onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'">
-            <div class="hero-badge"><span class="hb-dot"></span><div><span class="hb-label">Partnership Status</span><span class="hb-value">Accepting Applications</span></div></div>
-            <div class="hero-badge2"><div class="hb2-n">4+</div><div class="hb2-l">Years Operating</div></div>
+      <!-- RIGHT: floating trust card, semi-transparent so image shows through -->
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-trust-card">
+          <div class="htc-header">
+            <span class="htc-dot"></span>
+            <span class="htc-label">Partnership Status</span>
+            <span class="htc-status">Accepting Now</span>
           </div>
-          <div class="hero-corner tl"></div><div class="hero-corner br"></div>
+          <div class="htc-items">
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>100% MAP Compliance</strong><span>Every channel, every listing</span></div>
+            </div>
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>Inventory-Investing Buyer</strong><span>We buy, hold & distribute</span></div>
+            </div>
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>Authorized Channels Only</strong><span>Amazon, Walmart & retail</span></div>
+            </div>
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>Long-Term Partnership</strong><span>Not a one-time transaction</span></div>
+            </div>
+          </div>
+          <div class="htc-footer">
+            <div class="htc-stat"><div class="htc-stat-n">4+</div><div class="htc-stat-l">Years Active</div></div>
+            <div class="htc-divider"></div>
+            <div class="htc-stat"><div class="htc-stat-n">50+</div><div class="htc-stat-l">States</div></div>
+            <div class="htc-divider"></div>
+            <div class="htc-stat"><div class="htc-stat-n">99%</div><div class="htc-stat-l">Accuracy</div></div>
+          </div>
         </div>
       </div>
     </div>
@@ -529,7 +681,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- MARQUEE -->
-<div class="marquee-wrap">
+<div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="mi">MAP Compliance</span><span class="mi">Authorized Distribution</span><span class="mi">Amazon FBA Management</span><span class="mi">Walmart Marketplace</span><span class="mi">Inventory Investment</span><span class="mi">Brand Protection</span><span class="mi">Omnichannel Commerce</span><span class="mi">Pricing Integrity</span><span class="mi">Catalog Optimization</span><span class="mi">Long-Term Partnership</span><span class="mi">Retail Expansion</span><span class="mi">Wholesale Procurement</span>
     <span class="mi">MAP Compliance</span><span class="mi">Authorized Distribution</span><span class="mi">Amazon FBA Management</span><span class="mi">Walmart Marketplace</span><span class="mi">Inventory Investment</span><span class="mi">Brand Protection</span><span class="mi">Omnichannel Commerce</span><span class="mi">Pricing Integrity</span><span class="mi">Catalog Optimization</span><span class="mi">Long-Term Partnership</span><span class="mi">Retail Expansion</span><span class="mi">Wholesale Procurement</span>
@@ -537,184 +689,82 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </div>
 
 <!-- BRAND PROMISE -->
-<section id="brand-promise">
+<section id="brand-promise" aria-label="Our Brand Promise">
   <div class="container">
     <div class="bp-inner reveal">
       <div>
-        <div class="bp-eyebrow"><span class="bp-eyebrow-dot"></span><span class="bp-eyebrow-text">Now Accepting Brand Applications</span></div>
+        <div class="bp-eyebrow"><span class="bp-eyebrow-dot" aria-hidden="true"></span><span class="bp-eyebrow-text">Now Accepting Brand Applications</span></div>
         <h2 class="bp-h">A Partner Built to<br><em>Protect Your Brand</em></h2>
         <p class="bp-p">Sapphire Gadgets LLC is a serious wholesale distribution company — not a drop-shipper, not a liquidator, and not an arbitrage operation. We purchase inventory at scale, invest in long-term relationships, and operate with the discipline that premier brands demand.</p>
       </div>
       <div class="bp-right reveal rd1">
-        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Full MAP Price Compliance</span></div>
-        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Inventory-Investing Buyer</span></div>
-        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Authorized Channel Representation</span></div>
-        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Catalog &amp; Listing Compliance</span></div>
-        <div class="bp-commitment"><span class="bp-commitment-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Long-Term Growth Mindset</span></div>
-        <a href="#contact" class="btn btn-gold" style="justify-content:center;width:100%;margin-top:12px;">Apply for Distribution <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <div class="bp-commitment"><span class="bp-commitment-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Full MAP Price Compliance — No Exceptions</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Inventory-Investing — Not a Broker</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Authorized Channel Representation Only</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Catalog &amp; Listing Accuracy Maintained</span></div>
+        <div class="bp-commitment"><span class="bp-commitment-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span><span class="bp-commitment-text">Long-Term Growth — Not Short-Term Profit</span></div>
+        <a href="#contact" class="btn btn-gold" style="justify-content:center;width:100%;margin-top:12px;">Apply for Distribution <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =====================================================
-     IMAGE GALLERY — All 9 images, fully visible
-     pic1–pic9 used once each across the whole page.
-     Gallery occupies: pic1 (hero bg), pic2 (hero card),
-     then gallery slider shows all 9.
-     ===================================================== -->
-<section id="gallery">
-  <div class="container">
-    <div class="gallery-header reveal">
-      <span class="eyebrow" style="justify-content:center;">Visual Gallery</span>
-      <h2 class="sec-h" style="text-align:center;">Our Operations &amp; <em>Facilities</em></h2>
-      <span class="gold-line" style="margin:18px auto;"></span>
-      <p class="sec-p">A look inside Sapphire Gadgets — from warehouse operations and distribution infrastructure to team and brand partnerships across every channel we serve.</p>
-    </div>
-
-    <!-- Slideshow -->
-    <div class="gallery-slideshow reveal rd1">
-      <div class="gallery-slideshow-track" id="galleryTrack">
-        <div class="gallery-slide">
-          <img src="pic1.png" alt="Sapphire Gadgets — Distribution Facility" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">01 / 09</span><span class="gsl-title">Distribution Facility</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic2.png" alt="Sapphire Gadgets — Team &amp; Leadership" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">02 / 09</span><span class="gsl-title">Team &amp; Leadership</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic3.png" alt="Sapphire Gadgets — Retail Operations" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">03 / 09</span><span class="gsl-title">Retail Operations</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic4.png" alt="Sapphire Gadgets — MAP Compliance" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">04 / 09</span><span class="gsl-title">Compliance Standards</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic5.png" alt="Sapphire Gadgets — Logistics Network" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">05 / 09</span><span class="gsl-title">Logistics Network</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic6.png" alt="Sapphire Gadgets — Warehouse &amp; Inventory" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">06 / 09</span><span class="gsl-title">Warehouse &amp; Inventory</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic7.png" alt="Sapphire Gadgets — Partner Onboarding" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">07 / 09</span><span class="gsl-title">Partner Onboarding</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic8.png" alt="Sapphire Gadgets — Quality Assurance" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">08 / 09</span><span class="gsl-title">Quality Assurance</span></div>
-        </div>
-        <div class="gallery-slide">
-          <img src="pic9.png" alt="Sapphire Gadgets — Brand Partners" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=85&auto=format&fit=crop'">
-          <div class="gallery-slide-overlay"></div>
-          <div class="gallery-slide-label"><span class="gsl-num">09 / 09</span><span class="gsl-title">Brand Partners</span></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Controls -->
-    <div class="gallery-controls">
-      <div class="gc-arrows">
-        <button class="gc-btn" id="gcPrev" aria-label="Previous">
-          <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="gc-btn" id="gcNext" aria-label="Next">
-          <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
-      </div>
-      <div class="gc-dots" id="gcDots"></div>
-      <div class="gc-counter"><span id="gcCurrent">01</span> / <span>09</span></div>
-    </div>
-
-    <!-- Thumbnail strip -->
-    <div class="gallery-thumbs" id="galleryThumbs">
-      <div class="gallery-thumb active" data-index="0" onclick="goToSlide(0)">
-        <img src="pic1.png" alt="01" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=200&q=70'">
-        <span class="gallery-thumb-num">01</span>
-      </div>
-      <div class="gallery-thumb" data-index="1" onclick="goToSlide(1)">
-        <img src="pic2.png" alt="02" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&q=70'">
-        <span class="gallery-thumb-num">02</span>
-      </div>
-      <div class="gallery-thumb" data-index="2" onclick="goToSlide(2)">
-        <img src="pic3.png" alt="03" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&q=70'">
-        <span class="gallery-thumb-num">03</span>
-      </div>
-      <div class="gallery-thumb" data-index="3" onclick="goToSlide(3)">
-        <img src="pic4.png" alt="04" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=70'">
-        <span class="gallery-thumb-num">04</span>
-      </div>
-      <div class="gallery-thumb" data-index="4" onclick="goToSlide(4)">
-        <img src="pic5.png" alt="05" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=200&q=70'">
-        <span class="gallery-thumb-num">05</span>
-      </div>
-      <div class="gallery-thumb" data-index="5" onclick="goToSlide(5)">
-        <img src="pic6.png" alt="06" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=200&q=70'">
-        <span class="gallery-thumb-num">06</span>
-      </div>
-      <div class="gallery-thumb" data-index="6" onclick="goToSlide(6)">
-        <img src="pic7.png" alt="07" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=200&q=70'">
-        <span class="gallery-thumb-num">07</span>
-      </div>
-      <div class="gallery-thumb" data-index="7" onclick="goToSlide(7)">
-        <img src="pic8.png" alt="08" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=200&q=70'">
-        <span class="gallery-thumb-num">08</span>
-      </div>
-      <div class="gallery-thumb" data-index="8" onclick="goToSlide(8)">
-        <img src="pic9.png" alt="09" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=200&q=70'">
-        <span class="gallery-thumb-num">09</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT / MISSION — pic3.png as primary visible image -->
-<section id="about-mission">
+<!-- ============================================================
+     ABOUT / MISSION — pic1.png as primary side image
+     ============================================================ -->
+<section id="about-mission" aria-label="About Sapphire Gadgets">
   <div class="container">
     <div class="about-grid">
+      <!-- pic1.png: fully visible, prominent foreground image -->
       <div class="about-img-col reveal">
         <div class="about-frame">
-          <img src="pic3.png" alt="Sapphire Gadgets retail and distribution operations"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85&auto=format&fit=crop'">
-          <div class="about-badge-live"><span class="abl-dot"></span><span class="abl-text">Active Partner Network</span></div>
+          <img
+            src="pic1.png"
+            alt="Sapphire Gadgets distribution facility interior"
+            loading="lazy"
+            width="600" height="450"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=85&auto=format&fit=crop'">
+          <div class="about-badge-live" aria-label="Active partner network status">
+            <span class="abl-dot" aria-hidden="true"></span>
+            <span class="abl-text">Active Partner Network</span>
+          </div>
         </div>
-        <div class="about-float-stat">
+        <div class="about-float-stat" aria-label="100% MAP Compliance Rate">
           <div class="afs-n">100%</div>
           <div class="afs-l">MAP Compliance Rate</div>
         </div>
-        <div class="about-corner tl"></div>
-        <div class="about-corner br"></div>
+        <div class="about-corner tl" aria-hidden="true"></div>
+        <div class="about-corner br" aria-hidden="true"></div>
       </div>
+      <!-- Mission copy -->
       <div class="reveal rd1">
         <span class="eyebrow">Our Mission</span>
         <h2 class="sec-h">Bridging Manufacturers<br>to <em>Modern Retail</em></h2>
-        <span class="gold-line"></span>
-        <p class="sec-p" style="margin-bottom:8px;">Sapphire Gadgets LLC serves as a strategic bridge between manufacturers and the retail channels where today's consumers shop. Our mission is to help brands reach new customers — across Amazon, Walmart, regional chains, and digital storefronts — while preserving the pricing discipline, catalog accuracy, and marketplace compliance that brand managers depend on.</p>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p" style="margin-bottom:12px;">Sapphire Gadgets LLC serves as a strategic bridge between manufacturers and the retail channels where today's consumers shop. We help brands reach new customers — across Amazon, Walmart, regional chains, and digital storefronts — while preserving pricing discipline, catalog accuracy, and marketplace compliance that brand managers depend on.</p>
         <p class="sec-p" style="max-width:100%;">We are not a clearance house, a liquidator, or an opportunistic reseller. We are a long-term commercial partner that purchases inventory responsibly, invests in your brand's growth, and represents your products with the professionalism your reputation demands.</p>
         <div class="mission-pillars">
-          <div class="mpillar"><div class="mpillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="mpillar-body"><h4>Pricing Integrity First</h4><p>Every channel we sell through is MAP-compliant by policy. We never engage in destructive discounting that damages manufacturer relationships or brand equity.</p></div></div>
-          <div class="mpillar"><div class="mpillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="mpillar-body"><h4>Long-Term Partnership Orientation</h4><p>We build relationships intended to last years — not transactions designed to maximize a single purchase. Our business grows when yours does.</p></div></div>
-          <div class="mpillar"><div class="mpillar-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><div class="mpillar-body"><h4>Omnichannel Commerce Expertise</h4><p>From Amazon FBA and Walmart Marketplace to specialty retail buyers, we understand the operational demands of each channel and manage them with precision.</p></div></div>
+          <div class="mpillar">
+            <div class="mpillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="mpillar-body"><h4>Pricing Integrity First</h4><p>Every channel we sell through is MAP-compliant by policy. We never engage in destructive discounting that damages manufacturer relationships or brand equity.</p></div>
+          </div>
+          <div class="mpillar">
+            <div class="mpillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="mpillar-body"><h4>Long-Term Partnership Orientation</h4><p>We build relationships intended to last years — not transactions designed to maximize a single purchase. Our business grows when yours does.</p></div>
+          </div>
+          <div class="mpillar">
+            <div class="mpillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+            <div class="mpillar-body"><h4>Omnichannel Commerce Expertise</h4><p>From Amazon FBA and Walmart Marketplace to specialty retail buyers, we understand the operational demands of each channel and manage them with precision.</p></div>
+          </div>
         </div>
-        <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- STATS BAND -->
-<div class="stats-band">
+<div class="stats-band" aria-label="Key performance metrics">
   <div class="container">
     <div class="stats-grid">
       <div class="stat-item reveal"><div class="stat-n"><span class="counter" data-target="100">0</span><span>%</span></div><div class="stat-l">MAP Compliance Rate</div></div>
@@ -726,191 +776,343 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </div>
 
-<!-- MAP COMPLIANCE — pic4.png as visible inline feature image -->
-<section id="map-compliance">
+<!-- ============================================================
+     SERVICES — pic2.png as clearly visible portrait column
+     ============================================================ -->
+<section id="services" aria-label="Our Services">
   <div class="container">
-    <div class="map-header reveal">
-      <div>
+    <div class="svc-layout">
+      <!-- pic2.png: fully visible portrait -->
+      <div class="svc-img-col reveal">
+        <div class="svc-img-frame">
+          <img
+            src="pic2.png"
+            alt="Sapphire Gadgets team and operations"
+            loading="lazy"
+            width="500" height="667"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'">
+          <div class="svc-img-badge">
+            <div class="sib-label">Our Focus</div>
+            <div class="sib-value">Brand-First Distribution</div>
+          </div>
+        </div>
+        <div class="svc-img-corner tl" aria-hidden="true"></div>
+        <div class="svc-img-corner br" aria-hidden="true"></div>
+      </div>
+      <!-- Services list -->
+      <div class="svc-text-col reveal rd1">
+        <span class="eyebrow">Our Services</span>
+        <h2 class="sec-h">What We Offer<br><em>Brand Partners</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p">Built around one objective: helping your brand grow through premium retail and ecommerce channels while protecting pricing structures, brand image, and customer experience.</p>
+        <div class="svc-grid">
+          <div class="svc-card">
+            <div class="svc-card-head">
+              <div class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+              <h3>Enterprise Wholesale Procurement</h3>
+            </div>
+            <p>We purchase your products at scale, directly and through authorized channels, providing immediate inventory investment. We are buyers — not brokers.</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-card-head">
+              <div class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div>
+              <h3>Amazon FBA Management</h3>
+            </div>
+            <p>Full lifecycle management — inbound compliance, FBA prep, listing optimization, Buy Box strategy, and account health monitoring. Fully MAP-compliant.</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-card-head">
+              <div class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+              <h3>Walmart Marketplace Operations</h3>
+            </div>
+            <p>Approved seller status, compliant content, and consistent MAP pricing — exactly what your brand needs to succeed on Walmart.com.</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-card-head">
+              <div class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <h3>Catalog Optimization &amp; Compliance</h3>
+            </div>
+            <p>Your brand's catalog maintained to manufacturer specifications — accurate titles, approved imagery, compliant descriptions across every channel.</p>
+          </div>
+          <div class="svc-card">
+            <div class="svc-card-head">
+              <div class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+              <h3>Strategic Brand Growth Support</h3>
+            </div>
+            <p>Market intelligence, channel performance data, and collaborative planning — we participate actively in your brand's long-term growth strategy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAP COMPLIANCE — pic3.png left portrait + pic4.png inset card
+     ============================================================ -->
+<section id="map-compliance" aria-label="MAP Compliance and Brand Protection">
+  <div class="container">
+    <div class="map-layout">
+      <!-- pic3.png: primary visible image + pic4.png inset -->
+      <div class="map-img-col reveal" style="padding-bottom:32px;">
+        <div class="map-img-stack">
+          <div class="map-img-primary">
+            <img
+              src="pic3.png"
+              alt="Sapphire Gadgets retail and compliance operations"
+              loading="lazy"
+              width="600" height="750"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&q=85&auto=format&fit=crop'">
+            <div class="map-img-corner tl" aria-hidden="true"></div>
+          </div>
+          <!-- pic4.png: inset card, clearly visible, bottom-right overlap -->
+          <div class="map-img-inset">
+            <img
+              src="pic4.png"
+              alt="MAP compliance documentation and brand protection"
+              loading="lazy"
+              width="330" height="206"
+              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=85&auto=format&fit=crop'">
+            <span class="map-img-tag">Brand Protection</span>
+          </div>
+        </div>
+      </div>
+      <!-- MAP content -->
+      <div class="map-text-col reveal rd1">
         <span class="eyebrow">Brand Protection</span>
         <h2 class="sec-h">MAP Compliance &amp;<br><em>Pricing Integrity</em></h2>
-        <span class="gold-line"></span>
-        <p class="sec-p">Brand managers and supplier approval teams tell us that pricing integrity is their #1 concern when evaluating a new distribution partner. We take that responsibility seriously — and have built our entire operation around it.</p>
-      </div>
-      <div class="map-header-right reveal rd1">
-        <p>Our MAP compliance policy is non-negotiable: every listing we manage, every channel we sell through, and every marketplace we participate in adheres to the manufacturer's minimum advertised price — without exception.</p>
-        <p>We do not engage in grey-market purchasing, unauthorized repricing, or channel tactics that would compromise your brand's value perception.</p>
-        <!-- pic4.png: visible inline image -->
-        <div class="map-feature-img">
-          <img src="pic4.png" alt="MAP compliance and brand protection operations"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=900&q=85&auto=format&fit=crop'">
-          <span class="map-feature-img-tag">Brand Protection Operations</span>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p">Pricing integrity is the #1 concern brand managers raise when evaluating a distribution partner. We've built our entire operation around it — non-negotiable, no exceptions.</p>
+        <p class="sec-p" style="margin-top:12px;max-width:100%;">Every listing we manage, every channel we sell through, and every marketplace we participate in adheres to the manufacturer's minimum advertised price. We do not engage in grey-market purchasing, unauthorized repricing, or channel tactics that compromise your brand's value perception.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <a href="#contact" class="btn btn-gold">Discuss Brand Protection <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
-        <a href="#contact" class="btn btn-ghost" style="margin-top:16px;">Discuss Brand Protection <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
     </div>
-    <div class="map-pillars">
-      <div class="map-pillar reveal"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>MAP Policy Enforcement</h4><p>We monitor all our listings in real time across every marketplace to ensure full compliance with your MAP policy. Discrepancies are corrected immediately.</p></div>
-      <div class="map-pillar reveal rd1"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div><h4>Catalog &amp; Listing Accuracy</h4><p>Product titles, images, descriptions, and attributes are maintained exactly as specified by the brand. We do not modify brand content or create unauthorized variations.</p></div>
-      <div class="map-pillar reveal rd2"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h4>Inventory Traceability</h4><p>Every unit we carry is purchased through authorized channels with full documentation. Complete chain-of-custody records are available to any compliance team upon request.</p></div>
-      <div class="map-pillar reveal rd1"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h4>Customer Experience Standards</h4><p>Our fulfillment, packaging, and customer service standards reflect the quality your brand represents. Ratings are actively monitored to protect your marketplace reputation.</p></div>
-      <div class="map-pillar reveal rd2"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4>No Unauthorized Channels</h4><p>We sell exclusively through channels authorized by each brand we partner with. We do not sell through unauthorized resellers, grey importers, or discount platforms.</p></div>
-      <div class="map-pillar reveal rd3"><div class="map-pillar-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><h4>Transparent Reporting</h4><p>Brand partners receive regular performance reporting covering sales velocity, channel distribution, pricing adherence, and inventory levels — full visibility into how your products move.</p></div>
+    <!-- MAP compliance pillars -->
+    <div class="map-pillars reveal">
+      <div class="map-pillar">
+        <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h4>MAP Policy Enforcement</h4>
+        <p>Real-time listing monitoring across every marketplace. Pricing discrepancies are corrected immediately — before they damage your brand.</p>
+      </div>
+      <div class="map-pillar">
+        <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <h4>Catalog &amp; Listing Accuracy</h4>
+        <p>Product titles, images, and descriptions maintained exactly as specified by the brand. No unauthorized modifications, ever.</p>
+      </div>
+      <div class="map-pillar">
+        <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h4>Inventory Traceability</h4>
+        <p>Every unit purchased through authorized channels with full documentation. Chain-of-custody records available to any compliance team on request.</p>
+      </div>
+      <div class="map-pillar">
+        <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
+        <h4>Customer Experience Standards</h4>
+        <p>Fulfillment, packaging, and customer service standards that reflect your brand's quality. Ratings actively monitored to protect your marketplace reputation.</p>
+      </div>
+      <div class="map-pillar">
+        <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h4>No Unauthorized Channels</h4>
+        <p>We sell exclusively through channels authorized by each brand partner. No grey importers, discount platforms, or unauthorized resellers.</p>
+      </div>
+      <div class="map-pillar">
+        <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h4>Transparent Reporting</h4>
+        <p>Regular performance reporting covering sales velocity, channel distribution, pricing adherence, and inventory levels — full visibility into how your products move.</p>
+      </div>
     </div>
     <div class="map-badge-row reveal">
-      <div class="map-badge"><div class="map-badge-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Unauthorized Discounting</span></div>
-      <div class="map-badge"><div class="map-badge-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Listing Manipulation</span></div>
-      <div class="map-badge"><div class="map-badge-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Grey Market Activity</span></div>
-      <div class="map-badge"><div class="map-badge-check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">Authorized Purchase Only</span></div>
+      <div class="map-badge"><div class="map-badge-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Unauthorized Discounting</span></div>
+      <div class="map-badge"><div class="map-badge-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Listing Manipulation</span></div>
+      <div class="map-badge"><div class="map-badge-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">No Grey Market Activity</span></div>
+      <div class="map-badge"><div class="map-badge-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div><span class="map-badge-text">Authorized Purchase Only</span></div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES — pic5.png as visible full-width banner below grid -->
-<section id="services">
-  <div class="container">
-    <div class="svc-header reveal">
-      <div><span class="eyebrow">Our Services</span><h2 class="sec-h">What We Offer<br><em>Brand Partners</em></h2><span class="gold-line"></span></div>
-      <div class="svc-header-right reveal rd1"><p>Our services are built around one objective: helping your brand grow through premium retail and ecommerce channels while protecting the pricing structures, brand image, and customer experience you've invested in building.</p></div>
+<!-- ============================================================
+     CHANNEL — pic5.png as cinematic full-bleed, image clearly visible
+     ============================================================ -->
+<section id="channel-section" aria-label="Our Retail Channels">
+  <div class="cin-stage reveal">
+    <div class="cin-img-wrap" aria-hidden="true">
+      <img
+        src="pic5.png"
+        alt="Sapphire Gadgets omnichannel retail and distribution operations"
+        loading="lazy"
+        width="1600" height="610"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1600&q=85&auto=format&fit=crop'">
     </div>
-    <div class="svc-grid">
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><h3>Enterprise Wholesale Procurement</h3><p>We purchase your products at scale, directly and through authorized channels, providing immediate inventory investment. We are buyers — not brokers.</p><span class="svc-tag">Inventory Investment</span></div>
-      <div class="svc-card reveal rd1"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></div><h3>Amazon FBA Management</h3><p>Full lifecycle management — from inbound compliance and FBA prep to listing optimization, Buy Box strategy, and ongoing account health monitoring. Fully MAP-compliant.</p><span class="svc-tag">Amazon Channel</span></div>
-      <div class="svc-card reveal rd2"><div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Walmart Marketplace Operations</h3><p>We manage your Walmart.com listings, fulfillment, and performance metrics with the same discipline we apply to Amazon. Approved seller status, compliant content, consistent pricing.</p><span class="svc-tag">Walmart Channel</span></div>
-      <div class="svc-card reveal"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h3>Catalog Optimization &amp; Listing Enhancement</h3><p>We maintain your brand's catalog to exact manufacturer specifications — accurate titles, approved imagery, compliant descriptions — across all channels where we represent your products.</p><span class="svc-tag">Brand Compliance</span></div>
-      <div class="svc-card reveal rd1"><div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Inbound Compliance Management</h3><p>From purchase order submission through receiving, labeling, and prep compliance, we manage every operational detail of inbound distribution to ensure platform compliance.</p><span class="svc-tag">Operations</span></div>
-      <div class="svc-card reveal rd2"><div class="svc-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h3>Strategic Brand Growth Support</h3><p>As your authorized distribution partner, we participate actively in your brand's growth strategy — providing market intelligence, channel performance data, and collaborative planning.</p><span class="svc-tag">Long-Term Growth</span></div>
-    </div>
-    <!-- pic5.png: full-width visible banner below services grid -->
-    <div class="svc-visual-band reveal">
-      <img src="pic5.png" alt="Sapphire Gadgets nationwide logistics and distribution"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1600&q=85&auto=format&fit=crop'">
-      <div class="svc-visual-band-overlay"></div>
-      <div class="svc-visual-band-content">
-        <div>
-          <h2 class="svbc-h">Distribution at Scale.<br><em>Precision at Every Step.</em></h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CHANNEL — pic6.png as cinematic banner -->
-<section id="channel-section" style="background:var(--navy);">
-  <div class="cin-stage reveal" style="border-top:1px solid var(--border-lo);">
-    <div class="img-clip">
-      <img src="pic6.png" alt="Sapphire Gadgets omnichannel retail operations"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'">
-    </div>
-    <div class="cin-overlay"></div>
+    <div class="cin-overlay" aria-hidden="true"></div>
     <div class="cin-content">
-      <div>
-        <div class="cin-badge"><span class="cin-badge-dot"></span><span class="cin-badge-text">Channel Presence</span></div>
+      <div class="cin-left">
+        <div class="cin-badge" aria-hidden="true"><span class="cin-badge-dot"></span><span class="cin-badge-text">Omnichannel Presence</span></div>
         <h2 class="cin-h">Where Your Brand<br><em>Reaches Customers</em></h2>
-      </div>
-      <div class="cin-right">
-        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8"/></svg></div><span class="cin-chip-text">Amazon FBA &amp; FBM</span></div>
-        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/></svg></div><span class="cin-chip-text">Walmart Marketplace</span></div>
-        <div class="cin-chip"><div class="cin-chip-icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/></svg></div><span class="cin-chip-text">Specialty Retail &amp; Regional Chains</span></div>
       </div>
     </div>
   </div>
   <div class="channel-below">
     <div class="container">
       <div class="channel-cards">
-        <div class="ch-card reveal"><div class="ch-num">01</div><h4>Amazon FBA &amp; FBM</h4><p>Fully compliant Amazon operations — inbound prep, listing management, Buy Box strategy, account health, and MAP enforcement — all managed in-house with dedicated expertise.</p></div>
+        <div class="ch-card reveal"><div class="ch-num">01</div><h4>Amazon FBA &amp; FBM</h4><p>Fully compliant Amazon operations — inbound prep, listing management, Buy Box strategy, account health, and MAP enforcement managed in-house with dedicated expertise.</p></div>
         <div class="ch-card reveal rd1"><div class="ch-num">02</div><h4>Walmart Marketplace</h4><p>Approved Walmart Marketplace seller with established performance metrics, compliant product content standards, and pricing disciplines aligned to your brand policy.</p></div>
-        <div class="ch-card reveal rd2"><div class="ch-num">03</div><h4>Regional &amp; Specialty Retail</h4><p>Beyond major marketplace platforms, we cultivate relationships with regional chains, specialty retailers, and independent buyers who serve the consumer segments your brand targets.</p></div>
-        <div class="ch-card reveal rd3"><div class="ch-num">04</div><h4>Direct-to-Consumer Channels</h4><p>Where appropriate and authorized, we support DTC distribution strategies that complement your brand's existing channels without creating pricing tension or unauthorized resale conflicts.</p></div>
+        <div class="ch-card reveal rd2"><div class="ch-num">03</div><h4>Regional &amp; Specialty Retail</h4><p>Beyond major marketplaces, we cultivate relationships with regional chains, specialty retailers, and independent buyers who serve the consumer segments your brand targets.</p></div>
+        <div class="ch-card reveal rd3"><div class="ch-num">04</div><h4>Direct-to-Consumer Channels</h4><p>Where appropriate and authorized, we support DTC distribution strategies that complement your existing channels without creating pricing tension or unauthorized resale conflicts.</p></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- TRUST BAR -->
-<section id="trust-bar">
+<section id="trust-bar" aria-label="Marketplace Presence">
   <div class="container">
     <div class="trust-bar-label reveal">Retail Channels &amp; Marketplaces — <span>Where We Operate</span></div>
-    <div class="trust-logos-row reveal rd1">
-      <div class="tl-box"><div class="tl-inner">Amazon<span>FBA Seller</span></div></div>
-      <div class="tl-box"><div class="tl-inner">Walmart<span>Marketplace</span></div></div>
-      <div class="tl-box"><div class="tl-inner">eBay<span>Top Rated</span></div></div>
-      <div class="tl-box"><div class="tl-inner">Shopify<span>DTC Channel</span></div></div>
-      <div class="tl-box"><div class="tl-inner">Regional<span>Retail Buyers</span></div></div>
-      <div class="tl-box"><div class="tl-inner">Specialty<span>Retail Chains</span></div></div>
+    <div class="trust-logos-row reveal rd1" role="list" aria-label="Platforms where Sapphire Gadgets operates">
+      <div class="tl-box" role="listitem"><div class="tl-inner">Amazon<span>FBA Seller</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Walmart<span>Marketplace</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">eBay<span>Top Rated</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Shopify<span>DTC Channel</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Regional<span>Retail Buyers</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Specialty<span>Retail Chains</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- HOW IT WORKS — pic7.png as visible side portrait -->
-<section id="brand-process">
+<!-- ============================================================
+     HOW IT WORKS — pic7.png as clearly visible portrait column
+     ============================================================ -->
+<section id="brand-process" aria-label="Partnership Process">
   <div class="container">
-    <div class="process-layout reveal">
-      <!-- pic7.png: fully visible portrait column -->
-      <div class="process-img-col">
+    <div class="process-layout">
+      <!-- pic7.png: fully visible portrait -->
+      <div class="process-img-col reveal">
         <div class="process-img-frame">
-          <img src="pic7.png" alt="Sapphire Gadgets partner onboarding and process"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=85&auto=format&fit=crop'">
+          <img
+            src="pic7.png"
+            alt="Sapphire Gadgets partner onboarding and process"
+            loading="lazy"
+            width="500" height="667"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=85&auto=format&fit=crop'">
           <div class="process-img-badge">
             <div class="pib-label">Our Promise</div>
             <div class="pib-value">Transparent Onboarding</div>
           </div>
         </div>
-        <div class="process-img-corner tl"></div>
-        <div class="process-img-corner br"></div>
+        <div class="process-img-corner tl" aria-hidden="true"></div>
+        <div class="process-img-corner br" aria-hidden="true"></div>
       </div>
-      <div class="process-text-col">
+      <!-- Process steps -->
+      <div class="process-text-col reveal rd1">
         <span class="eyebrow">Partnership Process</span>
         <h2 class="sec-h">How Brand<br><em>Partnerships Work</em></h2>
-        <span class="gold-line"></span>
-        <p class="sec-p">Our partnership onboarding is designed to give brand managers confidence that Sapphire Gadgets operates with the commercial discipline and operational accountability that serious distribution relationships require.</p>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p">Our onboarding gives brand managers confidence that Sapphire Gadgets operates with the commercial discipline and operational accountability that serious distribution relationships require.</p>
         <div class="process-steps">
-          <div class="pstep reveal"><div class="pstep-head"><div class="pstep-num">01</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><h4>Brand Application &amp; Review</h4></div><p>You submit a brand application outlining your products, pricing policies, and distribution requirements. We review your brand's existing marketplace presence and MAP compliance framework.</p></div>
-          <div class="pstep reveal rd1"><div class="pstep-head"><div class="pstep-num">02</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div><h4>Introductory Meeting &amp; Audit</h4></div><p>We schedule a partnership meeting to understand your brand's goals, review your current distribution structure, and demonstrate how Sapphire Gadgets's operations align with your standards.</p></div>
-          <div class="pstep reveal rd2"><div class="pstep-head"><div class="pstep-num">03</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h4>Distribution Agreement Signed</h4></div><p>We formalize the partnership through a clear distribution agreement outlining pricing policies, authorized channels, catalog standards, and mutual obligations.</p></div>
-          <div class="pstep reveal rd3"><div class="pstep-head"><div class="pstep-num">04</div><div class="pstep-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><h4>Launch &amp; Ongoing Growth</h4></div><p>We place first purchase orders, prepare inventory for distribution, activate listings, and begin the ongoing partnership management process — with regular performance reporting throughout.</p></div>
+          <div class="pstep reveal">
+            <div class="pstep-head">
+              <div class="pstep-num">01</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <h4>Brand Application &amp; Review</h4>
+            </div>
+            <p>Submit a brand application outlining your products, pricing policies, and distribution requirements. We review your marketplace presence and MAP compliance framework.</p>
+          </div>
+          <div class="pstep reveal rd1">
+            <div class="pstep-head">
+              <div class="pstep-num">02</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <h4>Introductory Meeting &amp; Audit</h4>
+            </div>
+            <p>We schedule a partnership meeting to understand your brand's goals, review your distribution structure, and demonstrate how Sapphire Gadgets aligns with your standards.</p>
+          </div>
+          <div class="pstep reveal rd2">
+            <div class="pstep-head">
+              <div class="pstep-num">03</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <h4>Distribution Agreement Signed</h4>
+            </div>
+            <p>We formalize the partnership through a clear distribution agreement outlining pricing policies, authorized channels, catalog standards, and mutual obligations.</p>
+          </div>
+          <div class="pstep reveal rd3">
+            <div class="pstep-head">
+              <div class="pstep-num">04</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+              <h4>Launch &amp; Ongoing Growth</h4>
+            </div>
+            <p>We place first purchase orders, activate listings, and begin ongoing partnership management — with regular performance reporting throughout.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY US — pic8.png as visible side image -->
-<section id="why-us">
+<!-- ============================================================
+     WHY US — pic8.png as clearly visible side image
+     ============================================================ -->
+<section id="why-us" aria-label="Why Choose Sapphire Gadgets">
   <div class="container">
     <div class="why-inner">
+      <!-- Main copy -->
       <div class="reveal">
         <span class="eyebrow">Why Choose Us</span>
         <h2 class="sec-h">The Distributor<br><em>Brands Trust</em></h2>
-        <span class="gold-line"></span>
-        <p class="sec-p" style="margin-bottom:4px;">Selecting a wholesale distribution partner is a significant business decision. Brand managers are not just choosing a buyer — they are choosing a representative of their product and brand in the marketplace.</p>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p" style="margin-bottom:4px;">Selecting a wholesale distribution partner is a significant business decision. Brand managers are not just choosing a buyer — they are choosing a marketplace representative of their product.</p>
         <div class="why-features">
-          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="wf-body"><h4>We Are Not a Drop-Shipper</h4><p>Sapphire Gadgets purchases and holds inventory. We invest our own capital in your products — creating real commercial alignment and genuine long-term accountability.</p></div></div>
-          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div><div class="wf-body"><h4>MAP Compliance is Non-Negotiable</h4><p>Every price point on every platform is maintained per your brand's MAP policy — without exceptions, workarounds, or price manipulation tactics.</p></div></div>
-          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div><div class="wf-body"><h4>Operational Transparency</h4><p>We provide regular reporting on sales performance, channel distribution, pricing compliance, and inventory health — giving you full visibility into how we represent your brand.</p></div></div>
-          <div class="wf-item"><div class="wf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div class="wf-body"><h4>Committed to Long-Term Value</h4><p>Our business model depends on sustainable brand partnerships — not short-term arbitrage or opportunistic purchasing. We succeed when your brand grows.</p></div></div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="wf-body"><h4>We Are Not a Drop-Shipper</h4><p>Sapphire Gadgets purchases and holds inventory. We invest our own capital in your products — creating real commercial alignment and genuine long-term accountability.</p></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div class="wf-body"><h4>MAP Compliance is Non-Negotiable</h4><p>Every price point on every platform maintained per your brand's MAP policy — without exceptions, workarounds, or price manipulation tactics.</p></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <div class="wf-body"><h4>Full Operational Transparency</h4><p>Regular reporting on sales performance, channel distribution, pricing compliance, and inventory health — complete visibility into how we represent your brand.</p></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="wf-body"><h4>Committed to Long-Term Value</h4><p>Our business model depends on sustainable brand partnerships — not short-term arbitrage. We succeed when your brand grows.</p></div>
+          </div>
         </div>
-        <a href="#contact" class="btn btn-gold">Begin Partnership Conversation <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#contact" class="btn btn-gold">Begin Partnership Conversation <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <!-- pic8.png: fully visible quality assurance image -->
+      <!-- pic8.png: fully visible side image -->
       <div class="why-img-col reveal rd1">
         <div class="why-frame">
-          <img src="pic8.png" alt="Sapphire Gadgets quality assurance and operations"
-               onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'">
+          <img
+            src="pic8.png"
+            alt="Sapphire Gadgets quality assurance and operations team"
+            loading="lazy"
+            width="600" height="450"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'">
         </div>
-        <div class="why-float"><div class="wf-n">0%</div><div class="wf-l">Drop-Ship Activity</div></div>
-        <div class="why-corner tl"></div><div class="why-corner br"></div>
+        <div class="why-float">
+          <div class="wf-n">0%</div>
+          <div class="wf-l">Drop-Ship Activity</div>
+        </div>
+        <div class="why-corner tl" aria-hidden="true"></div>
+        <div class="why-corner br" aria-hidden="true"></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS — pic9.png as visible full-width header image -->
-<section id="testimonials">
-  <!-- pic9.png: fully visible cinematic header -->
+<!-- ============================================================
+     TESTIMONIALS — pic9.png as prominently visible header image
+     ============================================================ -->
+<section id="testimonials" aria-label="Partner Testimonials">
+  <!-- pic9.png: clearly visible, light overlay only -->
   <div class="test-hero-img reveal">
-    <img src="pic9.png" alt="Sapphire Gadgets brand partners and testimonials"
-         onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=85&auto=format&fit=crop'">
-    <div class="test-hero-overlay"></div>
+    <img
+      src="pic9.png"
+      alt="Sapphire Gadgets brand partners and distribution network"
+      loading="lazy"
+      width="1600" height="533"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=85&auto=format&fit=crop'">
+    <div class="test-hero-overlay" aria-hidden="true"></div>
     <div class="test-hero-text">
       <span class="eyebrow">Brand Partners</span>
       <h2 class="sec-h" style="text-align:center;">What Partners<br><em>Say About Us</em></h2>
@@ -919,44 +1121,44 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   <div class="container">
     <div class="test-grid">
       <div class="test-card reveal">
-        <div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <div class="test-quote-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
         <blockquote>Sapphire Gadgets has been a model distribution partner. Their MAP compliance is impeccable and their catalog management across Amazon and Walmart is exactly what we needed from a long-term wholesale partner.</blockquote>
-        <div class="test-sep"></div>
+        <div class="test-sep" aria-hidden="true"></div>
         <div class="test-name">Brand Director</div>
         <div class="test-role">Consumer Electronics · Authorized Partner</div>
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="test-stars" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
       </div>
       <div class="test-card reveal rd1">
-        <div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
-        <blockquote>What impressed us most was that Sapphire Gadgets actually purchases and holds our inventory — they have real skin in the game. The channel reporting and compliance documentation they provide gives our legal team complete peace of mind.</blockquote>
-        <div class="test-sep"></div>
+        <div class="test-quote-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <blockquote>What impressed us most was that Sapphire Gadgets actually purchases and holds our inventory — real skin in the game. The compliance documentation they provide gives our legal team complete peace of mind.</blockquote>
+        <div class="test-sep" aria-hidden="true"></div>
         <div class="test-name">VP of Sales</div>
         <div class="test-role">Home &amp; Lifestyle Brand · Distribution Partner</div>
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="test-stars" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
       </div>
       <div class="test-card reveal rd2">
-        <div class="test-quote-icon"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <div class="test-quote-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
         <blockquote>After dealing with problematic resellers that damaged our brand on Amazon for years, working with Sapphire Gadgets has been a completely different experience. Pricing integrity, authorized channels, and genuinely professional representation.</blockquote>
-        <div class="test-sep"></div>
+        <div class="test-sep" aria-hidden="true"></div>
         <div class="test-name">Founder &amp; CEO</div>
         <div class="test-role">Premium Gadgets Brand · Wholesale Partner</div>
-        <div class="test-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <div class="test-stars" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section id="cta-apply">
+<section id="cta-apply" aria-label="Apply for Partnership">
   <div class="container">
     <div class="cta-inner">
-      <div>
+      <div class="reveal">
         <span class="eyebrow">Apply Now</span>
-        <h2 class="cta-h">Ready to <em>Grow<br>Your Brand</em> with Us?</h2>
-        <p class="cta-p">We are currently accepting applications from brands looking for a serious, MAP-compliant wholesale distribution partner. Tell us about your brand and we'll respond within one business day.</p>
+        <h2 class="cta-h">Ready to <em>Grow Your Brand</em> with Us?</h2>
+        <p class="cta-p">We are currently accepting applications from brands seeking a serious, MAP-compliant wholesale distribution partner. Tell us about your brand and we'll respond within one business day.</p>
       </div>
-      <div class="cta-right">
-        <a href="#contact" class="btn btn-gold">Apply for Partnership <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <div class="cta-right reveal rd1">
+        <a href="#contact" class="btn btn-gold">Apply for Partnership <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a href="#brand-process" class="btn btn-ghost">View Our Process</a>
       </div>
     </div>
@@ -964,38 +1166,39 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" aria-label="Contact and Application Form">
   <div class="container">
     <div class="con-layout">
       <div class="con-info reveal">
         <span class="eyebrow">Get In Touch</span>
         <h2 class="sec-h">Start the<br><em>Conversation</em></h2>
-        <span class="gold-line"></span>
+        <span class="gold-line" aria-hidden="true"></span>
         <p>We respond to all brand partnership inquiries within one business day. Whether you're ready to apply now or simply want to learn more about how Sapphire Gadgets operates, we welcome the conversation.</p>
         <p>Our team of distribution professionals is ready to walk you through our MAP compliance framework, channel operations, and what a partnership with Sapphire Gadgets would look like for your specific brand.</p>
         <div class="con-contacts">
           <div class="cc-row">
-            <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <div><div class="cc-label">Email</div><div class="cc-val">partnerships@sapphiregadgets.com</div></div>
           </div>
           <div class="cc-row">
-            <div class="cc-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
             <div><div class="cc-label">Phone</div><div class="cc-val">Available upon application</div></div>
           </div>
           <div class="cc-row">
-            <div class="cc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
             <div><div class="cc-label">Response Time</div><div class="cc-val">Within 1 business day</div></div>
           </div>
         </div>
       </div>
       <div class="con-form reveal rd1">
-        <div class="fg"><label>Full Name</label><input type="text" placeholder="Your name"></div>
+        <div class="fg"><label for="form-name">Full Name</label><input type="text" id="form-name" name="name" placeholder="Your name" autocomplete="name"></div>
         <div class="form-row-2">
-          <div class="fg"><label>Email Address</label><input type="email" placeholder="you@company.com"></div>
-          <div class="fg"><label>Company / Brand</label><input type="text" placeholder="Brand name"></div>
+          <div class="fg"><label for="form-email">Email Address</label><input type="email" id="form-email" name="email" placeholder="you@company.com" autocomplete="email"></div>
+          <div class="fg"><label for="form-brand">Company / Brand</label><input type="text" id="form-brand" name="brand" placeholder="Brand name" autocomplete="organization"></div>
         </div>
-        <div class="fg"><label>Inquiry Type</label>
-          <select>
+        <div class="fg">
+          <label for="form-type">Inquiry Type</label>
+          <select id="form-type" name="inquiry_type">
             <option value="">Select inquiry type</option>
             <option>Brand Partnership Application</option>
             <option>MAP Compliance Questions</option>
@@ -1003,21 +1206,24 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
             <option>General Distribution Inquiry</option>
           </select>
         </div>
-        <div class="fg"><label>Message</label><textarea placeholder="Tell us about your brand, products, and distribution goals..."></textarea></div>
-        <button class="form-submit">Submit Partnership Application</button>
+        <div class="fg"><label for="form-msg">Message</label><textarea id="form-msg" name="message" placeholder="Tell us about your brand, products, and distribution goals..."></textarea></div>
+        <button class="form-submit" id="formSubmit" type="button">Submit Partnership Application</button>
+        <div class="form-success" id="formSuccess" role="alert">
+          <p>✓ Application received — we'll respond within 1 business day.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="container">
     <div class="foot-top">
       <div>
         <div class="foot-logo-row">
           <div class="foot-logo-box">
-            <img src="nova.jpeg" alt="Sapphire Gadgets LLC" onerror="this.style.display='none';">
+            <img src="nova.jpeg" alt="Sapphire Gadgets LLC logo" width="32" height="32" loading="lazy" onerror="this.style.display='none';">
           </div>
           <div>
             <span class="foot-nm">Sapphire Gadgets</span>
@@ -1030,7 +1236,6 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <h5>Company</h5>
         <ul>
           <li><a href="#about-mission">About Us</a></li>
-          <li><a href="#gallery">Our Gallery</a></li>
           <li><a href="#why-us">Why Choose Us</a></li>
           <li><a href="#testimonials">Partner Stories</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -1059,7 +1264,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
     </div>
     <div class="foot-bot">
       <div class="foot-copy">© 2025 Sapphire Gadgets LLC. All rights reserved.</div>
-      <div class="foot-badges">
+      <div class="foot-badges" aria-label="Certifications and badges">
         <span class="fbadge">MAP Compliant</span>
         <span class="fbadge">Authorized Distributor</span>
         <span class="fbadge">Amazon Seller</span>
@@ -1074,90 +1279,87 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── Mobile nav toggle
+const navHbg = document.getElementById('navHbg');
+const navLinks = document.getElementById('navLinks');
+navHbg.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  navHbg.setAttribute('aria-expanded', isOpen);
+});
+// Close nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navHbg.setAttribute('aria-expanded', 'false');
+  });
+});
+// Close nav on outside click
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target)) {
+    navLinks.classList.remove('open');
+    navHbg.setAttribute('aria-expanded', 'false');
+  }
 });
 
-// ── Reveal on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); observer.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// ── Scroll reveal (IntersectionObserver)
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
 
-// ── Counter animation
+// ── Counter animation (tied to visibility)
 const counterObs = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (!entry.isIntersecting) return;
     const el = entry.target;
-    const target = parseInt(el.dataset.target);
-    const duration = 1800;
-    const step = target / (duration / 16);
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1600;
+    const steps = 60;
+    const increment = target / steps;
     let current = 0;
+    let frame = 0;
     const timer = setInterval(() => {
-      current = Math.min(current + step, target);
-      el.textContent = Math.floor(current);
+      frame++;
+      current = Math.min(Math.round(increment * frame), target);
+      el.textContent = current;
       if (current >= target) clearInterval(timer);
-    }, 16);
+    }, duration / steps);
     counterObs.unobserve(el);
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.6 });
 document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
 
-// ── Gallery slideshow
-let currentSlide = 0;
-const totalSlides = 9;
-const track = document.getElementById('galleryTrack');
-const dotsContainer = document.getElementById('gcDots');
-const currentCounter = document.getElementById('gcCurrent');
-const thumbs = document.querySelectorAll('.gallery-thumb');
-
-// Build dots
-for (let i = 0; i < totalSlides; i++) {
-  const dot = document.createElement('button');
-  dot.className = 'gc-dot' + (i === 0 ? ' active' : '');
-  dot.setAttribute('aria-label', `Slide ${i + 1}`);
-  dot.addEventListener('click', () => goToSlide(i));
-  dotsContainer.appendChild(dot);
-}
-
-function goToSlide(index) {
-  currentSlide = ((index % totalSlides) + totalSlides) % totalSlides;
-  track.style.transform = `translateX(-${currentSlide * 100}%)`;
-  // Update dots
-  document.querySelectorAll('.gc-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-  // Update thumbs
-  thumbs.forEach((t, i) => t.classList.toggle('active', i === currentSlide));
-  // Update counter
-  currentCounter.textContent = String(currentSlide + 1).padStart(2, '0');
-}
-
-document.getElementById('gcPrev').addEventListener('click', () => goToSlide(currentSlide - 1));
-document.getElementById('gcNext').addEventListener('click', () => goToSlide(currentSlide + 1));
-
-// Auto-advance every 5s
-let autoPlay = setInterval(() => goToSlide(currentSlide + 1), 5000);
-document.querySelector('.gallery-slideshow').addEventListener('mouseenter', () => clearInterval(autoPlay));
-document.querySelector('.gallery-slideshow').addEventListener('mouseleave', () => {
-  autoPlay = setInterval(() => goToSlide(currentSlide + 1), 5000);
+// ── Form submit (UX feedback)
+document.getElementById('formSubmit').addEventListener('click', () => {
+  const name = document.getElementById('form-name').value.trim();
+  const email = document.getElementById('form-email').value.trim();
+  if (!name || !email) {
+    document.getElementById('form-name').style.borderColor = name ? '' : 'var(--gold)';
+    document.getElementById('form-email').style.borderColor = email ? '' : 'var(--gold)';
+    return;
+  }
+  const success = document.getElementById('formSuccess');
+  success.style.display = 'block';
+  document.getElementById('formSubmit').style.opacity = '0.5';
+  document.getElementById('formSubmit').disabled = true;
 });
 
-// Touch swipe support
-let touchStartX = 0;
-track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-track.addEventListener('touchend', e => {
-  const diff = touchStartX - e.changedTouches[0].clientX;
-  if (Math.abs(diff) > 50) goToSlide(diff > 0 ? currentSlide + 1 : currentSlide - 1);
-});
-
-// Keyboard support
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
-  if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
-});
-
-// ── Mobile nav
-document.getElementById('navHbg').addEventListener('click', function() {
-  const links = document.getElementById('navLinks');
-  const open = links.style.display === 'flex';
-  links.style.cssText = open ? '' : 'display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:rgba(5,15,31,.98);padding:20px;border-bottom:1px solid var(--border-lo);gap:8px;z-index:899;';
+// ── Smooth scroll polyfill for older Safari
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
 });
 </script>
 </body>
