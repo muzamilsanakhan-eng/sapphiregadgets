@@ -45,6 +45,8 @@ img{display:block;max-width:100%;}
    ============================================================ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
 @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+@keyframes kenBurns{0%{transform:scale(1.00);}50%{transform:scale(1.05) translate(-0.5%,-0.5%);}100%{transform:scale(1.00);}}
+@keyframes goldShimmer{0%{background-position:200% center;}100%{background-position:-200% center;}}
 @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--gold-glow);}50%{box-shadow:0 0 0 8px rgba(212,168,68,0);}}
 @keyframes pulseLive{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.5);}50%{box-shadow:0 0 0 8px rgba(74,222,128,0);}}
@@ -88,7 +90,7 @@ img{display:block;max-width:100%;}
 /* ============================================================
    NAV
    ============================================================ */
-nav{position:fixed;top:0;left:0;right:0;z-index:900;height:76px;display:flex;align-items:center;transition:all .4s var(--ease-out);background:rgba(5,15,31,.85);backdrop-filter:blur(16px);}
+nav{position:fixed;top:0;left:0;right:0;z-index:900;height:76px;display:flex;align-items:center;transition:all .4s var(--ease-out);}
 nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bottom:1px solid var(--border-lo);height:64px;box-shadow:0 4px 40px rgba(0,0,0,.70);}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;}
 .logo{display:flex;align-items:center;gap:14px;}
@@ -118,103 +120,79 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 }
 
 /* ============================================================
-   HERO — Nova Orvian style
-   Text LEFT, pic6.png as prominent featured image RIGHT
+   HERO — pic6.png as primary full-bleed image, clearly visible
+   Below header, prominent, minimal overlay
    ============================================================ */
-#hero{
-  padding-top:76px;
-  background:var(--navy);
-  position:relative;
-  overflow:hidden;
+#hero{min-height:100svh;padding-top:76px;display:flex;align-items:center;position:relative;overflow:hidden;}
+
+/* pic6.png: the hero image — high visibility, Ken Burns only, NO opacity reduction */
+.hero-img-stage{position:absolute;inset:0;z-index:0;overflow:hidden;}
+.hero-img-stage img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 40%;
+  display:block;
+  animation:kenBurns 12s ease-in-out infinite;
+  /* VISIBLE: full opacity, no dimming on the img itself */
 }
-#hero::before{
+/* Directional overlay — only left 55% darkened so right side shows image clearly */
+.hero-img-stage::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 5% 55%, rgba(26,58,107,.40), transparent);
-  pointer-events:none;z-index:0;
+  background:
+    linear-gradient(to right, rgba(5,15,31,.90) 0%, rgba(5,15,31,.72) 45%, rgba(5,15,31,.20) 75%, rgba(5,15,31,.05) 100%),
+    linear-gradient(to top, rgba(5,15,31,.65) 0%, transparent 35%);
 }
 
+.hero-topline{position:absolute;top:76px;left:0;right:0;height:1px;background:linear-gradient(90deg,var(--gold) 0%,rgba(212,168,68,.4) 50%,transparent 100%);z-index:2;}
 .hero-inner{
-  display:grid;
-  grid-template-columns:1fr 1.2fr;
-  gap:clamp(32px,4vw,64px);
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(32px,5vw,80px);
   align-items:center;
-  min-height:calc(100svh - 76px);
-  padding:clamp(48px,6vw,80px) 0;
-  position:relative;z-index:1;
+  padding:clamp(56px,8vw,100px) 0 clamp(64px,8vw,100px);
+  position:relative;z-index:3;width:100%;
 }
-
-/* LEFT: text */
 .hero-left{animation:fadeUp .9s .05s both;}
 .hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 12px;border:1px solid var(--border-hi);background:rgba(212,168,68,.10);margin-bottom:28px;}
 .hero-tag-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2.5s ease infinite;flex-shrink:0;}
 .hero-tag-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-.hero-h1{font-family:var(--font-display);font-size:clamp(42px,5.5vw,82px);font-weight:700;line-height:.93;letter-spacing:-2px;color:var(--white);margin-bottom:24px;}
+.hero-h1{font-family:var(--font-display);font-size:clamp(42px,6vw,88px);font-weight:700;line-height:.93;letter-spacing:-2px;color:var(--white);margin-bottom:24px;}
 .hero-h1 em{font-style:italic;color:var(--gold);}
 .hero-desc{font-size:clamp(14px,1.4vw,16px);color:var(--text-2);line-height:1.85;max-width:500px;margin-bottom:36px;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);max-width:480px;}
-.hstat{background:rgba(9,22,40,.80);padding:14px 10px;text-align:center;transition:background .25s;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:48px;}
+
+/* 4 trust stats below CTA */
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);max-width:500px;}
+.hstat{background:rgba(5,15,31,.82);padding:14px 10px;text-align:center;transition:background .25s;backdrop-filter:blur(8px);}
 .hstat:hover{background:rgba(212,168,68,.10);}
 .hstat-n{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
 .hstat-l{font-family:var(--font-head);font-size:7.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);margin-top:4px;}
 
-/* RIGHT: pic6.png — featured foreground image like Nova Orvian */
-.hero-right{animation:fadeUp .9s .18s both;position:relative;}
-.hero-img-wrapper{position:relative;}
-
-/* Gold stat floating top-right */
-.hero-img-stat{
-  position:absolute;top:-1px;right:-1px;z-index:4;
-  background:linear-gradient(135deg,var(--gold),var(--gold-hi));
-  padding:18px 24px;
-  box-shadow:0 8px 32px rgba(212,168,68,.40);
-}
-.his-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
-.his-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:3px;}
-
-/* Main image frame */
-.hero-img-frame{
-  position:relative;overflow:hidden;
+/* Hero right: floating trust card — transparent, image visible through it */
+.hero-right{animation:fadeUp .9s .18s both;}
+.hero-trust-card{
+  background:rgba(5,15,31,.75);
+  backdrop-filter:blur(20px);
   border:1px solid var(--border-md);
-  background:var(--surface-1);
-  aspect-ratio:4/3;
-  display:block;
+  padding:28px 28px 24px;
+  position:relative;
 }
-.hero-img-frame img{
-  width:100%;height:100%;
-  object-fit:cover;object-position:center 40%;
-  display:block;
-}
-.hero-img-frame::before{
-  content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:2;
-}
-
-/* Partnership status bar at bottom */
-.hero-img-status{
-  position:absolute;bottom:0;left:0;right:0;z-index:3;
-  background:rgba(5,15,31,.90);backdrop-filter:blur(16px);
-  border-top:1px solid var(--border-md);
-  padding:13px 18px;
-  display:flex;align-items:center;gap:10px;
-}
-.his-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
-.his-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-3);}
-.his-value{font-family:var(--font-head);font-size:12px;font-weight:800;color:var(--white);margin-left:auto;}
-
-/* Corner accent */
-.hero-img-corner{position:absolute;width:20px;height:20px;}
-.hero-img-corner.bl{bottom:-1px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
-
-@media(max-width:960px){
-  .hero-inner{grid-template-columns:1fr;min-height:auto;}
-  .hero-right{order:-1;max-width:560px;margin:0 auto;width:100%;}
-}
-@media(max-width:600px){
-  .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%;}
-  .hero-img-stat{padding:12px 16px;}
-  .his-n{font-size:28px;}
-}
+.hero-trust-card::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:1;}
+.htc-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border-lo);}
+.htc-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
+.htc-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-3);}
+.htc-status{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--white);margin-left:auto;}
+.htc-items{display:flex;flex-direction:column;gap:10px;}
+.htc-item{display:flex;align-items:center;gap:12px;padding:12px 14px;background:rgba(212,168,68,.07);border:1px solid var(--border-lo);}
+.htc-item-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--gold),var(--gold-hi));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.htc-item-icon svg{width:13px;height:13px;stroke:var(--navy);fill:none;stroke-width:2.5;}
+.htc-item-text strong{display:block;font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);}
+.htc-item-text span{font-size:11px;color:var(--text-4);}
+.htc-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--border-lo);display:flex;justify-content:space-between;align-items:center;}
+.htc-stat{text-align:center;}
+.htc-stat-n{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
+.htc-stat-l{font-family:var(--font-head);font-size:7.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);margin-top:2px;}
+.htc-divider{width:1px;height:40px;background:var(--border-lo);}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;}.hero-right{display:none;}}
+@media(max-width:600px){.hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%;}}
 
 /* ============================================================
    MARQUEE
@@ -228,9 +206,13 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .mi::after{content:'◆';font-size:4px;color:var(--sky-light);opacity:.6;}
 
 /* ============================================================
-   BRAND PROMISE
+   BRAND PROMISE (section 1)
    ============================================================ */
-#brand-promise{background:linear-gradient(135deg,var(--navy-4) 0%,var(--royal) 40%,var(--navy-4) 100%);border-top:1px solid var(--border-blue);border-bottom:1px solid var(--border-blue);padding:var(--section-pad) 0;position:relative;overflow:hidden;}
+#brand-promise{
+  background:linear-gradient(135deg,var(--navy-4) 0%,var(--royal) 40%,var(--navy-4) 100%);
+  border-top:1px solid var(--border-blue);border-bottom:1px solid var(--border-blue);
+  padding:var(--section-pad) 0;position:relative;overflow:hidden;
+}
 #brand-promise::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 50% 50%,rgba(212,168,68,.07),transparent);pointer-events:none;}
 .bp-inner{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;position:relative;z-index:1;}
 .bp-eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 12px;border:1px solid var(--border-hi);background:rgba(212,168,68,.10);margin-bottom:20px;}
@@ -248,32 +230,27 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 @media(max-width:860px){.bp-inner{grid-template-columns:1fr;gap:32px;}.bp-right{min-width:0;}}
 
 /* ============================================================
-   ABOUT / MISSION — Text LEFT, pic1.png image RIGHT
+   ABOUT / MISSION — pic1.png as prominent side image
    ============================================================ */
 #about-mission{padding:var(--section-pad) 0;background:var(--navy-2);}
-.about-grid{
-  display:grid;
-  grid-template-columns:1.1fr 1fr;
-  gap:clamp(40px,6vw,88px);
-  align-items:start;
-}
-/* Text column LEFT */
-.about-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
-/* Image column RIGHT */
-.about-img-col{position:relative;padding-bottom:32px;padding-left:32px;}
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,88px);align-items:center;}
+.about-img-col{position:relative;padding-bottom:32px;padding-right:32px;}
+
+/* pic1.png: full visible, no opacity reduction */
 .about-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
 .about-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
 .about-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:3;}
+/* Only a thin bottom scrim for text legibility */
 .about-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:2;pointer-events:none;}
 .about-badge-live{position:absolute;top:20px;left:20px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.85);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;}
 .abl-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
 .abl-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
-.about-float-stat{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:18px 24px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
+.about-float-stat{position:absolute;bottom:0;right:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:18px 24px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
 .afs-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .afs-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:4px;}
 .about-corner{position:absolute;width:20px;height:20px;}
-.about-corner.tl{top:-1px;right:31px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
-.about-corner.br{bottom:31px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
+.about-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.about-corner.br{bottom:31px;right:31px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
 .mission-pillars{display:flex;flex-direction:column;gap:2px;margin:28px 0 32px;}
 .mpillar{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .3s var(--ease-out);position:relative;overflow:hidden;}
 .mpillar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -283,11 +260,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .mpillar-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .mpillar-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
 .mpillar-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
-@media(max-width:860px){
-  .about-grid{grid-template-columns:1fr;}
-  .about-img-col{padding-left:0;padding-right:16px;order:2;}
-  .about-corner.tl{right:15px;}
-}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr;}.about-img-col{padding-right:0;padding-bottom:20px;}}
 
 /* ============================================================
    STATS BAND
@@ -301,16 +274,25 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .stat-n{font-family:var(--font-display);font-size:clamp(36px,4vw,60px);font-weight:700;color:var(--white);line-height:1;letter-spacing:-2px;}
 .stat-n span{color:var(--gold);}
 .stat-l{font-family:var(--font-head);font-size:8.5px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:rgba(248,244,236,.45);margin-top:10px;}
-@media(max-width:700px){.stats-grid{grid-template-columns:repeat(3,1fr);}.stat-item:nth-child(3){border-right:none;}.stat-item:nth-child(4),.stat-item:nth-child(5){border-top:1px solid rgba(212,168,68,.14);}.stat-item:nth-child(5){border-right:none;}}
+@media(max-width:700px){.stats-grid{grid-template-columns:repeat(3,1fr);}.stat-item:nth-child(3){border-right:none;}.stat-item:nth-child(4),.stat-item:nth-child(5){border-top:1px solid rgba(212,168,68,.14);}  .stat-item:nth-child(5){border-right:none;}}
 
 /* ============================================================
-   SERVICES — Text LEFT, pic2.png image RIGHT
+   SERVICES — pic2.png on RIGHT, text/content on LEFT
+   Mirrors About/Mission layout: [Text | Image]
    ============================================================ */
 #services{padding:var(--section-pad) 0;background:var(--navy-3);}
-.svc-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;}
+/* Grid: text-col first = LEFT, img-col second = RIGHT */
+.svc-layout{
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:clamp(40px,6vw,80px);
+  align-items:start;
+}
+
+/* Text column — left side */
 .svc-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
 .svc-grid{display:flex;flex-direction:column;gap:1px;margin-top:24px;}
-.svc-card{background:var(--surface-1);padding:22px;border:1px solid var(--border-lo);transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
+.svc-card{background:var(--surface-1);padding:22px 22px;border:1px solid var(--border-lo);transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
 .svc-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--gold),rgba(212,168,68,.3));transform:scaleY(0);transform-origin:top;transition:transform .38s var(--ease-out);}
 .svc-card:hover{background:var(--surface-2);border-color:var(--border-md);}
 .svc-card:hover::before{transform:scaleY(1);}
@@ -319,56 +301,80 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .svc-icon svg{width:17px;height:17px;stroke:var(--gold);fill:none;stroke-width:1.6;}
 .svc-card h3{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);letter-spacing:.3px;}
 .svc-card p{font-size:12.5px;color:var(--text-3);line-height:1.72;padding-left:52px;}
-/* Image column RIGHT */
+
+/* Image column — right side, mirrors about-img-col proportions */
 .svc-img-col{position:relative;padding-bottom:32px;padding-left:32px;}
-.svc-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:4/3;}
+.svc-img-frame{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-md);
+  background:var(--surface-1);
+  aspect-ratio:4/3; /* Same ratio as about-frame for visual consistency */
+}
 .svc-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;}
 .svc-img-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+/* Bottom scrim only — for badge legibility, image remains visible */
 .svc-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:1;pointer-events:none;}
+.svc-img-badge{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;background:rgba(5,15,31,.88);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:14px 16px;}
+.sib-label{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);margin-bottom:4px;}
+.sib-value{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--gold);letter-spacing:-.5px;}
+/* Float stat — mirrors about-float-stat on right side */
 .svc-float-stat{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:16px 22px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
 .svc-float-n{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .svc-float-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:3px;}
 .svc-img-corner{position:absolute;width:20px;height:20px;}
 .svc-img-corner.tl{top:-1px;right:31px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
 .svc-img-corner.br{bottom:31px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
+/* Mobile: stack text first, image second (hidden on very small) */
 @media(max-width:900px){
   .svc-layout{grid-template-columns:1fr;}
   .svc-img-col{padding-left:0;padding-right:16px;order:2;}
-  .svc-img-corner.tl{right:15px;}
 }
 
 /* ============================================================
-   MAP COMPLIANCE — Text LEFT, pic3+pic4 stacked RIGHT
+   MAP COMPLIANCE — pic3.png (primary) + pic4.png (secondary)
+   Both images fully visible in a stacked left column
+   Replaces the broken absolute-positioned inset approach
    ============================================================ */
 #map-compliance{padding:var(--section-pad) 0;background:var(--navy-2);}
-.map-layout{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:clamp(40px,6vw,80px);
-  align-items:start;
-  margin-bottom:clamp(44px,5vw,64px);
-}
-/* LEFT: text */
-.map-text-col{padding-top:8px;}
-.map-text-col .sec-p{margin-bottom:12px;}
-/* RIGHT: stacked images */
+.map-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;margin-bottom:clamp(44px,5vw,64px);}
+
+/* Left column: stacked image pair */
 .map-img-col{position:relative;}
 .map-img-stack{display:flex;flex-direction:column;gap:4px;}
-.map-img-primary{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:16/9;}
+
+/* pic3.png — primary, larger */
+.map-img-primary{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-md);
+  background:var(--surface-1);
+  aspect-ratio:16/9;  /* Wider landscape — no overflow risk */
+}
 .map-img-primary img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;}
 .map-img-primary::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
 .map-img-primary::after{content:'';position:absolute;bottom:0;left:0;right:0;height:20%;background:linear-gradient(to top,rgba(5,15,31,.40),transparent);z-index:1;pointer-events:none;}
+/* Active badge overlay on primary */
 .map-primary-badge{position:absolute;top:14px;left:14px;z-index:3;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.88);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:7px 12px;}
 .mpb-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
 .mpb-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
-.map-img-secondary{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:16/8;}
+
+/* pic4.png — secondary, fully visible below primary */
+.map-img-secondary{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-md);
+  background:var(--surface-1);
+  aspect-ratio:16/8;  /* Slightly shorter strip — both images visible */
+}
 .map-img-secondary img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;}
 .map-img-secondary::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold-lo),rgba(212,168,68,.15));z-index:2;}
 .map-img-secondary::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:1;pointer-events:none;}
 .map-secondary-tag{position:absolute;bottom:12px;left:14px;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:5px 10px;font-family:var(--font-head);font-size:8px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--navy);}
+/* Corner accents */
 .map-img-corner{position:absolute;width:20px;height:20px;}
 .map-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
 .map-img-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+
+.map-text-col{padding-top:8px;padding-right:0;}
+.map-text-col .sec-p{margin-bottom:12px;}
 .map-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
 .map-pillar{background:var(--surface-1);padding:24px 20px;transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
 .map-pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));transform:scaleX(0);transform-origin:left;transition:transform .32s var(--ease-out);}
@@ -384,20 +390,22 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .map-badge-check{width:20px;height:20px;background:linear-gradient(135deg,var(--gold),var(--gold-hi));display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .map-badge-check svg{width:10px;height:10px;stroke:var(--navy);fill:none;stroke-width:3;}
 .map-badge-text{font-family:var(--font-head);font-size:11px;font-weight:700;color:var(--text-1);}
-@media(max-width:900px){
-  .map-layout{grid-template-columns:1fr;}
-  .map-img-col{order:2;}
-  .map-pillars{grid-template-columns:1fr 1fr;}
-  .map-badge-row{flex-wrap:wrap;}
-  .map-badge{min-width:calc(50% - 1px);}
-}
+@media(max-width:900px){.map-layout{grid-template-columns:1fr;}.map-pillars{grid-template-columns:1fr 1fr;}.map-badge-row{flex-wrap:wrap;}.map-badge{min-width:calc(50% - 1px);}}
 @media(max-width:560px){.map-pillars{grid-template-columns:1fr;}.map-badge{min-width:100%;}}
 
 /* ============================================================
-   CHANNEL — Text LEFT, pic5.png image RIGHT
+   CHANNEL — pic5.png as split layout: Text LEFT, Large Image RIGHT
+   pic5 is a prominent foreground visible image, NOT a background
    ============================================================ */
 #channel-section{padding:var(--section-pad) 0;background:var(--navy);border-top:1px solid var(--border-lo);}
-.channel-split{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(40px,6vw,80px);align-items:center;margin-bottom:clamp(48px,5vw,72px);}
+.channel-split{
+  display:grid;
+  grid-template-columns:1fr 1.3fr;
+  gap:clamp(40px,6vw,80px);
+  align-items:center;
+  margin-bottom:clamp(48px,5vw,72px);
+}
+/* Left: headline + CTA text */
 .channel-text{display:flex;flex-direction:column;justify-content:center;}
 .channel-chips{display:flex;flex-direction:column;gap:1px;margin:24px 0 32px;}
 .chin-chip{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--surface-1);border:1px solid var(--border-lo);transition:all .28s var(--ease-out);position:relative;overflow:hidden;}
@@ -407,10 +415,22 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .chin-chip-icon{width:36px;height:36px;background:var(--gold-mist);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .chin-chip-icon svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .chin-chip-text{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);}
-.channel-img-col{position:relative;}
-.channel-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:16/10;}
-.channel-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;}
+/* Right: pic5.png — large, fully visible, prominent foreground image */
+.channel-img-col{position:relative;padding-bottom:32px;padding-right:0;}
+.channel-img-frame{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-md);
+  background:var(--surface-1);
+  aspect-ratio:16/10; /* Landscape — shows logistics/distribution best */
+}
+.channel-img-frame img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:center 45%;
+  display:block;
+}
+/* Gold accent bar on top only */
 .channel-img-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:2;}
+/* Minimal bottom scrim for badge legibility only */
 .channel-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:22%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:1;pointer-events:none;}
 .channel-img-badge{position:absolute;bottom:20px;left:20px;z-index:3;background:rgba(5,15,31,.90);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:12px 18px;display:flex;align-items:center;gap:10px;}
 .cib-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
@@ -418,6 +438,8 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .channel-img-corner{position:absolute;width:20px;height:20px;}
 .channel-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
 .channel-img-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+
+/* Channel cards below — unchanged */
 .channel-below{padding:clamp(40px,4.5vw,60px) 0;background:var(--navy-3);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);}
 .channel-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
 .ch-card{background:var(--surface-1);padding:24px 22px;transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
@@ -427,7 +449,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .ch-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;letter-spacing:1px;}
 .ch-card h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px;}
 .ch-card p{font-size:12.5px;color:var(--text-3);line-height:1.65;}
-@media(max-width:960px){.channel-split{grid-template-columns:1fr;}.channel-img-col{order:2;}}
+@media(max-width:960px){.channel-split{grid-template-columns:1fr;}.channel-img-col{padding-bottom:0;order:2;}}
 @media(max-width:900px){.channel-cards{grid-template-columns:1fr 1fr;}}
 @media(max-width:480px){.channel-cards{grid-template-columns:1fr;}}
 
@@ -449,7 +471,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 @media(max-width:420px){.trust-logos-row{grid-template-columns:repeat(2,1fr);}}
 
 /* ============================================================
-   HOW IT WORKS — pic7.png portrait LEFT, steps RIGHT
+   HOW IT WORKS — pic7.png as visible portrait column
    ============================================================ */
 #brand-process{padding:var(--section-pad) 0;background:var(--navy);}
 .process-layout{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start;}
@@ -457,6 +479,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .process-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:3/4;}
 .process-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;}
 .process-img-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+/* Bottom text area only */
 .process-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(5,15,31,.65),transparent);z-index:1;pointer-events:none;}
 .process-img-badge{position:absolute;bottom:20px;left:20px;right:20px;z-index:3;background:rgba(5,15,31,.90);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:14px 16px;}
 .pib-label{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-4);margin-bottom:4px;}
@@ -476,10 +499,10 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .pstep-icon svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .pstep h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);}
 .pstep p{font-size:12.5px;color:var(--text-3);line-height:1.70;padding-left:48px;}
-@media(max-width:900px){.process-layout{grid-template-columns:1fr;}.process-img-col{margin-bottom:8px;}.process-img-frame{aspect-ratio:16/9;}}
+@media(max-width:900px){.process-layout{grid-template-columns:1fr;}.process-img-col{aspect-ratio:16/9;margin-bottom:8px;}.process-img-frame{aspect-ratio:16/9;}}
 
 /* ============================================================
-   WHY US — Text LEFT, pic8.png image RIGHT
+   WHY US — pic8.png as clearly visible side image
    ============================================================ */
 #why-us{padding:var(--section-pad) 0;background:var(--navy-3);}
 .why-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,88px);align-items:center;}
@@ -487,6 +510,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .why-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
 .why-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
 .why-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+/* Light bottom scrim only */
 .why-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,rgba(5,15,31,.40),transparent);z-index:1;pointer-events:none;}
 .why-float{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:16px 22px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
 .wf-n{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
@@ -503,20 +527,29 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .wf-icon svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .wf-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
 .wf-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
-@media(max-width:960px){
-  .why-inner{grid-template-columns:1fr;gap:48px;}
-  .why-img-col{padding-left:0;padding-right:16px;order:2;}
-  .why-corner.tl{right:15px;}
-}
+@media(max-width:960px){.why-inner{grid-template-columns:1fr;gap:48px;}.why-img-col{padding-left:0;padding-right:16px;order:2;}}
 
 /* ============================================================
-   TESTIMONIALS
+   TESTIMONIALS — pic9.png as clearly visible section header
    ============================================================ */
 #testimonials{padding:var(--section-pad) 0;background:var(--navy-2);}
-.test-hero-img{position:relative;overflow:hidden;border:1px solid var(--border-md);aspect-ratio:21/7;margin-bottom:clamp(44px,5vw,64px);}
+
+/* pic9.png: prominent header image, clearly visible */
+.test-hero-img{
+  position:relative;overflow:hidden;
+  border:1px solid var(--border-md);
+  aspect-ratio:21/7;
+  margin-bottom:clamp(44px,5vw,64px);
+}
 @media(max-width:700px){.test-hero-img{aspect-ratio:16/7;}}
 .test-hero-img img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;}
-.test-hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom, rgba(5,15,31,.35) 0%, rgba(5,15,31,.08) 45%, rgba(5,15,31,.55) 100%);z-index:1;}
+/* Very light overlay — mainly for text, image stays clearly visible */
+.test-hero-overlay{
+  position:absolute;inset:0;
+  background:
+    linear-gradient(to bottom, rgba(5,15,31,.35) 0%, rgba(5,15,31,.08) 45%, rgba(5,15,31,.55) 100%);
+  z-index:1;
+}
 .test-hero-text{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:24px;}
 .test-hero-text .eyebrow{justify-content:center;}
 .test-hero-text .eyebrow::before{display:none;}
@@ -600,6 +633,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </head>
 <body>
 
+<!-- ACCESSIBILITY -->
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- NAV -->
@@ -632,15 +666,23 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </nav>
 
 <!-- ============================================================
-     HERO — Text LEFT | pic6.png featured image RIGHT (Nova Orvian style)
+     HERO — pic6.png as primary hero image, right side clearly visible
      ============================================================ -->
 <section id="hero" aria-label="Hero">
+  <div class="hero-img-stage" aria-hidden="true">
+    <img
+      src="pic6.png"
+      alt="Sapphire Gadgets wholesale distribution facility"
+      loading="eager"
+      fetchpriority="high"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'">
+  </div>
+  <div class="hero-topline" aria-hidden="true"></div>
   <div class="container" id="main-content">
     <div class="hero-inner">
-
-      <!-- LEFT: text content -->
+      <!-- LEFT: headline & CTA -->
       <div class="hero-left">
-        <div class="hero-tag">
+        <div class="hero-tag" aria-label="Status: Accepting Applications">
           <span class="hero-tag-dot" aria-hidden="true"></span>
           <span class="hero-tag-label">Authorized Wholesale Distribution Partner</span>
         </div>
@@ -666,35 +708,41 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <div class="hstat" role="listitem"><div class="hstat-n">0<span style="font-size:.7em">%</span></div><div class="hstat-l">Drop-Ship</div></div>
         </div>
       </div>
-
-      <!-- RIGHT: pic6.png — prominent featured foreground image -->
-      <div class="hero-right">
-        <div class="hero-img-wrapper">
-          <!-- Floating gold stat top-right corner (like Nova Orvian) -->
-          <div class="hero-img-stat">
-            <div class="his-n">4+</div>
-            <div class="his-l">Years Operating</div>
+      <!-- RIGHT: floating trust card, semi-transparent so image shows through -->
+      <div class="hero-right" aria-hidden="true">
+        <div class="hero-trust-card">
+          <div class="htc-header">
+            <span class="htc-dot"></span>
+            <span class="htc-label">Partnership Status</span>
+            <span class="htc-status">Accepting Now</span>
           </div>
-          <!-- Main image frame -->
-          <div class="hero-img-frame">
-            <img
-              src="pic6.png"
-              alt="Sapphire Gadgets wholesale distribution facility"
-              loading="eager"
-              fetchpriority="high"
-              width="800" height="600"
-              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'">
-            <!-- Partnership status bar at bottom of image -->
-            <div class="hero-img-status">
-              <span class="his-dot" aria-hidden="true"></span>
-              <span class="his-label">Partnership Status</span>
-              <span class="his-value">Accepting Applications</span>
+          <div class="htc-items">
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>100% MAP Compliance</strong><span>Every channel, every listing</span></div>
+            </div>
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>Inventory-Investing Buyer</strong><span>We buy, hold & distribute</span></div>
+            </div>
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>Authorized Channels Only</strong><span>Amazon, Walmart & retail</span></div>
+            </div>
+            <div class="htc-item">
+              <div class="htc-item-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+              <div class="htc-item-text"><strong>Long-Term Partnership</strong><span>Not a one-time transaction</span></div>
             </div>
           </div>
-          <div class="hero-img-corner bl" aria-hidden="true"></div>
+          <div class="htc-footer">
+            <div class="htc-stat"><div class="htc-stat-n">4+</div><div class="htc-stat-l">Years Active</div></div>
+            <div class="htc-divider"></div>
+            <div class="htc-stat"><div class="htc-stat-n">50+</div><div class="htc-stat-l">States</div></div>
+            <div class="htc-divider"></div>
+            <div class="htc-stat"><div class="htc-stat-n">99%</div><div class="htc-stat-l">Accuracy</div></div>
+          </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -729,14 +777,34 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     ABOUT / MISSION — Text LEFT | pic1.png image RIGHT
+     ABOUT / MISSION — pic1.png as primary side image
      ============================================================ -->
 <section id="about-mission" aria-label="About Sapphire Gadgets">
   <div class="container">
     <div class="about-grid">
-
-      <!-- LEFT: mission content -->
-      <div class="about-text-col reveal">
+      <!-- pic1.png: fully visible, prominent foreground image -->
+      <div class="about-img-col reveal">
+        <div class="about-frame">
+          <img
+            src="pic1.png"
+            alt="Sapphire Gadgets distribution facility interior"
+            loading="lazy"
+            width="600" height="450"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=85&auto=format&fit=crop'">
+          <div class="about-badge-live" aria-label="Active partner network status">
+            <span class="abl-dot" aria-hidden="true"></span>
+            <span class="abl-text">Active Partner Network</span>
+          </div>
+        </div>
+        <div class="about-float-stat" aria-label="100% MAP Compliance Rate">
+          <div class="afs-n">100%</div>
+          <div class="afs-l">MAP Compliance Rate</div>
+        </div>
+        <div class="about-corner tl" aria-hidden="true"></div>
+        <div class="about-corner br" aria-hidden="true"></div>
+      </div>
+      <!-- Mission copy -->
+      <div class="reveal rd1">
         <span class="eyebrow">Our Mission</span>
         <h2 class="sec-h">Bridging Manufacturers<br>to <em>Modern Retail</em></h2>
         <span class="gold-line" aria-hidden="true"></span>
@@ -758,29 +826,6 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-
-      <!-- RIGHT: pic1.png image -->
-      <div class="about-img-col reveal rd1">
-        <div class="about-frame">
-          <img
-            src="pic1.png"
-            alt="Sapphire Gadgets distribution facility interior"
-            loading="lazy"
-            width="600" height="450"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=900&q=85&auto=format&fit=crop'">
-          <div class="about-badge-live">
-            <span class="abl-dot" aria-hidden="true"></span>
-            <span class="abl-text">Active Partner Network</span>
-          </div>
-        </div>
-        <div class="about-float-stat">
-          <div class="afs-n">100%</div>
-          <div class="afs-l">MAP Compliance Rate</div>
-        </div>
-        <div class="about-corner tl" aria-hidden="true"></div>
-        <div class="about-corner br" aria-hidden="true"></div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -799,11 +844,12 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </div>
 
 <!-- ============================================================
-     SERVICES — Text LEFT | pic2.png image RIGHT
+     SERVICES — Text LEFT, pic2.png RIGHT (mirrors About/Mission layout)
      ============================================================ -->
 <section id="services" aria-label="Our Services">
   <div class="container">
     <div class="svc-layout">
+      <!-- TEXT COLUMN — LEFT (matches About section text-left pattern) -->
       <div class="svc-text-col reveal">
         <span class="eyebrow">Our Services</span>
         <h2 class="sec-h">What We Offer<br><em>Brand Partners</em></h2>
@@ -847,7 +893,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           </div>
         </div>
       </div>
-      <!-- pic2.png — RIGHT -->
+      <!-- pic2.png — RIGHT COLUMN (fully visible, mirrors About image col) -->
       <div class="svc-img-col reveal rd1">
         <div class="svc-img-frame">
           <img
@@ -857,7 +903,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
             width="600" height="450"
             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'">
         </div>
-        <div class="svc-float-stat">
+        <div class="svc-float-stat" aria-label="6+ Active Retail Channels">
           <div class="svc-float-n">6+</div>
           <div class="svc-float-l">Active Channels</div>
         </div>
@@ -869,27 +915,16 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     MAP COMPLIANCE — Text LEFT | pic3.png + pic4.png stacked RIGHT
+     MAP COMPLIANCE — pic3.png (primary) + pic4.png (secondary) stacked
+     Both images fully visible in left column, no overflow, no stuck images
      ============================================================ -->
 <section id="map-compliance" aria-label="MAP Compliance and Brand Protection">
   <div class="container">
     <div class="map-layout">
-
-      <!-- LEFT: text -->
-      <div class="map-text-col reveal">
-        <span class="eyebrow">Brand Protection</span>
-        <h2 class="sec-h">MAP Compliance &amp;<br><em>Pricing Integrity</em></h2>
-        <span class="gold-line" aria-hidden="true"></span>
-        <p class="sec-p">Pricing integrity is the #1 concern brand managers raise when evaluating a distribution partner. We've built our entire operation around it — non-negotiable, no exceptions.</p>
-        <p class="sec-p" style="margin-top:12px;max-width:100%;">Every listing we manage, every channel we sell through, and every marketplace we participate in adheres to the manufacturer's minimum advertised price. We do not engage in grey-market purchasing, unauthorized repricing, or channel tactics that compromise your brand's value perception.</p>
-        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
-          <a href="#contact" class="btn btn-gold">Discuss Brand Protection <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-
-      <!-- RIGHT: stacked pic3 + pic4 -->
-      <div class="map-img-col reveal rd1">
+      <!-- LEFT: stacked image pair — pic3 primary + pic4 secondary -->
+      <div class="map-img-col reveal">
         <div class="map-img-stack">
+          <!-- pic3.png: primary visible image -->
           <div class="map-img-primary">
             <img
               src="pic3.png"
@@ -903,6 +938,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
             </div>
             <div class="map-img-corner tl" aria-hidden="true"></div>
           </div>
+          <!-- pic4.png: secondary image below — fully visible, no position:absolute -->
           <div class="map-img-secondary">
             <img
               src="pic4.png"
@@ -915,9 +951,19 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           </div>
         </div>
       </div>
-
+      <!-- RIGHT: MAP content text -->
+      <div class="map-text-col reveal rd1">
+        <span class="eyebrow">Brand Protection</span>
+        <h2 class="sec-h">MAP Compliance &amp;<br><em>Pricing Integrity</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p">Pricing integrity is the #1 concern brand managers raise when evaluating a distribution partner. We've built our entire operation around it — non-negotiable, no exceptions.</p>
+        <p class="sec-p" style="margin-top:12px;max-width:100%;">Every listing we manage, every channel we sell through, and every marketplace we participate in adheres to the manufacturer's minimum advertised price. We do not engage in grey-market purchasing, unauthorized repricing, or channel tactics that compromise your brand's value perception.</p>
+        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+          <a href="#contact" class="btn btn-gold">Discuss Brand Protection <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        </div>
+      </div>
     </div>
-
+    <!-- MAP compliance pillars -->
     <div class="map-pillars reveal">
       <div class="map-pillar">
         <div class="map-pillar-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
@@ -960,11 +1006,13 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 </section>
 
 <!-- ============================================================
-     CHANNEL — Text LEFT | pic5.png image RIGHT
+     CHANNEL — Text LEFT, pic5.png large visible image RIGHT
+     pic5.png converted from background to prominent foreground showcase
      ============================================================ -->
 <section id="channel-section" aria-label="Our Retail Channels">
   <div class="container">
     <div class="channel-split">
+      <!-- LEFT: headline, channel chips, CTA -->
       <div class="channel-text reveal">
         <span class="eyebrow">Omnichannel Presence</span>
         <h2 class="sec-h">Where Your Brand<br><em>Reaches Customers</em></h2>
@@ -990,7 +1038,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Discuss Channel Strategy <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-      <!-- RIGHT: pic5.png -->
+      <!-- RIGHT: pic5.png — large, fully visible, prominent foreground image -->
       <div class="channel-img-col reveal rd1">
         <div class="channel-img-frame">
           <img
@@ -1009,6 +1057,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
       </div>
     </div>
   </div>
+  <!-- Channel cards below -->
   <div class="channel-below">
     <div class="container">
       <div class="channel-cards">
@@ -1025,6 +1074,399 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
 <section id="trust-bar" aria-label="Marketplace Presence">
   <div class="container">
     <div class="trust-bar-label reveal">Retail Channels &amp; Marketplaces — <span>Where We Operate</span></div>
-    <div class="trust-logos-row reveal rd1" role="list">
+    <div class="trust-logos-row reveal rd1" role="list" aria-label="Platforms where Sapphire Gadgets operates">
       <div class="tl-box" role="listitem"><div class="tl-inner">Amazon<span>FBA Seller</span></div></div>
-      <div class="tl-box" role
+      <div class="tl-box" role="listitem"><div class="tl-inner">Walmart<span>Marketplace</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">eBay<span>Top Rated</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Shopify<span>DTC Channel</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Regional<span>Retail Buyers</span></div></div>
+      <div class="tl-box" role="listitem"><div class="tl-inner">Specialty<span>Retail Chains</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS — pic7.png as clearly visible portrait column
+     ============================================================ -->
+<section id="brand-process" aria-label="Partnership Process">
+  <div class="container">
+    <div class="process-layout">
+      <!-- pic7.png: fully visible portrait -->
+      <div class="process-img-col reveal">
+        <div class="process-img-frame">
+          <img
+            src="pic7.png"
+            alt="Sapphire Gadgets partner onboarding and process"
+            loading="lazy"
+            width="500" height="667"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&q=85&auto=format&fit=crop'">
+          <div class="process-img-badge">
+            <div class="pib-label">Our Promise</div>
+            <div class="pib-value">Transparent Onboarding</div>
+          </div>
+        </div>
+        <div class="process-img-corner tl" aria-hidden="true"></div>
+        <div class="process-img-corner br" aria-hidden="true"></div>
+      </div>
+      <!-- Process steps -->
+      <div class="process-text-col reveal rd1">
+        <span class="eyebrow">Partnership Process</span>
+        <h2 class="sec-h">How Brand<br><em>Partnerships Work</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p">Our onboarding gives brand managers confidence that Sapphire Gadgets operates with the commercial discipline and operational accountability that serious distribution relationships require.</p>
+        <div class="process-steps">
+          <div class="pstep reveal">
+            <div class="pstep-head">
+              <div class="pstep-num">01</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <h4>Brand Application &amp; Review</h4>
+            </div>
+            <p>Submit a brand application outlining your products, pricing policies, and distribution requirements. We review your marketplace presence and MAP compliance framework.</p>
+          </div>
+          <div class="pstep reveal rd1">
+            <div class="pstep-head">
+              <div class="pstep-num">02</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+              <h4>Introductory Meeting &amp; Audit</h4>
+            </div>
+            <p>We schedule a partnership meeting to understand your brand's goals, review your distribution structure, and demonstrate how Sapphire Gadgets aligns with your standards.</p>
+          </div>
+          <div class="pstep reveal rd2">
+            <div class="pstep-head">
+              <div class="pstep-num">03</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+              <h4>Distribution Agreement Signed</h4>
+            </div>
+            <p>We formalize the partnership through a clear distribution agreement outlining pricing policies, authorized channels, catalog standards, and mutual obligations.</p>
+          </div>
+          <div class="pstep reveal rd3">
+            <div class="pstep-head">
+              <div class="pstep-num">04</div>
+              <div class="pstep-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+              <h4>Launch &amp; Ongoing Growth</h4>
+            </div>
+            <p>We place first purchase orders, activate listings, and begin ongoing partnership management — with regular performance reporting throughout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY US — pic8.png as clearly visible side image
+     ============================================================ -->
+<section id="why-us" aria-label="Why Choose Sapphire Gadgets">
+  <div class="container">
+    <div class="why-inner">
+      <!-- Main copy -->
+      <div class="reveal">
+        <span class="eyebrow">Why Choose Us</span>
+        <h2 class="sec-h">The Distributor<br><em>Brands Trust</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p class="sec-p" style="margin-bottom:4px;">Selecting a wholesale distribution partner is a significant business decision. Brand managers are not just choosing a buyer — they are choosing a marketplace representative of their product.</p>
+        <div class="why-features">
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <div class="wf-body"><h4>We Are Not a Drop-Shipper</h4><p>Sapphire Gadgets purchases and holds inventory. We invest our own capital in your products — creating real commercial alignment and genuine long-term accountability.</p></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+            <div class="wf-body"><h4>MAP Compliance is Non-Negotiable</h4><p>Every price point on every platform maintained per your brand's MAP policy — without exceptions, workarounds, or price manipulation tactics.</p></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+            <div class="wf-body"><h4>Full Operational Transparency</h4><p>Regular reporting on sales performance, channel distribution, pricing compliance, and inventory health — complete visibility into how we represent your brand.</p></div>
+          </div>
+          <div class="wf-item">
+            <div class="wf-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div class="wf-body"><h4>Committed to Long-Term Value</h4><p>Our business model depends on sustainable brand partnerships — not short-term arbitrage. We succeed when your brand grows.</p></div>
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-gold">Begin Partnership Conversation <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </div>
+      <!-- pic8.png: fully visible side image -->
+      <div class="why-img-col reveal rd1">
+        <div class="why-frame">
+          <img
+            src="pic8.png"
+            alt="Sapphire Gadgets quality assurance and operations team"
+            loading="lazy"
+            width="600" height="450"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'">
+        </div>
+        <div class="why-float">
+          <div class="wf-n">0%</div>
+          <div class="wf-l">Drop-Ship Activity</div>
+        </div>
+        <div class="why-corner tl" aria-hidden="true"></div>
+        <div class="why-corner br" aria-hidden="true"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     TESTIMONIALS — pic9.png as prominently visible header image
+     ============================================================ -->
+<section id="testimonials" aria-label="Partner Testimonials">
+  <!-- pic9.png: clearly visible, light overlay only -->
+  <div class="test-hero-img reveal">
+    <img
+      src="pic9.png"
+      alt="Sapphire Gadgets brand partners and distribution network"
+      loading="lazy"
+      width="1600" height="533"
+      onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1600&q=85&auto=format&fit=crop'">
+    <div class="test-hero-overlay" aria-hidden="true"></div>
+    <div class="test-hero-text">
+      <span class="eyebrow">Brand Partners</span>
+      <h2 class="sec-h" style="text-align:center;">What Partners<br><em>Say About Us</em></h2>
+    </div>
+  </div>
+  <div class="container">
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="test-quote-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <blockquote>Sapphire Gadgets has been a model distribution partner. Their MAP compliance is impeccable and their catalog management across Amazon and Walmart is exactly what we needed from a long-term wholesale partner.</blockquote>
+        <div class="test-sep" aria-hidden="true"></div>
+        <div class="test-name">Brand Director</div>
+        <div class="test-role">Consumer Electronics · Authorized Partner</div>
+        <div class="test-stars" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+      </div>
+      <div class="test-card reveal rd1">
+        <div class="test-quote-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <blockquote>What impressed us most was that Sapphire Gadgets actually purchases and holds our inventory — real skin in the game. The compliance documentation they provide gives our legal team complete peace of mind.</blockquote>
+        <div class="test-sep" aria-hidden="true"></div>
+        <div class="test-name">VP of Sales</div>
+        <div class="test-role">Home &amp; Lifestyle Brand · Distribution Partner</div>
+        <div class="test-stars" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+      </div>
+      <div class="test-card reveal rd2">
+        <div class="test-quote-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg></div>
+        <blockquote>After dealing with problematic resellers that damaged our brand on Amazon for years, working with Sapphire Gadgets has been a completely different experience. Pricing integrity, authorized channels, and genuinely professional representation.</blockquote>
+        <div class="test-sep" aria-hidden="true"></div>
+        <div class="test-name">Founder &amp; CEO</div>
+        <div class="test-role">Premium Gadgets Brand · Wholesale Partner</div>
+        <div class="test-stars" aria-label="5 out of 5 stars"><span aria-hidden="true">★★★★★</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta-apply" aria-label="Apply for Partnership">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="reveal">
+        <span class="eyebrow">Apply Now</span>
+        <h2 class="cta-h">Ready to <em>Grow Your Brand</em> with Us?</h2>
+        <p class="cta-p">We are currently accepting applications from brands seeking a serious, MAP-compliant wholesale distribution partner. Tell us about your brand and we'll respond within one business day.</p>
+      </div>
+      <div class="cta-right reveal rd1">
+        <a href="#contact" class="btn btn-gold">Apply for Partnership <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#brand-process" class="btn btn-ghost">View Our Process</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" aria-label="Contact and Application Form">
+  <div class="container">
+    <div class="con-layout">
+      <div class="con-info reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 class="sec-h">Start the<br><em>Conversation</em></h2>
+        <span class="gold-line" aria-hidden="true"></span>
+        <p>We respond to all brand partnership inquiries within one business day. Whether you're ready to apply now or simply want to learn more about how Sapphire Gadgets operates, we welcome the conversation.</p>
+        <p>Our team of distribution professionals is ready to walk you through our MAP compliance framework, channel operations, and what a partnership with Sapphire Gadgets would look like for your specific brand.</p>
+        <div class="con-contacts">
+          <div class="cc-row">
+            <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><div class="cc-label">Email</div><div class="cc-val">partnerships@sapphiregadgets.com</div></div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.1 6.1l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="cc-label">Phone</div><div class="cc-val">Available upon application</div></div>
+          </div>
+          <div class="cc-row">
+            <div class="cc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><div class="cc-label">Response Time</div><div class="cc-val">Within 1 business day</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="con-form reveal rd1">
+        <div class="fg"><label for="form-name">Full Name</label><input type="text" id="form-name" name="name" placeholder="Your name" autocomplete="name"></div>
+        <div class="form-row-2">
+          <div class="fg"><label for="form-email">Email Address</label><input type="email" id="form-email" name="email" placeholder="you@company.com" autocomplete="email"></div>
+          <div class="fg"><label for="form-brand">Company / Brand</label><input type="text" id="form-brand" name="brand" placeholder="Brand name" autocomplete="organization"></div>
+        </div>
+        <div class="fg">
+          <label for="form-type">Inquiry Type</label>
+          <select id="form-type" name="inquiry_type">
+            <option value="">Select inquiry type</option>
+            <option>Brand Partnership Application</option>
+            <option>MAP Compliance Questions</option>
+            <option>Amazon / Walmart Operations</option>
+            <option>General Distribution Inquiry</option>
+          </select>
+        </div>
+        <div class="fg"><label for="form-msg">Message</label><textarea id="form-msg" name="message" placeholder="Tell us about your brand, products, and distribution goals..."></textarea></div>
+        <button class="form-submit" id="formSubmit" type="button">Submit Partnership Application</button>
+        <div class="form-success" id="formSuccess" role="alert">
+          <p>✓ Application received — we'll respond within 1 business day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo-row">
+          <div class="foot-logo-box">
+            <img src="nova.jpeg" alt="Sapphire Gadgets LLC logo" width="32" height="32" loading="lazy" onerror="this.style.display='none';">
+          </div>
+          <div>
+            <span class="foot-nm">Sapphire Gadgets</span>
+            <span class="foot-sl">LLC · Authorized Distribution</span>
+          </div>
+        </div>
+        <p class="foot-desc">Premium wholesale distributor and authorized retail partner. 100% MAP compliant. Inventory-investing. Brand-first. Built for long-term partnerships across Amazon, Walmart, and major retail channels.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <ul>
+          <li><a href="#about-mission">About Us</a></li>
+          <li><a href="#why-us">Why Choose Us</a></li>
+          <li><a href="#testimonials">Partner Stories</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#services">Wholesale Procurement</a></li>
+          <li><a href="#services">Amazon FBA Management</a></li>
+          <li><a href="#services">Walmart Marketplace</a></li>
+          <li><a href="#services">Catalog Optimization</a></li>
+          <li><a href="#services">Brand Growth Support</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Compliance</h5>
+        <ul>
+          <li><a href="#map-compliance">MAP Policy</a></li>
+          <li><a href="#map-compliance">Brand Protection</a></li>
+          <li><a href="#map-compliance">Inventory Traceability</a></li>
+          <li><a href="#brand-process">How It Works</a></li>
+          <li><a href="#contact">Apply Now</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-copy">© 2025 Sapphire Gadgets LLC. All rights reserved.</div>
+      <div class="foot-badges" aria-label="Certifications and badges">
+        <span class="fbadge">MAP Compliant</span>
+        <span class="fbadge">Authorized Distributor</span>
+        <span class="fbadge">Amazon Seller</span>
+        <span class="fbadge">Walmart Partner</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── NAV scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ── Mobile nav toggle
+const navHbg = document.getElementById('navHbg');
+const navLinks = document.getElementById('navLinks');
+navHbg.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  navHbg.setAttribute('aria-expanded', isOpen);
+});
+// Close nav on link click
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navHbg.setAttribute('aria-expanded', 'false');
+  });
+});
+// Close nav on outside click
+document.addEventListener('click', (e) => {
+  if (!nav.contains(e.target)) {
+    navLinks.classList.remove('open');
+    navHbg.setAttribute('aria-expanded', 'false');
+  }
+});
+
+// ── Scroll reveal (IntersectionObserver)
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('vis');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// ── Counter animation (tied to visibility)
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.target, 10);
+    const duration = 1600;
+    const steps = 60;
+    const increment = target / steps;
+    let current = 0;
+    let frame = 0;
+    const timer = setInterval(() => {
+      frame++;
+      current = Math.min(Math.round(increment * frame), target);
+      el.textContent = current;
+      if (current >= target) clearInterval(timer);
+    }, duration / steps);
+    counterObs.unobserve(el);
+  });
+}, { threshold: 0.6 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+// ── Form submit (UX feedback)
+document.getElementById('formSubmit').addEventListener('click', () => {
+  const name = document.getElementById('form-name').value.trim();
+  const email = document.getElementById('form-email').value.trim();
+  if (!name || !email) {
+    document.getElementById('form-name').style.borderColor = name ? '' : 'var(--gold)';
+    document.getElementById('form-email').style.borderColor = email ? '' : 'var(--gold)';
+    return;
+  }
+  const success = document.getElementById('formSuccess');
+  success.style.display = 'block';
+  document.getElementById('formSubmit').style.opacity = '0.5';
+  document.getElementById('formSubmit').disabled = true;
+});
+
+// ── Smooth scroll polyfill for older Safari
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+</body>
+</html>
