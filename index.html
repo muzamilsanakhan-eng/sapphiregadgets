@@ -118,7 +118,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 }
 
 /* ============================================================
-   HERO — Image LEFT, Content RIGHT (matching Nova Orvian layout)
+   HERO — FIXED: reduced top padding so content sits closer to nav
    ============================================================ */
 #hero{
   padding-top:76px;
@@ -128,90 +128,82 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 }
 #hero::before{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 60% at 95% 55%, rgba(26,58,107,.35), transparent);
+  background:radial-gradient(ellipse 70% 60% at 5% 55%, rgba(26,58,107,.40), transparent);
   pointer-events:none;z-index:0;
 }
 .hero-inner{
   display:grid;
-  grid-template-columns:1.2fr 1fr;
+  grid-template-columns:1fr 1.2fr;
   gap:clamp(32px,4vw,64px);
   align-items:center;
   min-height:calc(100svh - 76px);
-  padding:clamp(20px,2.5vw,36px) 0 clamp(32px,4vw,56px);
+  /* FIXED: reduced top padding from clamp(48px,6vw,80px) to clamp(16px,2vw,28px) */
+  padding:clamp(16px,2vw,28px) 0 clamp(32px,4vw,56px);
   position:relative;z-index:1;
 }
-/* Image column is now first (left) */
-.hero-img-col{animation:fadeUp .9s .05s both;position:relative;}
-/* Content column is second (right) */
-.hero-content-col{animation:fadeUp .9s .18s both;}
-
+.hero-left{animation:fadeUp .9s .05s both;}
+.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 12px;border:1px solid var(--border-hi);background:rgba(212,168,68,.10);margin-bottom:20px;}
+.hero-tag-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2.5s ease infinite;flex-shrink:0;}
+.hero-tag-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+.hero-h1{font-family:var(--font-display);font-size:clamp(42px,5.5vw,82px);font-weight:700;line-height:.93;letter-spacing:-2px;color:var(--white);margin-bottom:24px;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-desc{font-size:clamp(14px,1.4vw,16px);color:var(--text-2);line-height:1.85;max-width:500px;margin-bottom:36px;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);max-width:480px;}
+.hstat{background:rgba(9,22,40,.80);padding:14px 10px;text-align:center;transition:background .25s;}
+.hstat:hover{background:rgba(212,168,68,.10);}
+.hstat-n{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
+.hstat-l{font-family:var(--font-head);font-size:7.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);margin-top:4px;}
+.hero-right{animation:fadeUp .9s .18s both;position:relative;}
 .hero-img-wrapper{position:relative;}
-/* Gold stat badge — top-right corner of image, matching Nova Orvian */
+
+/* FIXED: hero-img-stat moved from top:-1px to top:20px so it doesn't sit flush at top edge */
 .hero-img-stat{
-  position:absolute;
-  top:0;
-  right:0;
-  z-index:4;
+  position:absolute;top:20px;right:0;z-index:4;
   background:linear-gradient(135deg,var(--gold),var(--gold-hi));
-  padding:20px 28px;
+  padding:18px 24px;
   box-shadow:0 8px 32px rgba(212,168,68,.40);
 }
-.his-n{font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
+.his-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .his-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:3px;}
 .hero-img-frame{
   position:relative;overflow:hidden;
   border:1px solid var(--border-md);
   background:var(--surface-1);
-  aspect-ratio:16/11;
+  aspect-ratio:4/3;
+  display:block;
+  /* FIXED: add margin-top to clear the stat badge */
+  margin-top:0;
 }
 .hero-img-frame img{
   width:100%;height:100%;
-  object-fit:cover;object-position:center 35%;
+  object-fit:cover;object-position:center 40%;
   display:block;
 }
 .hero-img-frame::before{
   content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
   background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:2;
 }
-/* Status bar at bottom of image */
 .hero-img-status{
   position:absolute;bottom:0;left:0;right:0;z-index:3;
-  background:rgba(5,15,31,.92);backdrop-filter:blur(16px);
+  background:rgba(5,15,31,.90);backdrop-filter:blur(16px);
   border-top:1px solid var(--border-md);
-  padding:14px 20px;
+  padding:13px 18px;
   display:flex;align-items:center;gap:10px;
 }
-.his-dot{width:9px;height:9px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
+.his-dot{width:8px;height:8px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
 .his-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-3);}
-.his-value{font-family:var(--font-head);font-size:13px;font-weight:800;color:var(--white);margin-left:auto;}
-/* Corner accents */
-.hero-img-corner{position:absolute;width:22px;height:22px;}
-.hero-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
-.hero-img-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
-
-/* RIGHT: content */
-.hero-tag{display:inline-flex;align-items:center;gap:10px;padding:8px 18px 8px 12px;border:1px solid var(--border-hi);background:rgba(212,168,68,.10);margin-bottom:24px;}
-.hero-tag-dot{width:7px;height:7px;background:var(--gold);border-radius:50%;animation:pulse 2.5s ease infinite;flex-shrink:0;}
-.hero-tag-label{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
-.hero-h1{font-family:var(--font-display);font-size:clamp(38px,4.8vw,78px);font-weight:700;line-height:.93;letter-spacing:-2px;color:var(--white);margin-bottom:24px;}
-.hero-h1 em{font-style:italic;color:var(--gold);}
-.hero-desc{font-size:clamp(14px,1.3vw,15.5px);color:var(--text-2);line-height:1.85;max-width:480px;margin-bottom:36px;}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
-.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
-.hstat{background:rgba(9,22,40,.80);padding:14px 10px;text-align:center;transition:background .25s;}
-.hstat:hover{background:rgba(212,168,68,.10);}
-.hstat-n{font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;}
-.hstat-l{font-family:var(--font-head);font-size:7.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-4);margin-top:4px;}
-
+.his-value{font-family:var(--font-head);font-size:12px;font-weight:800;color:var(--white);margin-left:auto;}
+.hero-img-corner{position:absolute;width:20px;height:20px;}
+.hero-img-corner.bl{bottom:-1px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
 @media(max-width:960px){
   .hero-inner{grid-template-columns:1fr;min-height:auto;}
-  .hero-img-col{order:1;max-width:580px;margin:0 auto;width:100%;}
-  .hero-content-col{order:2;}
+  .hero-right{max-width:560px;margin:0 auto;width:100%;}
 }
 @media(max-width:600px){
-  .hero-stats{grid-template-columns:repeat(2,1fr);}
-  .hero-img-stat{padding:14px 18px;}
-  .his-n{font-size:30px;}
+  .hero-stats{grid-template-columns:repeat(2,1fr);max-width:100%;}
+  .hero-img-stat{padding:12px 16px;}
+  .his-n{font-size:28px;}
 }
 
 /* ============================================================
@@ -246,7 +238,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 @media(max-width:860px){.bp-inner{grid-template-columns:1fr;gap:32px;}.bp-right{min-width:0;}}
 
 /* ============================================================
-   ABOUT / MISSION
+   ABOUT / MISSION — FIXED: badge moved to left side of image frame
    ============================================================ */
 #about-mission{padding:var(--section-pad) 0;background:var(--navy-2);}
 .about-grid{
@@ -256,50 +248,31 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
   align-items:start;
 }
 .about-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
-
-/* Image column: extra bottom padding for floating badge, no side padding clutter */
-.about-img-col{position:relative;padding-bottom:56px;}
-
-.about-frame{
-  position:relative;
-  aspect-ratio:4/3;
-  overflow:hidden;
-  border:1px solid var(--border-md);
-  background:var(--surface-1);
-}
-.about-frame img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center 40%;
-  display:block;
-}
-.about-frame::before{
-  content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
-  background:linear-gradient(90deg,var(--gold),transparent);z-index:3;
-}
-.about-frame::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:30%;
-  background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:2;pointer-events:none;
-}
-
-/* MAP compliance badge — bottom-left, overlapping frame edge downward */
+/* FIXED: removed padding-left:32px; added padding-right:32px to accommodate corner accent */
+.about-img-col{position:relative;padding-bottom:48px;}
+.about-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
+.about-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
+.about-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:3;}
+.about-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:30%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:2;pointer-events:none;}
+.about-badge-live{position:absolute;top:20px;right:20px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.85);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;}
+.abl-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
+.abl-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
+/* FIXED: badge now on LEFT side of image (left:0, bottom:0 relative to about-img-col, 
+   overlapping the frame from the left) */
 .about-float-stat{
   position:absolute;
   bottom:0;
   left:0;
   z-index:5;
   background:linear-gradient(135deg,var(--gold),var(--gold-hi));
-  padding:18px 28px;
-  box-shadow:0 12px 40px rgba(212,168,68,.40);
+  padding:18px 24px;
+  box-shadow:0 12px 40px rgba(212,168,68,.35);
 }
-.afs-n{font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
+.afs-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .afs-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:4px;}
-
-/* Corner accents for about image */
 .about-corner{position:absolute;width:20px;height:20px;}
-.about-corner.tr{top:-1px;right:-1px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
-.about-corner.bl{bottom:55px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
-
+.about-corner.tl{top:-1px;right:-1px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
+.about-corner.br{bottom:47px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
 .mission-pillars{display:flex;flex-direction:column;gap:2px;margin:28px 0 32px;}
 .mpillar{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .3s var(--ease-out);position:relative;overflow:hidden;}
 .mpillar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -309,10 +282,10 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .mpillar-icon svg{width:14px;height:14px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .mpillar-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
 .mpillar-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
-
 @media(max-width:860px){
   .about-grid{grid-template-columns:1fr;}
-  .about-img-col{order:2;padding-bottom:56px;}
+  .about-img-col{order:2;}
+  .about-corner.tl{right:-1px;}
 }
 
 /* ============================================================
@@ -363,7 +336,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 }
 
 /* ============================================================
-   MAP COMPLIANCE — pic4 removed
+   MAP COMPLIANCE — FIXED: removed pic4 secondary image
    ============================================================ */
 #map-compliance{padding:var(--section-pad) 0;background:var(--navy-2);}
 .map-layout{
@@ -376,6 +349,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .map-text-col{padding-top:8px;}
 .map-text-col .sec-p{margin-bottom:12px;}
 .map-img-col{position:relative;}
+/* FIXED: single image stack (pic4 removed) */
 .map-img-primary{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:4/3;}
 .map-img-primary img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;}
 .map-img-primary::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
@@ -496,60 +470,21 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 @media(max-width:900px){.process-layout{grid-template-columns:1fr;}.process-img-col{margin-bottom:8px;}.process-img-frame{aspect-ratio:16/9;}}
 
 /* ============================================================
-   WHY US — badge moved to LEFT, shifted upward
+   WHY US
    ============================================================ */
 #why-us{padding:var(--section-pad) 0;background:var(--navy-3);}
 .why-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,88px);align-items:center;}
-
-/* Image col: padding-left for the floating badge that extends LEFT */
-.why-img-col{
-  position:relative;
-  padding-bottom:0;
-  padding-left:0;
-}
-.why-frame{
-  position:relative;
-  /* Use a taller aspect ratio so the full warehouse aisle is visible */
-  aspect-ratio:3/4;
-  overflow:hidden;
-  border:1px solid var(--border-md);
-  background:var(--surface-1);
-}
-.why-frame img{
-  width:100%;height:100%;
-  object-fit:cover;
-  /* Center the image — warehouse aisle center perspective */
-  object-position:center center;
-  display:block;
-}
-.why-frame::before{
-  content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
-  background:linear-gradient(90deg,var(--gold),transparent);z-index:2;
-}
-.why-frame::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:20%;
-  background:linear-gradient(to top,rgba(5,15,31,.30),transparent);z-index:1;pointer-events:none;
-}
-
-/* Badge: LEFT side, positioned about 40% from top to align with heading area */
-.why-float{
-  position:absolute;
-  top:40%;
-  left:-22px;
-  transform:translateY(-50%);
-  z-index:5;
-  background:linear-gradient(135deg,var(--gold),var(--gold-hi));
-  padding:18px 22px;
-  box-shadow:0 12px 40px rgba(212,168,68,.45);
-}
-.wf-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
+.why-img-col{position:relative;padding-bottom:32px;padding-left:32px;}
+.why-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
+.why-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
+.why-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
+.why-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,rgba(5,15,31,.40),transparent);z-index:1;pointer-events:none;}
+.why-float{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:16px 22px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
+.wf-n{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .wf-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:3px;}
-
-/* Corner accents */
 .why-corner{position:absolute;width:20px;height:20px;}
-.why-corner.tl{top:-1px;right:-1px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
-.why-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
-
+.why-corner.tl{top:-1px;right:31px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
+.why-corner.br{bottom:31px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
 .why-features{display:flex;flex-direction:column;gap:2px;margin:24px 0 32px;}
 .wf-item{display:flex;align-items:flex-start;gap:14px;padding:15px 17px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .28s var(--ease-out);position:relative;overflow:hidden;}
 .wf-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -559,11 +494,10 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .wf-icon svg{width:13px;height:13px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .wf-body h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
 .wf-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
-
 @media(max-width:960px){
   .why-inner{grid-template-columns:1fr;gap:48px;}
-  .why-img-col{order:2;padding-left:24px;}
-  .why-float{left:-12px;}
+  .why-img-col{padding-left:0;padding-right:16px;order:2;}
+  .why-corner.tl{right:15px;}
 }
 
 /* ============================================================
@@ -688,42 +622,11 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </nav>
 
-<!-- ============================================================
-     HERO — Image LEFT, Content RIGHT (Nova Orvian reference layout)
-     ============================================================ -->
+<!-- HERO -->
 <section id="hero" aria-label="Hero">
   <div class="container" id="main-content">
     <div class="hero-inner">
-
-      <!-- LEFT: Image column -->
-      <div class="hero-img-col">
-        <div class="hero-img-wrapper">
-          <!-- Gold stat badge — top-right of image -->
-          <div class="hero-img-stat">
-            <div class="his-n">4+</div>
-            <div class="his-l">Years Operating</div>
-          </div>
-          <div class="hero-img-frame">
-            <img
-              src="pic6.png"
-              onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'"
-              alt="Sapphire Gadgets wholesale distribution facility"
-              loading="eager"
-              fetchpriority="high"
-              width="900" height="620">
-            <div class="hero-img-status">
-              <span class="his-dot" aria-hidden="true"></span>
-              <span class="his-label">Partnership Status</span>
-              <span class="his-value">Accepting Applications</span>
-            </div>
-          </div>
-          <div class="hero-img-corner tl" aria-hidden="true"></div>
-          <div class="hero-img-corner br" aria-hidden="true"></div>
-        </div>
-      </div>
-
-      <!-- RIGHT: Content column -->
-      <div class="hero-content-col">
+      <div class="hero-left">
         <div class="hero-tag">
           <span class="hero-tag-dot" aria-hidden="true"></span>
           <span class="hero-tag-label">Authorized Wholesale Distribution Partner</span>
@@ -750,7 +653,30 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <div class="hstat" role="listitem"><div class="hstat-n">0<span style="font-size:.7em">%</span></div><div class="hstat-l">Drop-Ship</div></div>
         </div>
       </div>
-
+      <div class="hero-right">
+        <div class="hero-img-wrapper">
+          <!-- FIXED: hero-img-stat repositioned to top:20px so it overlays the image nicely -->
+          <div class="hero-img-stat">
+            <div class="his-n">4+</div>
+            <div class="his-l">Years Operating</div>
+          </div>
+          <div class="hero-img-frame">
+            <img
+              src="pic6.png"
+              onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=85&auto=format&fit=crop'"
+              alt="Sapphire Gadgets wholesale distribution facility"
+              loading="eager"
+              fetchpriority="high"
+              width="800" height="600">
+            <div class="hero-img-status">
+              <span class="his-dot" aria-hidden="true"></span>
+              <span class="his-label">Partnership Status</span>
+              <span class="his-value">Accepting Applications</span>
+            </div>
+          </div>
+          <div class="hero-img-corner bl" aria-hidden="true"></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -784,10 +710,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </section>
 
-<!-- ============================================================
-     ABOUT / MISSION — pic1.png, no "Active Partner Network" badge,
-     100% MAP badge at bottom-left of image
-     ============================================================ -->
+<!-- ABOUT / MISSION -->
 <section id="about-mission" aria-label="About Sapphire Gadgets">
   <div class="container">
     <div class="about-grid">
@@ -813,8 +736,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-
-      <!-- Image column — pic1.png, NO "Active Partner Network" badge, 100% MAP at bottom-left -->
+      <!-- FIXED: about-img-col — badge now on left side of image, corner accents adjusted -->
       <div class="about-img-col reveal rd1">
         <div class="about-frame">
           <img
@@ -823,15 +745,18 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
             alt="Sapphire Gadgets distribution facility interior"
             loading="lazy"
             width="600" height="450">
-          <!-- "Active Partner Network" badge REMOVED as requested -->
+          <div class="about-badge-live">
+            <span class="abl-dot" aria-hidden="true"></span>
+            <span class="abl-text">Active Partner Network</span>
+          </div>
         </div>
-        <!-- 100% MAP badge: bottom-left, sits below-left of the frame -->
+        <!-- Badge now sits at bottom-left of the image column, overlapping from left -->
         <div class="about-float-stat">
           <div class="afs-n">100%</div>
           <div class="afs-l">MAP Compliance Rate</div>
         </div>
-        <div class="about-corner tr" aria-hidden="true"></div>
-        <div class="about-corner bl" aria-hidden="true"></div>
+        <div class="about-corner tl" aria-hidden="true"></div>
+        <div class="about-corner br" aria-hidden="true"></div>
       </div>
     </div>
   </div>
@@ -917,7 +842,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </section>
 
-<!-- MAP COMPLIANCE — pic3.png only, pic4.png removed -->
+<!-- MAP COMPLIANCE — FIXED: pic4.png secondary image completely removed -->
 <section id="map-compliance" aria-label="MAP Compliance and Brand Protection">
   <div class="container">
     <div class="map-layout">
@@ -931,6 +856,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <a href="#contact" class="btn btn-gold">Discuss Brand Protection <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         </div>
       </div>
+      <!-- FIXED: only pic3.png remains, pic4.png removed entirely -->
       <div class="map-img-col reveal rd1">
         <div class="map-img-primary">
           <img
@@ -1128,9 +1054,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </section>
 
-<!-- ============================================================
-     WHY US — pic8.png, "0% Drop-Ship" badge on LEFT side, shifted up
-     ============================================================ -->
+<!-- WHY US -->
 <section id="why-us" aria-label="Why Choose Sapphire Gadgets">
   <div class="container">
     <div class="why-inner">
@@ -1159,18 +1083,15 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Begin Partnership Conversation <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-
-      <!-- pic8.png — full warehouse aisle visible, badge on LEFT side at ~40% height -->
       <div class="why-img-col reveal rd1">
         <div class="why-frame">
           <img
             src="pic8.png"
-            onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=700&q=85&auto=format&fit=crop'"
-            alt="Sapphire Gadgets warehouse — full inventory storage aisles"
+            onerror="this.src='https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=900&q=85&auto=format&fit=crop'"
+            alt="Sapphire Gadgets quality assurance and operations team"
             loading="lazy"
-            width="600" height="800">
+            width="600" height="450">
         </div>
-        <!-- Badge: left side, shifted upward to align with heading area -->
         <div class="why-float">
           <div class="wf-n">0%</div>
           <div class="wf-l">Drop-Ship Activity</div>
@@ -1441,4 +1362,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 </body>
 </html>
-ENDOFFILE
+
