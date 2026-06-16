@@ -137,7 +137,10 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
   display:grid;
   grid-template-columns:1fr 1.2fr;
   gap:clamp(32px,4vw,64px);
-  align-items:center;
+  /* ===== FIX 1: align-items changed from center to flex-start =====
+     so the image top edge aligns with the hero-tag label at the top
+     of the left column, making the full image visible above the fold */
+  align-items:flex-start;
   min-height:calc(100svh - 76px);
   padding:clamp(16px,2vw,28px) 0 clamp(32px,4vw,56px);
   position:relative;z-index:1;
@@ -159,7 +162,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .hero-img-wrapper{position:relative;}
 
 /* ============================================================
-   HERO IMAGE STAT — overlaid inside the frame (matches Nova Orvian hero-badge2)
+   HERO IMAGE STAT — overlaid inside the frame
    ============================================================ */
 .hero-img-stat{
   position:absolute;top:20px;right:20px;z-index:4;
@@ -200,7 +203,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .hero-img-corner{position:absolute;width:20px;height:20px;}
 .hero-img-corner.bl{bottom:-1px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
 @media(max-width:960px){
-  .hero-inner{grid-template-columns:1fr;min-height:auto;}
+  .hero-inner{grid-template-columns:1fr;min-height:auto;align-items:flex-start;}
   .hero-right{max-width:560px;margin:0 auto;width:100%;}
 }
 @media(max-width:600px){
@@ -251,7 +254,15 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
   align-items:start;
 }
 .about-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
-.about-img-col{position:relative;padding-bottom:48px;}
+
+/* ===== FIX 2: about-img-col adjusted for left-side badge =====
+   padding-left added so the badge (which hangs left) doesn't clip,
+   padding-bottom kept for badge overlap at bottom */
+.about-img-col{
+  position:relative;
+  padding-bottom:48px;
+  padding-left:36px;   /* space for badge hanging off left */
+}
 .about-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
 .about-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;animation:kenBurns 8s ease-in-out infinite;}
 .about-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:3;}
@@ -259,10 +270,14 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .about-badge-live{position:absolute;top:20px;right:20px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.85);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;}
 .abl-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
 .abl-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
+
+/* ===== FIX 2: Badge repositioned to LEFT side of image =====
+   left:-36px pulls it outside the frame's left edge
+   bottom:0 keeps it at the bottom-left corner area */
 .about-float-stat{
   position:absolute;
   bottom:0;
-  left:0;
+  left:0;          /* sits at the left edge of .about-img-col which has padding-left:36px */
   z-index:5;
   background:linear-gradient(135deg,var(--gold),var(--gold-hi));
   padding:18px 24px;
@@ -270,9 +285,9 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 }
 .afs-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .afs-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:4px;}
-.about-corner{position:absolute;width:20px;height:20px;}
-.about-corner.tl{top:-1px;right:-1px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
-.about-corner.br{bottom:47px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
+/* ===== FIX 2: .about-corner styles kept but HTML removed ===== */
+.about-corner{display:none;}
+
 .mission-pillars{display:flex;flex-direction:column;gap:2px;margin:28px 0 32px;}
 .mpillar{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .3s var(--ease-out);position:relative;overflow:hidden;}
 .mpillar::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -284,8 +299,8 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .mpillar-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
 @media(max-width:860px){
   .about-grid{grid-template-columns:1fr;}
-  .about-img-col{order:2;}
-  .about-corner.tl{right:-1px;}
+  .about-img-col{order:2;padding-left:0;padding-right:0;}
+  .about-float-stat{left:0;}
 }
 
 /* ============================================================
@@ -653,14 +668,9 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
       </div>
 
-      <!-- =====================================================
-           HERO RIGHT — FIXED: stat badge now overlaid inside
-           the frame (matching Nova Orvian hero-badge2 pattern)
-           ===================================================== -->
       <div class="hero-right">
         <div class="hero-img-wrapper">
           <div class="hero-img-frame">
-            <!-- Stat badge sits inside the frame as an overlay -->
             <div class="hero-img-stat" aria-hidden="true">
               <div class="his-n">4+</div>
               <div class="his-l">Years Operating</div>
@@ -741,6 +751,14 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
+
+      <!-- =====================================================
+           ABOUT IMAGE COL — FIXES APPLIED:
+           1. padding-left:36px added so badge doesn't clip
+           2. about-float-stat left:0 (sits at left edge of col,
+              outside the frame which starts at padding-left:36px)
+           3. Corner sticker divs REMOVED entirely
+           ===================================================== -->
       <div class="about-img-col reveal rd1">
         <div class="about-frame">
           <img
@@ -758,8 +776,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <div class="afs-n">100%</div>
           <div class="afs-l">MAP Compliance Rate</div>
         </div>
-        <div class="about-corner tl" aria-hidden="true"></div>
-        <div class="about-corner br" aria-hidden="true"></div>
+        <!-- Corner stickers removed as requested -->
       </div>
     </div>
   </div>
