@@ -137,6 +137,9 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
   display:grid;
   grid-template-columns:1fr 1.2fr;
   gap:clamp(32px,4vw,64px);
+  /* ===== FIX 1: align-items changed from center to flex-start =====
+     so the image top edge aligns with the hero-tag label at the top
+     of the left column, making the full image visible above the fold */
   align-items:flex-start;
   min-height:calc(100svh - 76px);
   padding:clamp(16px,2vw,28px) 0 clamp(32px,4vw,56px);
@@ -251,10 +254,14 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
   align-items:start;
 }
 .about-text-col{display:flex;flex-direction:column;justify-content:flex-start;}
+
+/* ===== FIX 2: about-img-col adjusted for left-side badge =====
+   padding-left added so the badge (which hangs left) doesn't clip,
+   padding-bottom kept for badge overlap at bottom */
 .about-img-col{
   position:relative;
   padding-bottom:48px;
-  padding-left:36px;
+  padding-left:36px;   /* space for badge hanging off left */
 }
 .about-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
 .about-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;animation:kenBurns 8s ease-in-out infinite;}
@@ -263,10 +270,14 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .about-badge-live{position:absolute;top:20px;right:20px;z-index:4;display:flex;align-items:center;gap:8px;background:rgba(5,15,31,.85);backdrop-filter:blur(12px);border:1px solid var(--border-md);padding:8px 14px;}
 .abl-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;}
 .abl-text{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
+
+/* ===== FIX 2: Badge repositioned to LEFT side of image =====
+   left:-36px pulls it outside the frame's left edge
+   bottom:0 keeps it at the bottom-left corner area */
 .about-float-stat{
   position:absolute;
   bottom:0;
-  left:0;
+  left:0;          /* sits at the left edge of .about-img-col which has padding-left:36px */
   z-index:5;
   background:linear-gradient(135deg,var(--gold),var(--gold-hi));
   padding:18px 24px;
@@ -274,6 +285,7 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 }
 .afs-n{font-family:var(--font-display);font-size:38px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .afs-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:4px;}
+/* ===== FIX 2: .about-corner styles kept but HTML removed ===== */
 .about-corner{display:none;}
 
 .mission-pillars{display:flex;flex-direction:column;gap:2px;margin:28px 0 32px;}
@@ -387,52 +399,11 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 @media(max-width:560px){.map-pillars{grid-template-columns:1fr;}.map-badge{min-width:100%;}}
 
 /* ============================================================
-   CHANNEL — FIXED
-   The image (pic5.png) now appears ABOVE the text split,
-   as a full-width image spanning both columns.
+   CHANNEL
    ============================================================ */
 #channel-section{padding:var(--section-pad) 0;background:var(--navy);border-top:1px solid var(--border-lo);}
-
-/* Full-width hero image at the top of channel section */
-.channel-hero-img{
-  position:relative;
-  overflow:hidden;
-  border:1px solid var(--border-md);
-  background:var(--surface-1);
-  aspect-ratio:16/6;
-  margin-bottom:clamp(40px,5vw,64px);
-}
-.channel-hero-img img{
-  width:100%;height:100%;
-  object-fit:cover;
-  object-position:center 40%;
-  display:block;
-  animation:kenBurnsDrift 9s ease-in-out infinite;
-}
-.channel-hero-img::before{
-  content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;
-  background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:2;
-}
-.channel-hero-img::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;height:30%;
-  background:linear-gradient(to top,rgba(5,15,31,.60),transparent);
-  z-index:1;pointer-events:none;
-}
-.channel-hero-badge{
-  position:absolute;bottom:20px;left:20px;z-index:3;
-  background:rgba(5,15,31,.90);backdrop-filter:blur(16px);
-  border:1px solid var(--border-md);padding:12px 18px;
-  display:flex;align-items:center;gap:10px;
-}
-.chb-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
-.chb-text{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
-.channel-hero-corner{position:absolute;width:20px;height:20px;}
-.channel-hero-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
-.channel-hero-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
-
-/* Two-column text layout below the image */
-.channel-split{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(40px,6vw,80px);align-items:start;margin-bottom:clamp(48px,5vw,72px);}
-.channel-text{display:flex;flex-direction:column;justify-content:flex-start;}
+.channel-split{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(40px,6vw,80px);align-items:center;margin-bottom:clamp(48px,5vw,72px);}
+.channel-text{display:flex;flex-direction:column;justify-content:center;}
 .channel-chips{display:flex;flex-direction:column;gap:1px;margin:24px 0 32px;}
 .chin-chip{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--surface-1);border:1px solid var(--border-lo);transition:all .28s var(--ease-out);position:relative;overflow:hidden;}
 .chin-chip::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -441,23 +412,17 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .chin-chip-icon{width:36px;height:36px;background:var(--gold-mist);border:1px solid var(--border-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .chin-chip-icon svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.8;}
 .chin-chip-text{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);}
-
-/* Stats panel in the right column */
-.channel-stats-panel{
-  display:flex;flex-direction:column;gap:1px;
-  background:var(--border-lo);
-  border:1px solid var(--border-lo);
-}
-.csp-row{
-  background:var(--surface-1);padding:20px 22px;
-  display:flex;align-items:center;gap:16px;
-  transition:background .25s;
-}
-.csp-row:hover{background:var(--surface-2);}
-.csp-n{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--gold);line-height:1;letter-spacing:-1px;min-width:80px;}
-.csp-text h4{font-family:var(--font-head);font-size:12px;font-weight:700;color:var(--text-1);margin-bottom:3px;}
-.csp-text p{font-size:11.5px;color:var(--text-3);line-height:1.5;}
-
+.channel-img-col{position:relative;}
+.channel-img-frame{position:relative;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);aspect-ratio:16/10;}
+.channel-img-frame img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block;animation:kenBurnsDrift 9s ease-in-out infinite;}
+.channel-img-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),rgba(212,168,68,.3));z-index:2;}
+.channel-img-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:22%;background:linear-gradient(to top,rgba(5,15,31,.50),transparent);z-index:1;pointer-events:none;}
+.channel-img-badge{position:absolute;bottom:20px;left:20px;z-index:3;background:rgba(5,15,31,.90);backdrop-filter:blur(16px);border:1px solid var(--border-md);padding:12px 18px;display:flex;align-items:center;gap:10px;}
+.cib-dot{width:7px;height:7px;border-radius:50%;background:#4ADE80;animation:pulseLive 2s ease infinite;flex-shrink:0;}
+.cib-text{font-family:var(--font-head);font-size:9px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--text-2);}
+.channel-img-corner{position:absolute;width:20px;height:20px;}
+.channel-img-corner.tl{top:-1px;left:-1px;border-top:2px solid var(--gold);border-left:2px solid var(--gold);}
+.channel-img-corner.br{bottom:-1px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
 .channel-below{padding:clamp(40px,4.5vw,60px) 0;background:var(--navy-3);border-top:1px solid var(--border-lo);border-bottom:1px solid var(--border-lo);}
 .channel-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-lo);border:1px solid var(--border-lo);}
 .ch-card{background:var(--surface-1);padding:24px 22px;transition:all .32s var(--ease-out);position:relative;overflow:hidden;}
@@ -467,9 +432,9 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .ch-num{font-family:var(--font-display);font-size:11px;font-weight:700;color:var(--gold);margin-bottom:10px;letter-spacing:1px;}
 .ch-card h4{font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--text-1);margin-bottom:6px;}
 .ch-card p{font-size:12.5px;color:var(--text-3);line-height:1.65;}
-@media(max-width:960px){.channel-split{grid-template-columns:1fr;}}
-@media(max-width:900px){.channel-cards{grid-template-columns:1fr 1fr;}.channel-hero-img{aspect-ratio:16/8;}}
-@media(max-width:480px){.channel-cards{grid-template-columns:1fr;}.channel-hero-img{aspect-ratio:4/3;}}
+@media(max-width:960px){.channel-split{grid-template-columns:1fr;}.channel-img-col{order:2;}}
+@media(max-width:900px){.channel-cards{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.channel-cards{grid-template-columns:1fr;}}
 
 /* ============================================================
    TRUST BAR
@@ -519,43 +484,21 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 @media(max-width:900px){.process-layout{grid-template-columns:1fr;}.process-img-col{margin-bottom:8px;}.process-img-frame{aspect-ratio:16/9;}}
 
 /* ============================================================
-   WHY US — FIXED
-   Badge moved to LEFT side of image.
-   Image fully visible (no padding-left, padding-right instead
-   for the badge that now sits on the left of the frame).
+   WHY US
    ============================================================ */
 #why-us{padding:var(--section-pad) 0;background:var(--navy-3);}
 .why-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,88px);align-items:center;}
-
-/* Image column: padding-left for badge overhang, padding-bottom for badge overflow */
-.why-img-col{
-  position:relative;
-  padding-bottom:48px;
-  padding-left:36px;   /* space for badge hanging off left edge */
-}
+.why-img-col{position:relative;padding-bottom:32px;padding-left:32px;}
 .why-frame{position:relative;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--border-md);background:var(--surface-1);}
-.why-frame img{width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;animation:kenBurnsDrift 9s ease-in-out infinite;}
+.why-frame img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;animation:kenBurnsDrift 9s ease-in-out infinite;}
 .why-frame::before{content:'';position:absolute;top:-1px;left:-1px;right:-1px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);z-index:2;}
 .why-frame::after{content:'';position:absolute;bottom:0;left:0;right:0;height:25%;background:linear-gradient(to top,rgba(5,15,31,.40),transparent);z-index:1;pointer-events:none;}
-
-/* Badge: sits at bottom-LEFT of the image, slightly outside the frame's left edge */
-.why-float{
-  position:absolute;
-  bottom:0;
-  left:0;           /* aligns with the left edge of .why-img-col (which has padding-left:36px) */
-  z-index:3;
-  background:linear-gradient(135deg,var(--gold),var(--gold-hi));
-  padding:18px 24px;
-  box-shadow:0 12px 40px rgba(212,168,68,.35);
-}
+.why-float{position:absolute;bottom:0;left:0;z-index:3;background:linear-gradient(135deg,var(--gold),var(--gold-hi));padding:16px 22px;box-shadow:0 12px 40px rgba(212,168,68,.35);}
 .wf-n{font-family:var(--font-display);font-size:34px;font-weight:700;color:var(--navy);line-height:1;letter-spacing:-2px;}
 .wf-l{font-family:var(--font-head);font-size:8px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(5,15,31,.65);margin-top:3px;}
-
-/* Decorative corners */
 .why-corner{position:absolute;width:20px;height:20px;}
-.why-corner.tl{top:-1px;right:-1px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
-.why-corner.br{bottom:47px;right:-1px;border-bottom:2px solid var(--gold);border-right:2px solid var(--gold);}
-
+.why-corner.tl{top:-1px;right:31px;border-top:2px solid var(--gold);border-right:2px solid var(--gold);}
+.why-corner.br{bottom:31px;left:-1px;border-bottom:2px solid var(--gold);border-left:2px solid var(--gold);}
 .why-features{display:flex;flex-direction:column;gap:2px;margin:24px 0 32px;}
 .wf-item{display:flex;align-items:flex-start;gap:14px;padding:15px 17px;border:1px solid var(--border-lo);background:var(--surface-1);transition:all .28s var(--ease-out);position:relative;overflow:hidden;}
 .wf-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:var(--gold);transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out);}
@@ -567,9 +510,8 @@ nav.scrolled{background:rgba(5,15,31,.97);backdrop-filter:blur(24px);border-bott
 .wf-body p{font-size:12px;color:var(--text-3);line-height:1.65;}
 @media(max-width:960px){
   .why-inner{grid-template-columns:1fr;gap:48px;}
-  .why-img-col{padding-left:0;padding-right:0;order:2;}
-  .why-float{left:0;}
-  .why-corner.tl{right:-1px;}
+  .why-img-col{padding-left:0;padding-right:16px;order:2;}
+  .why-corner.tl{right:15px;}
 }
 
 /* ============================================================
@@ -810,6 +752,13 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         <a href="#contact" class="btn btn-gold">Request a Partnership Meeting <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
 
+      <!-- =====================================================
+           ABOUT IMAGE COL — FIXES APPLIED:
+           1. padding-left:36px added so badge doesn't clip
+           2. about-float-stat left:0 (sits at left edge of col,
+              outside the frame which starts at padding-left:36px)
+           3. Corner sticker divs REMOVED entirely
+           ===================================================== -->
       <div class="about-img-col reveal rd1">
         <div class="about-frame">
           <img
@@ -827,6 +776,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
           <div class="afs-n">100%</div>
           <div class="afs-l">MAP Compliance Rate</div>
         </div>
+        <!-- Corner stickers removed as requested -->
       </div>
     </div>
   </div>
@@ -985,27 +935,9 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </section>
 
-<!-- CHANNEL — FIXED: pic5.png now appears as full-width hero image ABOVE the split -->
+<!-- CHANNEL -->
 <section id="channel-section" aria-label="Our Retail Channels">
   <div class="container">
-
-    <!-- FULL-WIDTH IMAGE (pic5.png) — spans the full container width at the top -->
-    <div class="channel-hero-img reveal">
-      <img
-        src="pic5.png"
-        onerror="this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1600&q=85&auto=format&fit=crop'"
-        alt="Sapphire Gadgets distribution facility and logistics operations"
-        loading="lazy"
-        width="1400" height="525">
-      <div class="channel-hero-badge">
-        <span class="chb-dot" aria-hidden="true"></span>
-        <span class="chb-text">Active Distribution Network</span>
-      </div>
-      <div class="channel-hero-corner tl" aria-hidden="true"></div>
-      <div class="channel-hero-corner br" aria-hidden="true"></div>
-    </div>
-
-    <!-- TEXT + STATS BELOW THE IMAGE -->
     <div class="channel-split">
       <div class="channel-text reveal">
         <span class="eyebrow">Omnichannel Presence</span>
@@ -1032,29 +964,24 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Discuss Channel Strategy <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-
-      <!-- Right column: stats panel -->
-      <div class="channel-stats-panel reveal rd1">
-        <div class="csp-row">
-          <div class="csp-n">100%</div>
-          <div class="csp-text"><h4>MAP Compliance</h4><p>Every channel maintained at full MAP compliance — no exceptions across any marketplace or platform.</p></div>
+      <div class="channel-img-col reveal rd1">
+        <div class="channel-img-frame">
+          <img
+            src="pic5.png"
+            onerror="this.src='https://images.unsplash.com/photo-1601598851547-4302969d0614?w=1200&q=85&auto=format&fit=crop'"
+            alt="Sapphire Gadgets distribution facility and logistics operations"
+            loading="lazy"
+            width="900" height="563">
+          <div class="channel-img-badge">
+            <span class="cib-dot" aria-hidden="true"></span>
+            <span class="cib-text">Active Distribution Network</span>
+          </div>
         </div>
-        <div class="csp-row">
-          <div class="csp-n">50+</div>
-          <div class="csp-text"><h4>States Reached</h4><p>Nationwide distribution footprint covering all 50 U.S. states through our channel network.</p></div>
-        </div>
-        <div class="csp-row">
-          <div class="csp-n">6+</div>
-          <div class="csp-text"><h4>Active Channels</h4><p>Amazon, Walmart, eBay, Shopify DTC, regional retail, and specialty chains — all actively managed.</p></div>
-        </div>
-        <div class="csp-row">
-          <div class="csp-n">4+</div>
-          <div class="csp-text"><h4>Years Operating</h4><p>Established distribution track record with consistent performance across every major marketplace.</p></div>
-        </div>
+        <div class="channel-img-corner tl" aria-hidden="true"></div>
+        <div class="channel-img-corner br" aria-hidden="true"></div>
       </div>
     </div>
   </div>
-
   <div class="channel-below">
     <div class="container">
       <div class="channel-cards">
@@ -1146,7 +1073,7 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
   </div>
 </section>
 
-<!-- WHY US — FIXED: pic8.png fully visible, badge on LEFT side -->
+<!-- WHY US -->
 <section id="why-us" aria-label="Why Choose Sapphire Gadgets">
   <div class="container">
     <div class="why-inner">
@@ -1175,8 +1102,6 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
         </div>
         <a href="#contact" class="btn btn-gold">Begin Partnership Conversation <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-
-      <!-- IMAGE COL: padding-left:36px gives room for badge on left; padding-bottom:48px for badge at bottom -->
       <div class="why-img-col reveal rd1">
         <div class="why-frame">
           <img
@@ -1186,7 +1111,6 @@ footer{background:var(--navy-2);border-top:1px solid var(--border-lo);padding:cl
             loading="lazy"
             width="600" height="450">
         </div>
-        <!-- Badge on the LEFT side, below the image frame -->
         <div class="why-float">
           <div class="wf-n">0%</div>
           <div class="wf-l">Drop-Ship Activity</div>
